@@ -66,8 +66,11 @@ class App extends SearchkitComponent {
       .then(response => response.text())
       .then((result) => {
         let resultJSON = JSON.parse(result)
-        let data = resultJSON.hits.hits;
-        console.log(data)
+        //orders tiene un array con los pedidos que obtenga de la consulta. Aquí es donde está dando problemas. Hemos intentado meter el array en el state con el código de abajo, pero si devuelve muchos pedidos tarda una barbaridad en meterlos en el array.
+        let orders = resultJSON.hits.hits;
+        /*this.setState({
+          dataList: orders
+        })*/
       })
       .catch(error => console.log('error', error));
   }
