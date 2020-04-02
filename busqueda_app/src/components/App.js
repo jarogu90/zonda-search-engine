@@ -21,7 +21,6 @@ import {
   InputFilter,
   ViewSwitcherToggle,
 } from "searchkit";
-  
 import Samples from './Samples';
 import DateRangePicker from '@wojtekmaj/react-daterange-picker';
 
@@ -35,7 +34,47 @@ class App extends SearchkitComponent {
 
   onChange = date => this.setState({ date })
 
+  //Función que añade 0 en caso de que el mes o el día sea inferior a 10
+  addCero(n){
+    if(n <= 9){
+      return "0" + n;
+    }
+    return n
+  }
+
+   //Función que formatea las fechas introducidas en el calendario de la interfaz y hace una consulta a elastic que devuelve datos parseados a JSON
+   dataFilter(){
+    let current_datetime = this.state.date[0];
+    let dateA = current_datetime.getFullYear() + "/" + this.addCero(current_datetime.getMonth() + 1) + "/" + this.addCero(current_datetime.getDate())
+
+    let current_datetimeB = this.state.date[1];
+    let dateB = current_datetimeB.getFullYear() + "/" + this.addCero(current_datetimeB.getMonth() + 1) + "/" + this.addCero(current_datetimeB.getDate())
+
+    let myHeaders = new Headers();
+    myHeaders.append("Content-Type", "application/json");
+
+    let raw = JSON.stringify({"query":{"range":{"ACTUAL_DELIVERY_DAT":{"gte":dateA,"lte":dateB,"format":"yyyy/MM/dd"}}}});
+
+    let requestOptions = {
+      method: 'POST',
+      headers: myHeaders,
+      body: raw,
+      redirect: 'follow'
+    };
+
+    fetch("https://search-pedidos-dev-4rtoq2jtrckjskj25rghj3t5fy.eu-west-1.es.amazonaws.com/pedidos/_search?pretty", requestOptions)
+      .then(response => response.text())
+      .then((result) => {
+        let resultJSON = JSON.parse(result)
+        let data = resultJSON.hits.hits;
+        console.log(data)
+      })
+      .catch(error => console.log('error', error));
+  }
+
   render(){
+    console.log(this.dataFilter())
+
     return (
       <SearchkitProvider searchkit={searchkit}>
         <Layout>
@@ -51,10 +90,6 @@ class App extends SearchkitComponent {
           </TopBar>
           <LayoutBody>
             <SideBar>
-              <DateRangePicker
-                onChange={this.onChange}
-                value={this.state.date}
-              />
               <HierarchicalMenuFilter
                 fields={["LNF_SITE_CITY.keyword", "SHIPPINGPOINT_ID"]}
                 title="Cities"
@@ -83,6 +118,11 @@ class App extends SearchkitComponent {
                 operator="AND"
                 size={10}
                 />
+              <DateRangePicker
+                onChange={this.onChange}
+                value={this.state.date}
+                format="y-MM-dd"
+              />
             </SideBar>
             <LayoutResults>
               <ActionBar>

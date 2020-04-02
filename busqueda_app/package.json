@@ -9,7 +9,9 @@
     "@wojtekmaj/react-daterange-picker": "^2.5.0",
     "lodash": "^4.17.15",
     "react": "^16.13.1",
+    "react-datetime-picker": "^3.0.1",
     "react-dom": "^16.13.1",
+    "react-highlight-words": "^0.16.0",
     "react-scripts": "3.4.1",
     "searchkit": "^2.4.1-alpha.4"
   },
