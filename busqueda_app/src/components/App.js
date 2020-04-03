@@ -82,6 +82,7 @@ class App extends SearchkitComponent {
       <SearchkitProvider searchkit={searchkit}>
         <Layout>
           <TopBar>
+          <img className="logo" src="lh_logo.png" widht="30" height="60"></img>
           <div className="my-logo">Orders Search Engine</div>
           <div>
             <SearchBox

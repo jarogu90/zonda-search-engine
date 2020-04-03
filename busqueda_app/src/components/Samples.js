@@ -51,7 +51,7 @@ const OrderHitsTable = (props) => {
 const {hits} = props;
 return (
   <div style={{width: '100%', boxSizing: 'border-box', padding: 8}}>
-    <table className="sk-table sk-table-striped" style={{width: '100%', boxSizing: 'border-box'}}>
+    <table className="sk-table sk-table-striped">
       <thead>
         <tr>
           <th>Actual Delivery Date</th>
