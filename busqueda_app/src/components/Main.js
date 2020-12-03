@@ -21,18 +21,17 @@ import Samples from "./Samples";
 import InputFilterSection from "./InputFilterSection";
 import Sidebar from "./Sidebar";
 import NoResults from "./NoResults";
+import { formatDate } from "../utils/Utils";
 
 //Configuración del json para filtros y endpoint
 import config from "../config.json";
 
 //Imports para las fechas
 import { DatePicker } from "antd";
-import moment from "moment";
 import { dateRange } from "../queries/rangeDateQuery";
 
-const { RangePicker } = DatePicker;
-
 const searchkit = new SearchkitManager(config.endpoint);
+const { RangePicker } = DatePicker;
 
 class Main extends SearchkitComponent {
   state = {
@@ -80,8 +79,6 @@ class Main extends SearchkitComponent {
   };
 
   //AQUI EMPIEZAN LAS FUNCIONES RELACIONADAS CON LAS FECHAS
-
-  //FUNCIÓN QUE RECIBE LOS DATOS DE LA QUERY A ELASTIC
   getData = (dateFrom, dateTo) => {
     dateRange(dateFrom, dateTo).then((res) => {
       if (res.hits.hits.length < 1) {
@@ -92,28 +89,21 @@ class Main extends SearchkitComponent {
       }
       this.setState({ arraydata: res.hits.hits });
       this.setState({ dateFilterOn: true });
-      console.log(this.state.arraydata);
     });
   };
 
-  formatDate = (date) => {
-    return moment(date).format("YYYY-MM-DD");
-  };
-
-  onChangeAntd = (val) => {
+  onChange = (val) => {
     this.setState({ value: val, noResults: false });
     if (val === null) {
-      //this.setState({ startDate: null, endDate: null });
       this.changeCleanDateStatus();
       return;
     } else {
-      const formatedStartDate = this.formatDate(val[0]._d);
-      const formatedEndDate = this.formatDate(val[1]._d);
+      const formatedStartDate = formatDate(val[0]._d);
+      const formatedEndDate = formatDate(val[1]._d);
       this.setState({
         startDate: formatedStartDate,
         endDate: formatedEndDate,
       });
-      console.log(formatedStartDate, formatedEndDate);
       this.getData(formatedStartDate, formatedStartDate);
     }
   };
@@ -135,7 +125,7 @@ class Main extends SearchkitComponent {
               <ActionBar>
                 <RangePicker
                   value={this.state.value}
-                  onChange={this.onChangeAntd}
+                  onChange={this.onChange}
                 />
                 <InputFilterSection></InputFilterSection>
                 <ActionBarRow>

@@ -1,16 +1,11 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 
-import { SearchBox, ActionBarRow, InputFilter, RangeFilter } from "searchkit";
+import { SearchBox, ActionBarRow, InputFilter } from "searchkit";
 import config from "../config.json";
 
 // components
-import ButtonPrimary from "./GenericComponents/ButtonPrimary";
-
-import DatePicker from "react-datepicker";
-import "react-datepicker/dist/react-datepicker.css";
-import { dateRange } from "../queries/rangeDateQuery";
-import moment from "moment";
+//import ButtonPrimary from "./GenericComponents/ButtonPrimary";
 
 const FlexBox = styled.div`
   display: flex;
