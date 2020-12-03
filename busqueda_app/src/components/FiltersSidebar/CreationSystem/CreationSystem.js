@@ -11,8 +11,6 @@ import { Select, RefinementListFilter, SearchkitManager } from "searchkit";
 // images
 import CreationSystemIcon from "../../../img/creationSystemIcon";
 
-const searchkit = new SearchkitManager(config.endpoint);
-
 const CreationSystem = ({ showing }) => {
   return (
     <div className="dropdown-container">

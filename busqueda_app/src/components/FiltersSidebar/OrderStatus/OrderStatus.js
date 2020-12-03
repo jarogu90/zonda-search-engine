@@ -11,8 +11,6 @@ import { Select, RefinementListFilter, SearchkitManager } from "searchkit";
 // images
 import Status from "../../../img/status";
 
-const searchkit = new SearchkitManager(config.endpoint);
-
 const OrderStatus = ({ showing }) => {
   return (
     <div className="dropdown-container">

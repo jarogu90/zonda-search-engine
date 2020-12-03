@@ -1,25 +1,23 @@
-import React from 'react';
-import {
-  Hits,
-  NoHits
-} from "searchkit";
-import OrderHitsTable from './OrderHitsTable';
+import React from "react";
+import { Hits, NoHits } from "searchkit";
+import OrderHitsTable from "./OrderHitsTable";
 import config from "../config.json";
 
-const Samples = ({dataDateFilter}) => {
+const Samples = ({ dataDateFilter }) => {
   return (
     <div>
       <Hits
         hitsPerPage={1000}
         highlightFields={["ORDER_ID"]}
-        listComponent= {<OrderHitsTable dataDateFilter={dataDateFilter}/>}
+        listComponent={<OrderHitsTable dataDateFilter={dataDateFilter} />}
         hitComponents={[
-          {key: config.samples.table.key, title: config.samples.table.title}]}
+          { key: config.samples.table.key, title: config.samples.table.title },
+        ]}
         scrollTo="body"
       />
       <NoHits />
     </div>
-  )
-}
+  );
+};
 
-export default Samples
+export default Samples;
