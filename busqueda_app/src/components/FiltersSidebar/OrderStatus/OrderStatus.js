@@ -22,7 +22,7 @@ const OrderStatus = ({ showing }) => {
           <Status width="25px" height="24px" color="var(--greyish-brown)" />
         </FilterBase>
       </label>
-      {showing ? (
+      {/* {showing ? (
         <div className="content">
           <RefinementListFilter
             id={config.filters.orderStatus.id}
@@ -34,9 +34,9 @@ const OrderStatus = ({ showing }) => {
             orderDirection="asc"
           />
         </div>
-      ) : null}
+      ) : null} */}
 
-      {/* <div className={showing ? "content" : "display__none"}>
+      <div className={showing ? "content" : "display__none"}>
         <RefinementListFilter
           id={config.filters.orderStatus.id}
           field={config.filters.orderStatus.fields}
@@ -46,7 +46,7 @@ const OrderStatus = ({ showing }) => {
           orderKey="_term"
           orderDirection="asc"
         />
-      </div> */}
+      </div>
 
       <div className={showing ? "line" : "line line__hide"}></div>
     </div>

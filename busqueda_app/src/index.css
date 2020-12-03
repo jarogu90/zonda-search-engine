@@ -107,5 +107,9 @@ code {
 
 .display__none{
   display: none !important;
-
+  max-height: 0px;
+  margin: 0;
+  text-align: left;
+  transition: 0.3s linear;
+  position: absolute;
 }
