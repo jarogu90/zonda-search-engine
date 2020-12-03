@@ -1,37 +1,47 @@
-.ant-table .ant-table-small .ant-table-bordered{
-    overflow: scroll; 
+.ant-table .ant-table-small .ant-table-bordered {
+    overflow: scroll;
 }
-.table-container{
+
+.table-container {
 
     // height: 750px;
     height: auto;
 
 }
-.ant-table-wrapper{
-    width: 100%;
+
+.ant-table-wrapper {
+    // width: 100%;
 }
 
-.ant-table-content{
-    max-width: min-content;
-    width: 400px;
-   .ant-table-cell{
-    font-size: 12px;
-    text-align: center;
-    color: var(--greyish-brown);
-    padding: 6px 0 0;
-    background-color: #f7f8f9;
+.ant-table-content {
+    // max-width: min-content;
+    // width: 400px;
+
+    .ant-table-cell {
+        font-size: 12px;
+        text-align: center;
+        color: var(--greyish-brown);
+        padding: 6px 0 0;
+        background-color: #f7f8f9;
     }
 }
-header{
+
+
+.ant-table.ant-table-bordered>.ant-table-container {
+
+    width: auto;
+}
+
+header {
     background-color: #0074b4;
     color: #ffffff;
     padding: 1em 2em;
     width: auto;
 }
 
-.table-header{
+.table-header {
     height: 52px;
-   /*  th:nth-child(2){
+    /*  th:nth-child(2){
         width: 15%;
     }
     th:nth-child(4){
@@ -50,10 +60,11 @@ header{
         width: 8%;
     } */
 
-    &:nth-child(even){
-        background-color:#f5fcff;
+    &:nth-child(even) {
+        background-color: #f5fcff;
     }
-    .header{
+
+    .header {
         background-color: #0074b4;
         color: white;
         padding: 4px 25px;
@@ -87,7 +98,7 @@ header{
 //     color: #000000;
 //     padding: 0;
 
-   /*  &:nth-child(1){
+/*  &:nth-child(1){
         cursor: pointer;
     }
 
@@ -173,7 +184,7 @@ header{
 //CLASES ORDER STATUS y ORDER CREATION
 
 .Rectangle-value-6 {
-    width: auto; 
+    width: auto;
     height: 23px;
     border-radius: 2px;
     background-color: #ffc625;
@@ -185,7 +196,7 @@ header{
 }
 
 .Rectangle-value-7 {
-    width: auto; 
+    width: auto;
     height: 23px;
     border-radius: 2px;
     background-color: #00bbd6;
@@ -197,7 +208,7 @@ header{
 }
 
 .Rectangle-value-8 {
-    width: auto; 
+    width: auto;
     height: 23px;
     border-radius: 2px;
     background-color: #a5c36d;
@@ -209,7 +220,7 @@ header{
 }
 
 .Rectangle-value-9 {
-    width: auto; 
+    width: auto;
     height: 23px;
     border-radius: 2px;
     background-color: #FD7255;
@@ -221,7 +232,7 @@ header{
 }
 
 .Rectangle-value-10 {
-    width: auto; 
+    width: auto;
     height: 23px;
     border-radius: 2px;
     background-color: rgb(97, 105, 218);

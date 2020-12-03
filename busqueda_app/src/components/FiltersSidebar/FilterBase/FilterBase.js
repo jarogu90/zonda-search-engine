@@ -60,14 +60,14 @@ const FilterBase = ({ value, children, classNameFilter, showing }) => {
   return (
     <FilterOptionDiv padding="38px" className={classNameFilter}>
       <IconProps className="btn_hide">{children}</IconProps>
-      <Value className="value__sidebar">{value}</Value>
 
+      {showing ? <Value className="value__sidebar">{value}</Value> : null}
       <ArrowUpFilter className="arrowUp">
-        <ArrowUp color="var(--greyish-brown)" />
+        {showing ? <ArrowUp color="var(--greyish-brown)" /> : null}
       </ArrowUpFilter>
 
       <ArrowDownFilter className="arrowDown">
-        <ArrowDown color="var(--greyish-brown)" />
+        {showing ? <ArrowDown color="var(--greyish-brown)" /> : null}
       </ArrowDownFilter>
     </FilterOptionDiv>
   );

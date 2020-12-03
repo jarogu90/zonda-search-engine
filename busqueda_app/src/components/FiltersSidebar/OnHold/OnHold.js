@@ -33,16 +33,7 @@ const Value = styled.div`
   width: 88%;
   text-align: left;
 `;
-const ArrowUpFilter = styled.div`
-  width: 1.45rem;
-  margin: auto 4rem auto auto;
-  stroke: var(--ocean-blue);
-`;
-const ArrowDownFilter = styled.div`
-  width: 1.45rem;
-  margin: auto 4rem auto auto;
-  stroke: var(--ocean-blue);
-`;
+
 const FilterOptionDiv = styled.div`
   cursor: pointer;
   width: 100%;
@@ -71,26 +62,24 @@ const FilterOptionDiv = styled.div`
   }
 `;
 
-const OnHold = ({ children, classNameFilter }) => {
+const OnHold = ({ children, classNameFilter, showing }) => {
   return (
     <div>
       <FilterOptionDiv padding="38px" className={classNameFilter}>
         <IconProps className="btn_hide">
           {" "}
-          <OnHoldIcon
-            width="25px"
-            height="24px"
-            color="var(--greyish-brown)"
-          />
+          <OnHoldIcon width="25px" height="24px" color="var(--greyish-brown)" />
         </IconProps>
-        <Value>ON HOLD</Value>
-        <CheckboxFilter
-          id={config.filters.onHold.id}
-          field={config.filters.onHold.fields}
-          showCount={false}
-          orderDirection="desc"
-          filter={TermQuery("ON_HOLD_ORDER_AND_LOCKED_FLAG", "1")}
-        />
+        {showing ? <Value>ON HOLD</Value> : null}
+        {showing ? (
+          <CheckboxFilter
+            id={config.filters.onHold.id}
+            field={config.filters.onHold.fields}
+            showCount={false}
+            orderDirection="desc"
+            filter={TermQuery("ON_HOLD_ORDER_AND_LOCKED_FLAG", "1")}
+          />
+        ) : null}
       </FilterOptionDiv>
 
       <div className="content"></div>

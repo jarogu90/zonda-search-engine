@@ -17,6 +17,11 @@
   margin-top: -80px;
 }
 
+.sidebar__hide {
+  max-width: 107px;
+  min-width: 107px;
+}
+
 .sidebar .logo {
   width: auto;
   height: 53px;
@@ -24,6 +29,11 @@
   margin: auto;
   margin-top: 11px;
   margin-bottom: 102px;
+}
+
+.sidebar .logo__hide {
+  height: 43px;
+  margin: 11px auto 112px auto;
 }
 
 .sidebar .sk-panel {
@@ -69,8 +79,11 @@
   width: 225px;
   border: solid 1px #e7e7e7;
   margin-left: 3.5rem;
-  -webkit-transition: all 2s ease;
-  transition: all 2s ease;
+}
+
+.line__hide {
+  width: 22px;
+  border: solid 1px #fafafa;
 }
 
 .saved-search-link {
@@ -94,14 +107,6 @@
   margin-right: 26px;
 }
 
-/* .filter--event_date_filter{
-  .sk-panel__header {
-    &:before {
-      content: url("../img/calendar.svg");
-      margin-right: 26px;
-    }
-  }
-} */
 .filter--searches .sk-panel__header:before {
   content: url("../img/location.svg");
   margin-right: 26px;

@@ -10,12 +10,12 @@ import { Select, RefinementListFilter, SearchkitManager } from "searchkit";
 // images
 import ProcessTypeIcon from "../../../img/processTypeIcon";
 
-const ProcessType = () => {
+const ProcessType = ({ showing }) => {
   return (
     <div className="dropdown-container">
       <input type="checkbox" id="drop_pt" />
       <label htmlFor="drop_pt">
-        <FilterBase value="Process Type">
+        <FilterBase value="Process Type" showing={showing}>
           <ProcessTypeIcon
             width="25px"
             height="24px"
@@ -34,7 +34,7 @@ const ProcessType = () => {
           orderDirection="asc"
         />
       </div>
-      <div className="line"></div>
+      <div className={showing ? "line" : "line line__hide"}></div>
     </div>
   );
 };

@@ -10,12 +10,12 @@ import { Select, RefinementListFilter, SearchkitManager } from "searchkit";
 // images
 import TruckIcon from "../../../img/truck";
 
-const DeliveryType = () => {
+const DeliveryType = ({ showing }) => {
   return (
     <div className="dropdown-container">
       <input type="checkbox" id="drop_dt" />
       <label htmlFor="drop_dt">
-        <FilterBase value="Delivery Type">
+        <FilterBase value="Delivery Type" showing={showing}>
           <TruckIcon width="25px" height="24px" color="var(--greyish-brown)" />
         </FilterBase>
       </label>
@@ -30,7 +30,7 @@ const DeliveryType = () => {
           orderDirection="asc"
         />
       </div>
-      <div className="line"></div>
+      <div className={showing ? "line" : "line line__hide"}></div>
     </div>
   );
 };

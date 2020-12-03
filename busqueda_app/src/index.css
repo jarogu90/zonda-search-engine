@@ -89,6 +89,9 @@ code {
     monospace;
 }
 
+
+
+
 @import './sass/sidebar.css';
 @import './sass/header.css';
 @import './sass/layout.css';
@@ -102,3 +105,7 @@ code {
 @import './sass/checkbox.css';
 @import './sass/variables.css';
 
+.display__none{
+  display: none !important;
+
+}

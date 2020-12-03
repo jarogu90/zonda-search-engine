@@ -13,12 +13,12 @@ import CreationSystemIcon from "../../../img/creationSystemIcon";
 
 const searchkit = new SearchkitManager(config.endpoint);
 
-const CreationSystem = () => {
+const CreationSystem = ({ showing }) => {
   return (
     <div className="dropdown-container">
       <input type="checkbox" id="drop_cs" />
       <label htmlFor="drop_cs">
-        <FilterBase value="Order Creation System">
+        <FilterBase value="Order Creation System" showing={showing}>
           <CreationSystemIcon
             width="25px"
             height="24px"
@@ -37,7 +37,7 @@ const CreationSystem = () => {
           orderDirection="asc"
         />
       </div>
-      <div className="line"></div>
+      <div className={showing ? "line" : "line line__hide"}></div>
     </div>
   );
 };
