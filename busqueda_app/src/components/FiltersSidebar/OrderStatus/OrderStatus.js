@@ -1,17 +1,22 @@
-import React from "react";
+import React, { useContext } from "react";
 import styled from "styled-components";
+import { Select, RefinementListFilter, SearchkitManager } from "searchkit";
 
 import config from "../../../config.json";
 
 // components
 import FilterBase from "../FilterBase/FilterBase";
 
-import { Select, RefinementListFilter, SearchkitManager } from "searchkit";
+// services
+import { GlobalStateContext } from "../../../services/GlobalContext";
 
 // images
 import Status from "../../../img/status";
 
-const OrderStatus = ({ showing }) => {
+const searchkit = new SearchkitManager(config.endpoint);
+
+const OrderSatus = ({ showing }) => {
+  const state = useContext(GlobalStateContext);
   return (
     <div className="dropdown-container">
       <input type="checkbox" id="drop_os" />
@@ -45,8 +50,7 @@ const OrderStatus = ({ showing }) => {
           orderDirection="asc"
         />
       </div>
-
-      <div className={showing ? "line" : "line line__hide"}></div>
+      {state.show ? <div className="line"></div> : null}
     </div>
   );
 };
