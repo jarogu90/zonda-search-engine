@@ -1,4 +1,5 @@
 import React from "react";
+import styled from "styled-components";
 
 // components
 import ButtonRounded from "./GenericComponents/ButtonRounded";
@@ -6,13 +7,21 @@ import ButtonRounded from "./GenericComponents/ButtonRounded";
 // images
 import Filters from "../img/status";
 
-const ButtonHideFilters = ({ showing }) => {
-  //   const hideFilers = () => {
-  //     dispatch({ type: "SET_SHOW" });
-  //   };
+const ButtonRoundedBtn = styled.button`
+  width: max-content;
+  padding: ${({ padding }) => padding};
+  border-radius: 1.8rem;
+  box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.21);
+  display: flex;
+  align-items: center;
+  justify-content: ${({ justifyContent }) => justifyContent};
+  cursor: pointer;
+  margin-left: ${({ margin }) => margin};
+`;
 
+const ButtonHideFilters = ({ showing }) => {
   return (
-    <ButtonRounded
+    <ButtonRoundedBtn
       showing={showing}
       className="button_hide"
       icon={Filters}

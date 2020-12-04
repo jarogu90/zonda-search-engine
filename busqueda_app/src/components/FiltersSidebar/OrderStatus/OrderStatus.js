@@ -54,9 +54,9 @@ const OrderStatus = ({ showing }) => {
         />
       </div>
 
-      <div className={showing ? "line" : "line line__hide"}></div>
+      {/* <div className={showing ? "line" : "line line__hide"}></div> */}
 
-      {/* {state.show ? <div className="line"></div> : null} */}
+      {state.show ? <div className="line"></div> : null}
     </div>
   );
 };

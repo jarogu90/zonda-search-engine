@@ -1,8 +1,8 @@
-import React, { useContext } from "react";
+import React from "react";
 import styled from "styled-components";
 
 // services
-import { GlobalStateContext } from "../../services/GlobalContext";
+// import { GlobalStateContext } from "../../services/GlobalContext";
 
 const ButtonRoundedBtn = styled.button`
   width: max-content;
@@ -28,16 +28,18 @@ const Icon = styled.img`
 
 const ButtonRounded = ({ icon, value, classHide, handleClick, showing }) => {
   // context
-  const state = useContext(GlobalStateContext);
-  const hide = state.show ? "" : "btn_hide_show";
+  // const state = useContext(GlobalStateContext);
+  // const hide = state.show ? "" : "btn_hide_show";
   return (
     <ButtonRoundedBtn
-      margin={showing ? "3.8rem" : "calc(4.5vw - 20px)"}
-      padding={showing ? "0.7rem 1rem" : "1rem"}
-      justifyContent={showing ? "space-around" : "center"}
-      className={[classHide, hide]}
+      showing={showing}
+
+      // margin={showing ? "3.8rem" : "calc(4.5vw - 20px)"}
+      // padding={showing ? "0.7rem 1rem" : "1rem"}
+      // justifyContent={showing ? "space-around" : "center"}
+      // className={[classHide, hide]}
     >
-      <Icon src={icon} margin={showing ? "1.1rem" : "0"} />
+      {/* <Icon src={icon} margin={showing ? "1.1rem" : "0"} /> */}
       <Value>{showing ? value : ""}</Value>
     </ButtonRoundedBtn>
   );

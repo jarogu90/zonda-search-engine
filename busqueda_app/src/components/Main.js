@@ -159,12 +159,17 @@ class Main extends SearchkitComponent {
   // turnFalseDateFilter = () => {
   //     this.setState({cleanDate: false})
   // }
-
+  state = { showing: true };
   render() {
+    const { showing } = this.state;
     return (
       <SearchkitProvider searchkit={searchkit}>
         <Layout>
-          <TopBar className="header">
+          <TopBar
+            className="header"
+            showing={this.state.showing}
+            style={{ display: showing === false ? "" : "none" }}
+          >
             <div className="my-logo">
               <div className="zonda-logo">
                 <img src="zonda.png"></img>
