@@ -49,11 +49,6 @@ const Sidebar = () => {
   const state = useContext(GlobalStateContext);
   const dispatch = useContext(GlobalDispatchContext);
 
-  // useEffect(() => {
-  //   dispatch({ type: "SET_DEFAULT" });
-  // }, [dispatch]);
-
-  console.log(state);
   return (
     <SideBar className={state.show ? "sidebar" : "sidebar sidebar__hide"}>
       <img
@@ -63,13 +58,13 @@ const Sidebar = () => {
         height="60"
       ></img>
       <ButtonRoundedBtn onClick={() => dispatch({ type: "SET_SHOW" })}>
-        <IconHide width="25px" height="24px" color="#fff"></IconHide>
+        <IconHide width="25px" height="24px" color="#fff" />
         <Value style={{ display: !state.show ? "none" : "" }}>
           Hide filter
         </Value>
       </ButtonRoundedBtn>
 
-      <FiltersSidebar showing={state.show}></FiltersSidebar>
+      <FiltersSidebar showing={state.show} />
     </SideBar>
   );
 };

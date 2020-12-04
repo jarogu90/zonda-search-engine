@@ -159,15 +159,20 @@ class Main extends SearchkitComponent {
   // turnFalseDateFilter = () => {
   //     this.setState({cleanDate: false})
   // }
+
+  // componentDidMount(){
+  //   const { dispatch } = this.props;
+  // }
+
   render() {
-    const { showing } = this.state;
+    const { state } = this.props;
     return (
       <SearchkitProvider searchkit={searchkit}>
         <Layout>
           <TopBar
             className="header"
-            showing={this.state.showing}
-            style={{ display: showing === false ? "" : "none" }}
+            showing={state.show}
+            style={{ display: !state.show ? "" : "none" }}
           >
             <div className="my-logo">
               <div className="zonda-logo">
@@ -176,7 +181,7 @@ class Main extends SearchkitComponent {
             </div>
           </TopBar>
           <LayoutBody>
-            <Sidebar></Sidebar>
+            <Sidebar />
             <LayoutResults className="layout">
               <ActionBar>
                 <DatePicker
@@ -201,7 +206,7 @@ class Main extends SearchkitComponent {
                   endDate={this.endDate}
                   onChange={this.handleChangeEnd}
                 />
-                <InputFilterSection></InputFilterSection>
+                <InputFilterSection />
                 <ActionBarRow>
                   <SelectedFilters itemComponent={this.SelectedFilter} />
                   <this.datePill />

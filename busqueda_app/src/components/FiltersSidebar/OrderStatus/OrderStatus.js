@@ -13,13 +13,13 @@ import { GlobalStateContext } from "../../../services/GlobalContext";
 // images
 import Status from "../../../img/status";
 
-const OrderStatus = ({ showing }) => {
+const OrderStatus = () => {
   const state = useContext(GlobalStateContext);
   return (
     <div className="dropdown-container">
       <input type="checkbox" id="drop_os" />
       <label htmlFor="drop_os">
-        <FilterBase value="ORDER STATUS" showing={showing}>
+        <FilterBase value="ORDER STATUS" showing={state.show}>
           <Status width="25px" height="24px" color="var(--greyish-brown)" />
         </FilterBase>
       </label>
@@ -39,10 +39,7 @@ const OrderStatus = ({ showing }) => {
         />
       </div> */}
 
-      <div
-        className="content"
-        style={{ display: showing === false ? "none" : "" }}
-      >
+      <div className="content" style={{ display: !state.show ? "none" : "" }}>
         <RefinementListFilter
           id={config.filters.orderStatus.id}
           field={config.filters.orderStatus.fields}
