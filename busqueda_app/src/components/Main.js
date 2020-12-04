@@ -159,7 +159,6 @@ class Main extends SearchkitComponent {
   // turnFalseDateFilter = () => {
   //     this.setState({cleanDate: false})
   // }
-  state = { showing: true };
   render() {
     const { showing } = this.state;
     return (

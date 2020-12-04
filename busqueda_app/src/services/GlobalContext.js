@@ -1,8 +1,5 @@
 import React, { useReducer, createContext } from "react";
 
-// services
-// import { recordLog } from "./auth";
-
 export const GlobalStateContext = createContext();
 export const GlobalDispatchContext = createContext();
 
@@ -87,20 +84,19 @@ const reducer = (state, action) => {
         isRegion: false,
       };
     // REGION AND MODULE PER COUNTRY BASE IN REGION
-    // case "SET_REGION":
-    //   sessionStorage.setItem("region", action.payload.region);
-    //   sessionStorage.setItem("module", action.payload.region);
-    //   let isR = state.regiones.includes(action.payload.region) ? true : false;
-    //   if (isR) {
-    //     sessionStorage.setItem("isRegion", isR);
-    //     recordLog(state.userName, action.payload.region, state.nameApp);
-    //   }
-    //   return {
-    //     ...state,
-    //     region: action.payload.region,
-    //     modulePerCountry: action.payload.region,
-    //     isRegion: isR,
-    //   };
+    case "SET_REGION":
+      sessionStorage.setItem("region", action.payload.region);
+      sessionStorage.setItem("module", action.payload.region);
+      let isR = state.regiones.includes(action.payload.region) ? true : false;
+      if (isR) {
+        sessionStorage.setItem("isRegion", isR);
+      }
+      return {
+        ...state,
+        region: action.payload.region,
+        modulePerCountry: action.payload.region,
+        isRegion: isR,
+      };
     case "SET_SALESAREA":
       sessionStorage.setItem("salesAreas", action.payload.salesAreas);
       let sales = action.payload.salesAreas;
@@ -240,7 +236,7 @@ const init = () => {
 };
 
 const GlobalContextProvider = ({ children }) => {
-  const [state, dispatch] = useReducer(reducer, initialState, init);
+  const [state, dispatch] = useReducer(reducer, initialState);
 
   return (
     <>
