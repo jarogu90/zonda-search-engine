@@ -1,8 +1,16 @@
-import React, { Component } from "react";
+import React, { useContext, useEffect } from "react";
 import styled from "styled-components";
 import FiltersSidebar from "./FiltersSidebar/FiltersSidebar";
 import ButtonHideFilters from "./ButtonHideFilters";
 import { SideBar } from "searchkit";
+
+// services
+import {
+  GlobalStateContext,
+  GlobalDispatchContext,
+} from "../services/GlobalContext";
+
+// images
 import IconHide from "../img/hide";
 
 const ButtonRoundedBtn = styled.button`
@@ -36,29 +44,34 @@ const Icon = styled.img`
   object-fit: contain;
 `;
 
-class Sidebar extends Component {
-  state = { showing: true };
-  render() {
-    const { showing } = this.state;
-    return (
-      <SideBar className={showing ? "sidebar" : "sidebar sidebar__hide"}>
-        <img
-          className={showing ? "logo" : " logo logo__hide"}
-          src="lh_logo.png"
-          widht="30"
-          height="60"
-        ></img>
-        <ButtonRoundedBtn onClick={() => this.setState({ showing: !showing })}>
-          <IconHide width="25px" height="24px" color="#fff"></IconHide>
-          <Value style={{ display: showing === false ? "none" : "" }}>
-            Hide filter
-          </Value>
-        </ButtonRoundedBtn>
+const Sidebar = () => {
+  // context
+  const state = useContext(GlobalStateContext);
+  const dispatch = useContext(GlobalDispatchContext);
 
-        <FiltersSidebar showing={this.state.showing}></FiltersSidebar>
-      </SideBar>
-    );
-  }
-}
+  // useEffect(() => {
+  //   dispatch({ type: "SET_DEFAULT" });
+  // }, [dispatch]);
+
+  console.log(state);
+  return (
+    <SideBar className={state.show ? "sidebar" : "sidebar sidebar__hide"}>
+      <img
+        className={state.show ? "logo" : "logo logo__hide"}
+        src="lh_logo.png"
+        widht="30"
+        height="60"
+      ></img>
+      <ButtonRoundedBtn onClick={() => dispatch({ type: "SET_SHOW" })}>
+        <IconHide width="25px" height="24px" color="#fff"></IconHide>
+        <Value style={{ display: !state.show ? "none" : "" }}>
+          Hide filter
+        </Value>
+      </ButtonRoundedBtn>
+
+      <FiltersSidebar showing={state.show}></FiltersSidebar>
+    </SideBar>
+  );
+};
 
 export default Sidebar;
