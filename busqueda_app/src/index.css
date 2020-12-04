@@ -1,4 +1,4 @@
-@import url('../node_modules/searchkit/release/theme.css');
+@import url("../node_modules/searchkit/release/theme.css");
 
 .sk-layout__top-bar {
   height: fit-content;
@@ -8,11 +8,8 @@
   margin-top: 80px;
 }
 
-
-
-
 h3 {
-  color:#2a4466;
+  color: #2a4466;
   margin-left: -1.75em;
   margin-bottom: 0.5em;
   margin-top: 0em;
@@ -20,11 +17,11 @@ h3 {
 
 .sk-panel__header,
 th {
-  color:#2a4466;
+  color: #2a4466;
 }
 
 .sk-select select {
-  color:#2a4466;
+  color: #2a4466;
 }
 
 ul {
@@ -35,16 +32,16 @@ ul {
 
 ul li::before {
   content: "\2022";
-  color:  #08c;
+  color: #08c;
   font-weight: bold;
-  display: inline-block; 
+  display: inline-block;
   width: 1em;
   margin-left: -3em;
   padding-top: 0.5em;
 }
 
 .sk-table {
-  width: '100%';
+  width: "100%";
   box-sizing: border-box;
   margin-left: 1em;
 }
@@ -64,10 +61,9 @@ th {
 .fecha-espacio {
   margin-bottom: 1em;
 }
-.sk-layout{
+.sk-layout {
   font-family: Arial, Helvetica, sans-serif !important;
   background: none;
-
 }
 body {
   margin: 0;
@@ -76,17 +72,16 @@ body {
   -moz-osx-font-smoothing: grayscale;
   font-size: 1.6rem;
 }
-html, body{
+html,
+body {
   display: flex;
   flex-direction: column;
-  height:100vh;
+  height: 100vh;
   margin: 0;
-
 }
 
 code {
-  font-family: Arial, Helvetica, sans-serif
-    monospace;
+  font-family: Arial, Helvetica, sans-serif monospace;
 }
 
 
