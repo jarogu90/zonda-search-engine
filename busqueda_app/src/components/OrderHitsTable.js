@@ -3,6 +3,7 @@ import {
   notExist,
   statusMigration,
   orderCreationSystemMigration,
+  formatDateTime,
 } from "../utils/Utils";
 import TableColumns from "./TableColumns";
 import { Table } from "antd";
@@ -45,8 +46,8 @@ const OrderHitsTable = ({ hits, dataDateFilter }) => {
         executingCarrier: hit._source.EXEC_CARRIER_ID,
         deliveryType: hit._source.DELIVERY_TYPE_CD,
         processType: hit._source.DISTRIBUTION_DEST_CD,
-        deliveryFrom: hit._source.DELIVERY_FROM_DAT,
-        deliveryTo: hit._source.DELIVERY_TO_DAT,
+        deliveryFrom: formatDateTime(hit._source.DELIVERY_FROM_DAT),
+        deliveryTo: formatDateTime(hit._source.DELIVERY_TO_DAT),
         createdBy: hit._source.CTL_CRE_UID,
       };
       arrayData.push(row);
@@ -55,9 +56,7 @@ const OrderHitsTable = ({ hits, dataDateFilter }) => {
   };
 
   return (
-    <>
-      <Table columns={TableColumns()} dataSource={data} size="small" bordered />
-    </>
+    <Table columns={TableColumns()} dataSource={data} size="small" bordered />
   );
 };
 
