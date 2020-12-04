@@ -1,14 +1,38 @@
-import React from 'react';
-import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
-import Main from './Main';
+import React from "react";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+
+// components
+import Main from "./Main";
+
+// services
+import GlobaContextProvider, {
+  GlobalStateContext,
+  GlobalDispatchContext,
+} from "../services/GlobalContext";
 
 function App() {
   return (
-    <Router>
-      <Switch>
-        <Route exact path="/" component={Main} />
-      </Switch>
-    </Router>
+    <GlobaContextProvider>
+      <GlobalStateContext.Consumer>
+        {(state) => (
+          <GlobalDispatchContext.Consumer>
+            {(dispatch) => (
+              <Router>
+                <Switch>
+                  <Route
+                    exact
+                    path="/"
+                    component={Main}
+                    state={state}
+                    dispatch={dispatch}
+                  />
+                </Switch>
+              </Router>
+            )}
+          </GlobalDispatchContext.Consumer>
+        )}
+      </GlobalStateContext.Consumer>
+    </GlobaContextProvider>
   );
 }
 
