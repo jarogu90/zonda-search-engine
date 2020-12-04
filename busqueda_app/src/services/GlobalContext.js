@@ -1,10 +1,10 @@
-import React, { useReducer, createContext } from "react"
+import React, { useReducer, createContext } from "react";
 
 // services
-import { recordLog } from "./auth"
+// import { recordLog } from "./auth";
 
-export const GlobalStateContext = createContext()
-export const GlobalDispatchContext = createContext()
+export const GlobalStateContext = createContext();
+export const GlobalDispatchContext = createContext();
 
 const initialState = {
   isAuthenticated: false,
@@ -35,33 +35,33 @@ const initialState = {
   nameApp: null,
   dataType: "orders",
   showMobileFilters: false,
-}
+};
 
 const reducer = (state, action) => {
   switch (action.type) {
     case "LOGIN":
-      sessionStorage.setItem("userName", action.payload.userName)
-      sessionStorage.setItem("email", action.payload.email)
-      sessionStorage.setItem("lt", action.payload.lt)
-      sessionStorage.setItem("token", action.payload.token)
-      sessionStorage.setItem("language", action.payload.language)
-      sessionStorage.setItem("regiones", action.payload.regiones)
-      sessionStorage.setItem("funciones", action.payload.funciones)
-      sessionStorage.setItem("pools", action.payload.pools)
-      sessionStorage.setItem("roles", action.payload.roles)
-      sessionStorage.setItem("salesAreas", action.payload.salesAreas)
-      sessionStorage.setItem("nameApp", action.payload.nameApp)
-      sessionStorage.setItem("environment", action.payload.environment)
-      sessionStorage.setItem("isAuthenticated", true)
-      sessionStorage.setItem("theme", "light")
-      sessionStorage.setItem("show", true)
-      sessionStorage.setItem("display", "cards")
-      sessionStorage.setItem("load", false)
-      sessionStorage.setItem("error", false)
-      sessionStorage.setItem("errorMsg", null)
-      sessionStorage.setItem("isFunction", true)
-      sessionStorage.setItem("dataType", "orders")
-      sessionStorage.setItem("showMobileFilters", false)
+      sessionStorage.setItem("userName", action.payload.userName);
+      sessionStorage.setItem("email", action.payload.email);
+      sessionStorage.setItem("lt", action.payload.lt);
+      sessionStorage.setItem("token", action.payload.token);
+      sessionStorage.setItem("language", action.payload.language);
+      sessionStorage.setItem("regiones", action.payload.regiones);
+      sessionStorage.setItem("funciones", action.payload.funciones);
+      sessionStorage.setItem("pools", action.payload.pools);
+      sessionStorage.setItem("roles", action.payload.roles);
+      sessionStorage.setItem("salesAreas", action.payload.salesAreas);
+      sessionStorage.setItem("nameApp", action.payload.nameApp);
+      sessionStorage.setItem("environment", action.payload.environment);
+      sessionStorage.setItem("isAuthenticated", true);
+      sessionStorage.setItem("theme", "light");
+      sessionStorage.setItem("show", true);
+      sessionStorage.setItem("display", "cards");
+      sessionStorage.setItem("load", false);
+      sessionStorage.setItem("error", false);
+      sessionStorage.setItem("errorMsg", null);
+      sessionStorage.setItem("isFunction", true);
+      sessionStorage.setItem("dataType", "orders");
+      sessionStorage.setItem("showMobileFilters", false);
       return {
         ...state,
         isAuthenticated: true,
@@ -78,125 +78,125 @@ const reducer = (state, action) => {
         lt: action.payload.lt,
         nameApp: action.payload.nameApp,
         environment: action.payload.environment,
-      }
+      };
     case "LOGOUT":
       return {
         ...state,
         isAuthenticated: false,
         isFunction: false,
         isRegion: false,
-      }
+      };
     // REGION AND MODULE PER COUNTRY BASE IN REGION
-    case "SET_REGION":
-      sessionStorage.setItem("region", action.payload.region)
-      sessionStorage.setItem("module", action.payload.region)
-      let isR = state.regiones.includes(action.payload.region) ? true : false
-      if (isR) {
-        sessionStorage.setItem("isRegion", isR)
-        recordLog(state.userName, action.payload.region, state.nameApp)
-      }
-      return {
-        ...state,
-        region: action.payload.region,
-        modulePerCountry: action.payload.region,
-        isRegion: isR,
-      }
+    // case "SET_REGION":
+    //   sessionStorage.setItem("region", action.payload.region);
+    //   sessionStorage.setItem("module", action.payload.region);
+    //   let isR = state.regiones.includes(action.payload.region) ? true : false;
+    //   if (isR) {
+    //     sessionStorage.setItem("isRegion", isR);
+    //     recordLog(state.userName, action.payload.region, state.nameApp);
+    //   }
+    //   return {
+    //     ...state,
+    //     region: action.payload.region,
+    //     modulePerCountry: action.payload.region,
+    //     isRegion: isR,
+    //   };
     case "SET_SALESAREA":
-      sessionStorage.setItem("salesAreas", action.payload.salesAreas)
-      let sales = action.payload.salesAreas
-      let isS = sales.length > 0 ? true : false
+      sessionStorage.setItem("salesAreas", action.payload.salesAreas);
+      let sales = action.payload.salesAreas;
+      let isS = sales.length > 0 ? true : false;
       if (isS) {
-        sessionStorage.setItem("isSalesAreas", isS)
+        sessionStorage.setItem("isSalesAreas", isS);
       }
       return {
         ...state,
         salesAreas: action.payload.salesAreas,
         isSalesAreas: isS,
-      }
+      };
     case "SET_ENVIRONMENT":
-      sessionStorage.setItem("environment", action.payload.environment)
+      sessionStorage.setItem("environment", action.payload.environment);
       return {
         ...state,
         environment: action.payload.environment,
-      }
+      };
 
     case "SET_ERROR":
-      sessionStorage.setItem("error", action.payload.error)
-      sessionStorage.setItem("errorMsg", action.payload.errorMsg)
+      sessionStorage.setItem("error", action.payload.error);
+      sessionStorage.setItem("errorMsg", action.payload.errorMsg);
       return {
         ...state,
         error: action.payload.error,
         errorMsg: action.payload.errorMsg,
-      }
+      };
     case "SET_LOAD":
-      sessionStorage.setItem("load", action.payload.load)
+      sessionStorage.setItem("load", action.payload.load);
       return {
         ...state,
         load: action.payload.load,
-      }
+      };
     //  VIEW IN CARDS OR TABLE
     case "SET_DISPLAY":
-      sessionStorage.setItem("display", action.payload.display)
+      sessionStorage.setItem("display", action.payload.display);
       return {
         ...state,
         display: action.payload.display,
-      }
+      };
     // HIDE / SHOW FILTERS
     case "SET_SHOW":
-      let show = state.show ? false : true
-      sessionStorage.setItem("show", show)
+      let show = state.show ? false : true;
+      sessionStorage.setItem("show", show);
       return {
         ...state,
         show: show,
-      }
+      };
     case "SET_THEME": {
-      let theme = state.theme === "light" ? "dark" : "light"
-      sessionStorage.setItem("theme", theme)
+      let theme = state.theme === "light" ? "dark" : "light";
+      sessionStorage.setItem("theme", theme);
       return {
         ...state,
         theme: theme,
-      }
+      };
     }
     case "SET_PRINT": {
       sessionStorage.setItem(
         "componentPrintable",
         action.payload.componentPrintable
-      )
+      );
       return {
         ...state,
         componentPrintable: action.payload.componentPrintable,
-      }
+      };
     }
     case "SET_LANG": {
-      sessionStorage.setItem("language", action.payload.language)
+      sessionStorage.setItem("language", action.payload.language);
       return {
         ...state,
         language: action.payload.language,
-      }
+      };
     }
     case "SET_DATATYPE": {
-      sessionStorage.setItem("dataType", action.payload.dataType)
+      sessionStorage.setItem("dataType", action.payload.dataType);
       return {
         ...state,
         dataType: action.payload.dataType,
-      }
+      };
     }
     case "SET_MOBILEFILTERS": {
-      let show = state.showMobileFilters ? false : true
-      sessionStorage.setItem("showMobileFilters", show)
+      let show = state.showMobileFilters ? false : true;
+      sessionStorage.setItem("showMobileFilters", show);
       return {
         ...state,
         showMobileFilters: show,
-      }
+      };
     }
     case "RESET": {
-      return initialState
+      return initialState;
     }
     default:
-      console.error(`Invalid action type: ${action.type}`)
-      throw new Error(`Invalid action type: ${action.type}`)
+      console.error(`Invalid action type: ${action.type}`);
+      throw new Error(`Invalid action type: ${action.type}`);
   }
-}
+};
 
 const init = () => {
   if (typeof window !== `undefined`) {
@@ -233,14 +233,14 @@ const init = () => {
       nameApp: sessionStorage.getItem("nameApp"),
       dataType: sessionStorage.getItem("dataType"),
       showMobileFilters: sessionStorage.getItem("showMobileFilters"),
-    }
+    };
   } else {
-    return initialState
+    return initialState;
   }
-}
+};
 
 const GlobalContextProvider = ({ children }) => {
-  const [state, dispatch] = useReducer(reducer, initialState, init)
+  const [state, dispatch] = useReducer(reducer, initialState, init);
 
   return (
     <>
@@ -250,7 +250,7 @@ const GlobalContextProvider = ({ children }) => {
         </GlobalDispatchContext.Provider>
       </GlobalStateContext.Provider>
     </>
-  )
-}
+  );
+};
 
-export default GlobalContextProvider
+export default GlobalContextProvider;
