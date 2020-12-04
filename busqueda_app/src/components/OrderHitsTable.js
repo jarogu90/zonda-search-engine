@@ -55,7 +55,9 @@ const OrderHitsTable = ({ hits, dataDateFilter }) => {
   };
 
   return (
-    <Table columns={TableColumns()} dataSource={data} size="small" bordered />
+    <>
+      <Table columns={TableColumns()} dataSource={data} size="small" bordered />
+    </>
   );
 };
 

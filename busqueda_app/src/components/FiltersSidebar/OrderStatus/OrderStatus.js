@@ -13,9 +13,7 @@ import { GlobalStateContext } from "../../../services/GlobalContext";
 // images
 import Status from "../../../img/status";
 
-const searchkit = new SearchkitManager(config.endpoint);
-
-const OrderSatus = ({ showing }) => {
+const OrderStatus = ({ showing }) => {
   const state = useContext(GlobalStateContext);
   return (
     <div className="dropdown-container">
@@ -25,21 +23,26 @@ const OrderSatus = ({ showing }) => {
           <Status width="25px" height="24px" color="var(--greyish-brown)" />
         </FilterBase>
       </label>
-      {/* {showing ? (
-        <div className="content">
-          <RefinementListFilter
-            id={config.filters.orderStatus.id}
-            field={config.filters.orderStatus.fields}
-            operator="OR"
-            size={18}
-            showCount={false}
-            orderKey="_term"
-            orderDirection="asc"
-          />
-        </div>
-      ) : null} */}
 
-      <div className={showing ? "content" : "display__none"}>
+      {/* <div
+        className="content"
+        style={{ display: state.show === false ? "" : "none" }}
+      >
+        <RefinementListFilter
+          id={config.filters.orderStatus.id}
+          field={config.filters.orderStatus.fields}
+          operator="OR"
+          size={18}
+          showCount={false}
+          orderKey="_term"
+          orderDirection="asc"
+        />
+      </div> */}
+
+      <div
+        className="content"
+        style={{ display: showing === false ? "none" : "" }}
+      >
         <RefinementListFilter
           id={config.filters.orderStatus.id}
           field={config.filters.orderStatus.fields}
@@ -50,7 +53,10 @@ const OrderSatus = ({ showing }) => {
           orderDirection="asc"
         />
       </div>
-      {state.show ? <div className="line"></div> : null}
+
+      <div className={showing ? "line" : "line line__hide"}></div>
+
+      {/* {state.show ? <div className="line"></div> : null} */}
     </div>
   );
 };

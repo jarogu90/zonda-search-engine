@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import styled from "styled-components";
 import FiltersSidebar from "./FiltersSidebar/FiltersSidebar";
-
+import ButtonHideFilters from "./ButtonHideFilters";
 import { SideBar } from "searchkit";
 
 class Sidebar extends Component {
@@ -16,6 +16,9 @@ class Sidebar extends Component {
           widht="30"
           height="60"
         ></img>
+        <ButtonHideFilters
+          onClick={() => this.setState({ showing: !showing })}
+        ></ButtonHideFilters>
         <button onClick={() => this.setState({ showing: !showing })}>
           hide
         </button>

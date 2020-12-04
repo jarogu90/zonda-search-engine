@@ -4,4 +4,21 @@
       align-self: flex-end;
   outline: none;
 }
+
+.btn_hide_show {
+  height: 40px;
+  width: 40px !important;
+  margin-right: 5rem;
+}
+
+.btn_hide_show {
+  margin-bottom: 54px !important;
+  border-radius: 2rem !important;
+}
+
+.button_hide {
+  background-color: var(--ocean-blue);
+  -webkit-transition: all 200ms ease;
+  transition: all 200ms ease;
+}
 /*# sourceMappingURL=buttons.css.map */

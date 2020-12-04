@@ -90,7 +90,9 @@ code {
 }
 
 
-
+.display__none{
+  display: none !important;
+}
 
 @import './sass/sidebar.css';
 @import './sass/header.css';
@@ -105,11 +107,3 @@ code {
 @import './sass/checkbox.css';
 @import './sass/variables.css';
 
-.display__none{
-  display: none !important;
-  max-height: 0px;
-  margin: 0;
-  text-align: left;
-  transition: 0.3s linear;
-  position: absolute;
-}

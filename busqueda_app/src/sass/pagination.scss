@@ -1,7 +1,7 @@
-.pagination{
+.pagination {
     display: flex;
     margin-top: 30px;
-    
+
     .sk-toggle {
         width: 387px;
         min-height: 36px;
@@ -48,12 +48,18 @@
     }
 }
 
-.ant-pagination{
+.ant-pagination {
     margin: 16px 0;
+
 
 }
 
 .ant-spin-container .ant-table-pagination-right {
- 
+
     justify-content: center;
+}
+
+[class^=ant-] *::before,
+[class*=ant-] *::before {
+    display: none;
 }
