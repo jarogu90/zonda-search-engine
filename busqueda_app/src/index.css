@@ -89,6 +89,23 @@ code {
   display: none !important;
 }
 
+.ant-picker-range {
+  position: absolute !important;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  margin: 46px auto auto 259px !important;
+  height: 36px;
+  width: 248px;
+  font-size: 14px !important;
+    border-radius: 4px !important;
+    border: solid 1px #c0dee2 !important;
+    background-color: #e9f2f4 !important;
+ 
+}
+.ant-picker-input > input::placeholder  {
+  color:  #959595 !important;
+}
+
 @import './sass/sidebar.css';
 @import './sass/header.css';
 @import './sass/layout.css';
