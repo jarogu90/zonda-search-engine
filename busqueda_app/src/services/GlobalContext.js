@@ -130,13 +130,7 @@ const reducer = (state, action) => {
         ...state,
         load: action.payload.load,
       };
-    //  VIEW IN CARDS OR TABLE
-    case "SET_DISPLAY":
-      sessionStorage.setItem("display", action.payload.display);
-      return {
-        ...state,
-        display: action.payload.display,
-      };
+
     // HIDE / SHOW FILTERS
     case "SET_SHOW":
       let show = state.show ? false : true;
@@ -145,6 +139,18 @@ const reducer = (state, action) => {
         ...state,
         show: show,
       };
+    case "SET_SHOWW":
+      if (state.show === false) {
+        let show = state.show ? false : true;
+        sessionStorage.setItem("show", show);
+        return {
+          ...state,
+          show: show,
+        };
+      } else {
+        return initialState;
+      }
+
     case "SET_THEME": {
       let theme = state.theme === "light" ? "dark" : "light";
       sessionStorage.setItem("theme", theme);
@@ -163,13 +169,7 @@ const reducer = (state, action) => {
         componentPrintable: action.payload.componentPrintable,
       };
     }
-    case "SET_LANG": {
-      sessionStorage.setItem("language", action.payload.language);
-      return {
-        ...state,
-        language: action.payload.language,
-      };
-    }
+
     case "SET_DATATYPE": {
       sessionStorage.setItem("dataType", action.payload.dataType);
       return {

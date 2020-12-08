@@ -17,8 +17,7 @@
           user-select: none;
 }
 
-.dropdown-container .content{
-  display: none;
+.dropdown-container .content {
   max-height: 0px;
   margin: 0;
   text-align: left;

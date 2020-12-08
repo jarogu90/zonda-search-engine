@@ -1,14 +1,16 @@
-.sk-top-bar{
+.sk-top-bar {
     background-color: var(--ocean-blue);
     width: auto;
-    margin-left: 300px;
+    // margin-left: 300px;
     position: absolute;
+
     .sk-top-bar__content {
         display: flex;
         margin: 0 auto;
         padding: 0 37px;
         width: 100%;
-        .my-logo{
+
+        .my-logo {
             font-size: 24px;
             color: #ffffff;
             display: flex;
@@ -16,7 +18,7 @@
             align-items: center;
             //margin-top: 10px;
 
-            .zonda-logo{
+            .zonda-logo {
                 margin-top: 10px;
             }
         }

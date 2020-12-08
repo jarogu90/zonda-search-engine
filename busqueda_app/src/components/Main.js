@@ -114,9 +114,8 @@ class Main extends SearchkitComponent {
       <SearchkitProvider searchkit={searchkit}>
         <Layout>
           <TopBar
-            className="header"
-            showing={state.show}
-            style={{ display: !state.show ? "" : "none" }}
+          // style={{ display: !state.show ? "" : "none" }}
+          // style={{ "margin-left": !state.show ? "" : "20px }}
           >
             <div className="my-logo">
               <div className="zonda-logo">

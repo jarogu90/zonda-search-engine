@@ -66,6 +66,10 @@ header {
         background-color: #0074b4;
         color: white;
         padding: 4px 25px;
+
+        &__hide {
+            margin-left: 0px !important;
+        }
     }
 }
 

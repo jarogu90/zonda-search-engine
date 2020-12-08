@@ -8,15 +8,23 @@ import config from "../../../config.json";
 import FilterBase from "../FilterBase/FilterBase";
 
 // services
-import { GlobalStateContext } from "../../../services/GlobalContext";
+import {
+  GlobalStateContext,
+  GlobalDispatchContext,
+} from "../../../services/GlobalContext";
 
 // images
 import Status from "../../../img/status";
 
 const OrderStatus = () => {
   const state = useContext(GlobalStateContext);
+  const dispatch = useContext(GlobalDispatchContext);
+
   return (
-    <div className="dropdown-container">
+    <div
+      className="dropdown-container"
+      onClick={() => dispatch({ type: "SET_SHOWW" })}
+    >
       <input type="checkbox" id="drop_os" />
       <label htmlFor="drop_os">
         <FilterBase value="ORDER STATUS" showing={state.show}>
