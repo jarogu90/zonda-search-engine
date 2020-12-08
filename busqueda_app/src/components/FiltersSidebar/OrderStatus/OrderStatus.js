@@ -47,7 +47,7 @@ const OrderStatus = () => {
         />
       </div> */}
 
-      <div className="content" style={{ display: !state.show ? "none" : "" }}>
+      <div className="content">
         <RefinementListFilter
           id={config.filters.orderStatus.id}
           field={config.filters.orderStatus.fields}

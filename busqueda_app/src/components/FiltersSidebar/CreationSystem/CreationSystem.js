@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import styled from "styled-components";
 
 import config from "../../../config.json";
@@ -8,10 +8,19 @@ import FilterBase from "../FilterBase/FilterBase";
 
 import { Select, RefinementListFilter, SearchkitManager } from "searchkit";
 
+// services
+import {
+  GlobalStateContext,
+  GlobalDispatchContext,
+} from "../../../services/GlobalContext";
+
 // images
 import CreationSystemIcon from "../../../img/creationSystemIcon";
 
 const CreationSystem = ({ showing }) => {
+  const state = useContext(GlobalStateContext);
+  const dispatch = useContext(GlobalDispatchContext);
+
   return (
     <div className="dropdown-container">
       <input type="checkbox" id="drop_cs" />
@@ -24,7 +33,7 @@ const CreationSystem = ({ showing }) => {
           />
         </FilterBase>
       </label>
-      <div className="content">
+      <div className="content" style={{ display: !state.show ? "none" : "" }}>
         <RefinementListFilter
           id={config.filters.creationSystem.id}
           field={config.filters.creationSystem.fields}

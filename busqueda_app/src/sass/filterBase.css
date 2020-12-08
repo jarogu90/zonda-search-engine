@@ -18,6 +18,7 @@
 }
 
 .dropdown-container .content {
+  display: none;
   max-height: 0px;
   margin: 0;
   text-align: left;
