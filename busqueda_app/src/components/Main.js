@@ -21,7 +21,6 @@ import {
   RangeFilter,
   RangeAccessor,
 } from "searchkit";
-import DateComponent from "./DateComponent";
 
 //Componentes manuales
 import Samples from "./Samples";
@@ -107,17 +106,8 @@ class Main extends SearchkitComponent {
       formatedEndDate,
     ]);
 
-    const query = new ImmutableQuery("tlgnc_order");
-    /*const newQuery = query.setSize(10).addQuery(
-      BoolMust(
-        RangeQuery("dates", {
-          gte: accessor.state.value[0],
-          lte: accessor.state.value[1],
-        })
-      )
-    );*/
-    //console.log(newQuery);
-    searchkit.setQueryProcessor(
+    const query = new ImmutableQuery();
+    const newQuery = query.setSize(10).buildQuery(
       BoolMust(
         RangeQuery("dates", {
           gte: accessor.state.value[0],
@@ -125,6 +115,15 @@ class Main extends SearchkitComponent {
         })
       )
     );
+    //console.log(newQuery);
+    /*searchkit.setQueryProcessor(
+      BoolMust(
+        RangeQuery("dates", {
+          gte: accessor.state.value[0],
+          lte: accessor.state.value[1],
+        })
+      )
+    );*/
 
     console.log(searchkit.currentSearchRequest);
   }
