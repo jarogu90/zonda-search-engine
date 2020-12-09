@@ -116,9 +116,22 @@
     border-radius: 4px;
     border: solid 1px var(--ocean-blue);
     margin-top: 1.6rem;
+    align-items: center;
+    display: flex;
+
+    p {
+        text-decoration: none;
+        margin-left: 0.5rem;
+        color: var(--ocean-blue);
+        margin-top: 1.3rem;
+
+        &:hover {
+            color: var(--ocean-blue);
+        }
+    }
 }
 
-.download-button-link:hover {
-    background-color: var(--ocean-blue);
-    color: #eee;
-}
+// .download-button-link:hover {
+//     background-color: var(--ocean-blue);
+//     color: rgb(255, 255, 255);
+// }

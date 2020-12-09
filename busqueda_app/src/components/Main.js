@@ -30,6 +30,8 @@ import config from "../config.json";
 import { DatePicker } from "antd";
 import { dateRange } from "../queries/rangeDateQuery";
 
+import Download from "../img/download";
+
 const searchkit = new SearchkitManager(config.endpoint);
 const { RangePicker } = DatePicker;
 
@@ -50,11 +52,12 @@ class Main extends SearchkitComponent {
     } else {
       return (
         <a
+          className="download-button-link"
           href="/file/orders.csv"
           download="orders.csv"
-          className="download-button-link"
         >
-          CSV download
+          <Download color="var(--ocean-blue)"></Download>
+          <p>Download data</p>
         </a>
       );
     }
