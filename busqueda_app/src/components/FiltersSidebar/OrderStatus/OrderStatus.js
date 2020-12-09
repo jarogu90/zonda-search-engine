@@ -23,7 +23,7 @@ const OrderStatus = () => {
   return (
     <div
       className="dropdown-container"
-      onClick={() => dispatch({ type: "SET_SHOWW" })}
+      onClick={() => dispatch({ type: "SET_OPEN" })}
     >
       <input type="checkbox" id="drop_os" />
       <label htmlFor="drop_os">

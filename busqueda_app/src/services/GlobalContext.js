@@ -139,7 +139,7 @@ const reducer = (state, action) => {
         ...state,
         show: show,
       };
-    case "SET_SHOWW":
+    case "SET_OPEN":
       if (state.show === false) {
         let show = state.show ? false : true;
         sessionStorage.setItem("show", show);
@@ -148,7 +148,9 @@ const reducer = (state, action) => {
           show: show,
         };
       } else {
-        return initialState;
+        return {
+          show,
+        };
       }
 
     case "SET_THEME": {
