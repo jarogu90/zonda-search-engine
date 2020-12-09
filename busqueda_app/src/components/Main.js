@@ -9,7 +9,6 @@ import {
   SearchkitManager,
   SearchkitProvider,
   Layout,
-  TopBar,
   LayoutBody,
   LayoutResults,
   ActionBar,
@@ -19,6 +18,7 @@ import {
 //Componentes manuales
 import Samples from "./Samples";
 import InputFilterSection from "./InputFilterSection";
+import TopBarHeader from "./TopBarHeader";
 import Sidebar from "./Sidebar";
 import NoResults from "./NoResults";
 import { formatDate } from "../utils/Utils";
@@ -113,16 +113,7 @@ class Main extends SearchkitComponent {
     return (
       <SearchkitProvider searchkit={searchkit}>
         <Layout>
-          <TopBar
-          // style={{ display: !state.show ? "" : "none" }}
-          // style={{ "margin-left": !state.show ? "" : "20px }}
-          >
-            <div className="my-logo">
-              <div className="zonda-logo">
-                <img src="zonda.png"></img>
-              </div>
-            </div>
-          </TopBar>
+          <TopBarHeader></TopBarHeader>
           <LayoutBody>
             <Sidebar />
             <LayoutResults className="layout">

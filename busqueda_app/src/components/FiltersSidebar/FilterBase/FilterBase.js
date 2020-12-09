@@ -41,7 +41,7 @@ const FilterOptionDiv = styled.div`
   width: 100%;
   height: 6.4rem;
   display: flex;
-  padding-left: ${(props) => props.padding};
+
   -webkit-transition: all 500ms ease;
   -moz-transition: all 500ms ease;
   -ms-transition: all 500ms ease;
@@ -53,7 +53,7 @@ const FilterOptionDiv = styled.div`
     background-color: var(--ice-blue);
     border: none;
     border-left: solid 4px var(--ocean-blue);
-    padding-left: 4.5rem;
+    padding-left: 1rem;
     color: var(--ocean-blue);
     g {
       stroke: var(--ocean-blue);
@@ -68,29 +68,34 @@ const FilterBase = ({ value, children, classNameFilter, showing }) => {
   const state = useContext(GlobalStateContext);
   const dispatch = useContext(GlobalDispatchContext);
   return (
-    <FilterOptionDiv padding="38px" className={classNameFilter}>
-      {!state.show ? (
-        <IconProps
-          className="btn_hide"
-          onClick={() =>
-            dispatch({ type: "SET_SHOW_CHILDREN", payload: { show: true } })
-          }
-        >
-          {children}
-        </IconProps>
-      ) : (
-        <IconProps className="btn_hide">{children}</IconProps>
-      )}
+    <div>
+      <FilterOptionDiv padding="38px" className={classNameFilter}>
+        {!state.show ? (
+          <div
+            className="btn__with"
+            onClick={() =>
+              dispatch({ type: "SET_SHOW_CHILDREN", payload: { show: true } })
+            }
+          >
+            <IconProps className="btn_hide">{children}</IconProps>
+          </div>
+        ) : (
+          <div className="btn__with">
+            {" "}
+            <IconProps className="btn_hide">{children}</IconProps>{" "}
+          </div>
+        )}
 
-      {showing ? <Value className="value__sidebar">{value}</Value> : null}
-      <ArrowUpFilter className="arrowUp">
-        {showing ? <ArrowUp color="var(--greyish-brown)" /> : null}
-      </ArrowUpFilter>
+        {showing ? <Value className="value__sidebar">{value}</Value> : null}
+        <ArrowUpFilter className="arrowUp">
+          {showing ? <ArrowUp color="var(--greyish-brown)" /> : null}
+        </ArrowUpFilter>
 
-      <ArrowDownFilter className="arrowDown">
-        {showing ? <ArrowDown color="var(--greyish-brown)" /> : null}
-      </ArrowDownFilter>
-    </FilterOptionDiv>
+        <ArrowDownFilter className="arrowDown">
+          {showing ? <ArrowDown color="var(--greyish-brown)" /> : null}
+        </ArrowDownFilter>
+      </FilterOptionDiv>
+    </div>
   );
 };
 

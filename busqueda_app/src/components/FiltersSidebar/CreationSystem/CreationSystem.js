@@ -17,7 +17,7 @@ import {
 // images
 import CreationSystemIcon from "../../../img/creationSystemIcon";
 
-const CreationSystem = ({ showing }) => {
+const CreationSystem = () => {
   const state = useContext(GlobalStateContext);
   const dispatch = useContext(GlobalDispatchContext);
 
@@ -25,7 +25,7 @@ const CreationSystem = ({ showing }) => {
     <div className="dropdown-container">
       <input type="checkbox" id="drop_cs" />
       <label htmlFor="drop_cs">
-        <FilterBase value="Order Creation System" showing={showing}>
+        <FilterBase value="Order Creation System" showing={state.show}>
           <CreationSystemIcon
             width="25px"
             height="24px"
@@ -44,7 +44,7 @@ const CreationSystem = ({ showing }) => {
           orderDirection="asc"
         />
       </div>
-      <div className={showing ? "line" : "line line__hide"}></div>
+      {state.show ? <div className="line"></div> : null}
     </div>
   );
 };

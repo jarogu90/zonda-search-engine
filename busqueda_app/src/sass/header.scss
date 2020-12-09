@@ -1,8 +1,16 @@
-.sk-top-bar {
+.topbar__margin {
     background-color: var(--ocean-blue);
     width: auto;
-    margin-left: 300px;
     position: absolute;
+
+    &__true {
+        margin-left: 300px;
+    }
+
+    &__false {
+        margin-left: 107px;
+    }
+
 
     .sk-top-bar__content {
         display: flex;

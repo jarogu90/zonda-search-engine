@@ -29,21 +29,6 @@ const OrderStatus = () => {
         </FilterBase>
       </label>
 
-      {/* <div
-        className="content"
-        style={{ display: state.show === false ? "" : "none" }}
-      >
-        <RefinementListFilter
-          id={config.filters.orderStatus.id}
-          field={config.filters.orderStatus.fields}
-          operator="OR"
-          size={18}
-          showCount={false}
-          orderKey="_term"
-          orderDirection="asc"
-        />
-      </div> */}
-
       <div className="content">
         <RefinementListFilter
           id={config.filters.orderStatus.id}

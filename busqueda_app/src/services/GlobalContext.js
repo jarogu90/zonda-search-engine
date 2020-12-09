@@ -145,19 +145,6 @@ const reducer = (state, action) => {
         ...state,
         show: action.payload.show,
       };
-    case "SET_SHOWW":
-      if (state.show === false) {
-        let show = state.show ? false : true;
-        sessionStorage.setItem("show", show);
-        return {
-          ...state,
-          show: show,
-        };
-      } else {
-        return {
-          show,
-        };
-      }
 
     case "SET_THEME": {
       let theme = state.theme === "light" ? "dark" : "light";

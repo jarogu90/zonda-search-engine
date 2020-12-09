@@ -1,9 +1,15 @@
-import React from "react";
+import React, { useContext } from "react";
 
 import config from "../../../config.json";
 
 // components
 import FilterBase from "../FilterBase/FilterBase";
+
+// services
+import {
+  GlobalStateContext,
+  GlobalDispatchContext,
+} from "../../../services/GlobalContext";
 
 import { Select, RefinementListFilter, SearchkitManager } from "searchkit";
 
@@ -11,11 +17,13 @@ import { Select, RefinementListFilter, SearchkitManager } from "searchkit";
 import ProcessTypeIcon from "../../../img/processTypeIcon";
 
 const ProcessType = ({ showing }) => {
+  const state = useContext(GlobalStateContext);
+  const dispatch = useContext(GlobalDispatchContext);
   return (
     <div className="dropdown-container">
       <input type="checkbox" id="drop_pt" />
       <label htmlFor="drop_pt">
-        <FilterBase value="Process Type" showing={showing}>
+        <FilterBase value="Process Type" showing={state.show}>
           <ProcessTypeIcon
             width="25px"
             height="24px"
@@ -34,7 +42,7 @@ const ProcessType = ({ showing }) => {
           orderDirection="asc"
         />
       </div>
-      <div className={showing ? "line" : "line line__hide"}></div>
+      {state.show ? <div className="line"></div> : null}
     </div>
   );
 };
