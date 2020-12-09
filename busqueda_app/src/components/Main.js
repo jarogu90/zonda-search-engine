@@ -14,7 +14,14 @@ import {
   LayoutResults,
   ActionBar,
   ActionBarRow,
+  QueryAccessor,
+  ImmutableQuery,
+  BoolMust,
+  RangeQuery,
+  RangeFilter,
+  RangeAccessor,
 } from "searchkit";
+import DateComponent from "./DateComponent";
 
 //Componentes manuales
 import Samples from "./Samples";
@@ -31,6 +38,11 @@ import { DatePicker } from "antd";
 import { dateRange } from "../queries/rangeDateQuery";
 
 const searchkit = new SearchkitManager(config.endpoint);
+
+//const accessorTo = new QueryAccessor("dateTo");
+
+//searchkit.addAccessor(accessorTo);
+
 const { RangePicker } = DatePicker;
 
 class Main extends SearchkitComponent {
@@ -42,6 +54,80 @@ class Main extends SearchkitComponent {
     value: null,
     noResults: false,
   };
+
+  changeQuery(val) {
+    /*const formatedStartDate = new Date(formatDate(val[0]._d)).getTime();
+    const formatedEndDate = new Date(formatDate(val[1]._d)).getTime();
+
+    const accessor = new RangeAccessor("dates", {
+      title: "Dates",
+      id: "dates",
+      min: formatedStartDate, //946722254000,
+      max: formatedEndDate, //new Date().getTime(),
+      field: "DELIVERY_FROM_DAT",
+      loadHistogram: false,
+    });
+
+    searchkit.addAccessor(accessor);
+    accessor.state = accessor.state.setValue([
+      formatedStartDate,
+      formatedEndDate,
+    ]);
+
+    const query = new ImmutableQuery().setSize(10).addQuery(
+      BoolMust(
+        RangeQuery("dates", {
+          gte: accessor.state.value[0],
+          lte: accessor.state.value[1],
+        })
+      )
+    );
+
+    console.log(searchkit);*/
+
+    const formatedStartDate = formatDate(val[0]._d);
+    const formatedEndDate = formatDate(val[1]._d);
+
+    const accessor = new QueryAccessor("dates", {
+      title: "Dates",
+      id: "dates",
+      prefixQueryFields: ["DELIVERY_FROM_DAT"],
+      prefixQueryOptions: {
+        fields: ["DELIVERY_FROM_DAT"],
+      },
+      addToFilters: true,
+      onQueryStateChange: () => {
+        searchkit.performSearch(true, true);
+      },
+    });
+
+    searchkit.addAccessor(accessor);
+    accessor.state = accessor.state.setValue([
+      formatedStartDate,
+      formatedEndDate,
+    ]);
+
+    const query = new ImmutableQuery("tlgnc_order");
+    /*const newQuery = query.setSize(10).addQuery(
+      BoolMust(
+        RangeQuery("dates", {
+          gte: accessor.state.value[0],
+          lte: accessor.state.value[1],
+        })
+      )
+    );*/
+    //console.log(newQuery);
+    searchkit.setQueryProcessor(
+      BoolMust(
+        RangeQuery("dates", {
+          gte: accessor.state.value[0],
+          lte: accessor.state.value[1],
+        })
+      )
+    );
+
+    console.log(searchkit.currentSearchRequest);
+  }
 
   DownloadButton(props) {
     const result = props.hits;
@@ -120,12 +206,19 @@ class Main extends SearchkitComponent {
             </div>
           </TopBar>
           <LayoutBody>
+            <div onClick={this.changeQuery}>AAAAA</div>
             <Sidebar></Sidebar>
             <LayoutResults className="layout">
               <ActionBar>
-                <RangePicker
+                {/* <RangePicker
                   value={this.state.value}
                   onChange={this.onChange}
+                /> */}
+                <RangePicker
+                  value={this.state.value}
+                  onChange={this.changeQuery}
+                  id="dates"
+                  title="Dates"
                 />
                 <InputFilterSection></InputFilterSection>
                 <ActionBarRow>
