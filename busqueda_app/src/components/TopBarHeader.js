@@ -20,9 +20,8 @@ const TopBarHeader = () => {
       }
     >
       <div className="my-logo">
-        <div className="zonda-logo">
-          <img src="zonda.png"></img>
-        </div>
+        <div className="zonda">ZONDA Order Search Engine</div>
+        <p className="wip">WIP</p>
       </div>
     </TopBar>
   );

@@ -1,8 +1,9 @@
 @import url("../node_modules/searchkit/release/theme.css");
-
-.sk-layout__top-bar {
-  height: fit-content;
+@font-face {
+  font-family: 'SofiaPro';
+  src: local('SofiaPro'), url(./fonts/SofiaPro/SofiaProRegular.woff) format('woff');
 }
+
 
 .sk-layout__body {
   margin-top: 80px;
@@ -105,6 +106,8 @@ code {
 .ant-picker-input > input::placeholder  {
   color:  #959595 !important;
 }
+
+
 
 @import './sass/sidebar.css';
 @import './sass/header.css';

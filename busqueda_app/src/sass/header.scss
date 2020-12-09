@@ -2,6 +2,8 @@
     background-color: var(--ocean-blue);
     width: auto;
     position: absolute;
+    height: 7.5rem;
+    padding-top: 1.2rem;
 
     &__true {
         margin-left: 300px;
@@ -26,8 +28,23 @@
             align-items: center;
             //margin-top: 10px;
 
-            .zonda-logo {
-                margin-top: 10px;
+            .zonda {
+
+                margin: 0 0 21px 0;
+                font-family: SofiaPro;
+                font-size: 39px;
+
+                color: #ffffff;
+            }
+
+            .wip {
+
+                margin: 13px 0 0 10px;
+                object-fit: contain;
+                font-family: SofiaPro;
+                font-size: 48px;
+
+                color: rgba(255, 255, 255, 0.5);
             }
         }
     }

@@ -2,6 +2,8 @@
   background-color: var(--ocean-blue);
   width: auto;
   position: absolute;
+  height: 7.5rem;
+  padding-top: 1.2rem;
 }
 
 .topbar__margin__true {
@@ -35,7 +37,19 @@
           align-items: center;
 }
 
-.topbar__margin .sk-top-bar__content .my-logo .zonda-logo {
-  margin-top: 10px;
+.topbar__margin .sk-top-bar__content .my-logo .zonda {
+  margin: 0 0 21px 0;
+  font-family: SofiaPro;
+  font-size: 39px;
+  color: #ffffff;
+}
+
+.topbar__margin .sk-top-bar__content .my-logo .wip {
+  margin: 13px 0 0 10px;
+  -o-object-fit: contain;
+     object-fit: contain;
+  font-family: SofiaPro;
+  font-size: 48px;
+  color: rgba(255, 255, 255, 0.5);
 }
 /*# sourceMappingURL=header.css.map */
