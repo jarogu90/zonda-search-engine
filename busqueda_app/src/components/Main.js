@@ -125,7 +125,10 @@ class Main extends SearchkitComponent {
                 <InputFilterSection />
                 <ActionBarRow>
                   <SelectedFilters />
-                  <div onClick={this.changeCleanDateStatus}>
+                  <div
+                    className="resetfilters"
+                    onClick={this.changeCleanDateStatus}
+                  >
                     <ResetFilters onClick={this.changeCleanDateStatus} />
                   </div>
                 </ActionBarRow>
