@@ -1,5 +1,13 @@
-import React from "react";
+import React, { useContext } from "react";
 import styled from "styled-components";
+
+// services
+import {
+  GlobalDispatchContext,
+  GlobalStateContext,
+} from "../../../services/GlobalContext";
+
+// images
 import ArrowUp from "../../../img/arrowUp";
 import ArrowDown from "../../../img/arrowDown";
 
@@ -57,9 +65,22 @@ const FilterOptionDiv = styled.div`
 `;
 
 const FilterBase = ({ value, children, classNameFilter, showing }) => {
+  const state = useContext(GlobalStateContext);
+  const dispatch = useContext(GlobalDispatchContext);
   return (
     <FilterOptionDiv padding="38px" className={classNameFilter}>
-      <IconProps className="btn_hide">{children}</IconProps>
+      {!state.show ? (
+        <IconProps
+          className="btn_hide"
+          onClick={() =>
+            dispatch({ type: "SET_SHOW_CHILDREN", payload: { show: true } })
+          }
+        >
+          {children}
+        </IconProps>
+      ) : (
+        <IconProps className="btn_hide">{children}</IconProps>
+      )}
 
       {showing ? <Value className="value__sidebar">{value}</Value> : null}
       <ArrowUpFilter className="arrowUp">

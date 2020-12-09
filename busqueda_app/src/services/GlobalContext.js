@@ -139,7 +139,13 @@ const reducer = (state, action) => {
         ...state,
         show: show,
       };
-    case "SET_OPEN":
+    case "SET_SHOW_CHILDREN":
+      sessionStorage.setItem("show", action.payload.show);
+      return {
+        ...state,
+        show: action.payload.show,
+      };
+    case "SET_SHOWW":
       if (state.show === false) {
         let show = state.show ? false : true;
         sessionStorage.setItem("show", show);
@@ -222,11 +228,15 @@ const init = () => {
       error: sessionStorage.getItem("error"),
       errorMsg: sessionStorage.getItem("errorMsg"),
       language: sessionStorage.getItem("language"),
-      theme: sessionStorage.getItem("theme"),
+      theme: sessionStorage.getItem("theme")
+        ? sessionStorage.getItem("theme")
+        : "light",
       display: sessionStorage.getItem("display"),
       load: sessionStorage.getItem("load"),
       modulePerCountry: sessionStorage.getItem("module"),
-      show: sessionStorage.getItem("show"),
+      show: sessionStorage.getItem("show")
+        ? sessionStorage.getItem("show")
+        : true,
       componentPrintable: sessionStorage.getItem("componentPrintable"),
       nameApp: sessionStorage.getItem("nameApp"),
       dataType: sessionStorage.getItem("dataType"),
@@ -238,7 +248,7 @@ const init = () => {
 };
 
 const GlobalContextProvider = ({ children }) => {
-  const [state, dispatch] = useReducer(reducer, initialState);
+  const [state, dispatch] = useReducer(reducer, initialState, init);
 
   return (
     <>
