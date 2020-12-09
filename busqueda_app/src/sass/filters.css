@@ -4,6 +4,12 @@
   top: 157px;
   font-size: 14px;
   letter-spacing: -0.1px;
-  color: var(--ocean-blue);
+}
+
+.sk-reset-filters,
+.is-disabled {
+  cursor: default;
+  color: var(--ocean-blue) !important;
+  text-decoration: underline;
 }
 /*# sourceMappingURL=filters.css.map */

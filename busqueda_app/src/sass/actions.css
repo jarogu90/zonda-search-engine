@@ -105,8 +105,12 @@
 }
 
 .sk-hits-stats__info {
-  font-size: 19px;
+  font-size: 24px;
   color: #595959;
+}
+
+.sk-hits-stats__info .info_numbers {
+  color: var(--ocean-blue);
 }
 
 .is-active {
@@ -117,14 +121,24 @@
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -ms-flex-item-align: end;
+      align-self: flex-end;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
 }
 
 .download-button-link {
-  text-decoration: none;
-  color: var(--ocean-blue);
-  font-size: 14px;
-  padding: 10px 22px;
-  border: 1px solid var(--ocean-blue);
+  width: 141px;
+  height: 36px;
+  padding: 7px 0 8px 8px;
+  border-radius: 4px;
+  border: solid 1px var(--ocean-blue);
+  margin-top: 1.6rem;
 }
 
 .download-button-link:hover {

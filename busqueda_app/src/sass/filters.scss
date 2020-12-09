@@ -4,10 +4,14 @@
     top: 157px;
     font-size: 14px;
     letter-spacing: -0.1px;
-    
+
+
 }
 
-.sk-reset-filters, .is-disabled {
+.sk-reset-filters,
+.is-disabled {
     cursor: default;
     color: var(--ocean-blue) !important;
+    text-decoration: underline;
+
 }

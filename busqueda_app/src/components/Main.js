@@ -66,7 +66,8 @@ class Main extends SearchkitComponent {
       <>
         <div className={bemBlocks.container()} data-qa="hits-stats">
           <div className={bemBlocks.container("info")} data-qa="info">
-            {hitsCount} results found in {timeTaken}ms
+            <span className="info_numbers">{hitsCount}</span> results found in{" "}
+            <span className="info_numbers">{timeTaken}ms</span>
           </div>
         </div>
         <this.DownloadButton hits={hitsCount} />
