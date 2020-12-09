@@ -21,10 +21,7 @@ const OrderStatus = () => {
   const dispatch = useContext(GlobalDispatchContext);
 
   return (
-    <div
-      className="dropdown-container"
-      onClick={() => dispatch({ type: "SET_SHOWW" })}
-    >
+    <div className="dropdown-container">
       <input type="checkbox" id="drop_os" />
       <label htmlFor="drop_os">
         <FilterBase value="ORDER STATUS" showing={state.show}>
