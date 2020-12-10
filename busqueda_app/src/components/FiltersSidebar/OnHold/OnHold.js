@@ -1,10 +1,15 @@
-import React from "react";
+import React, { useContext } from "react";
 import styled from "styled-components";
 
 import config from "../../../config.json";
 
 // components
 import FilterBase from "../FilterBase/FilterBase";
+// services
+import {
+  GlobalDispatchContext,
+  GlobalStateContext,
+} from "../../../services/GlobalContext";
 
 import {
   CheckboxFilter,
@@ -33,22 +38,12 @@ const Value = styled.div`
   width: 88%;
   text-align: left;
 `;
-const ArrowUpFilter = styled.div`
-  width: 1.45rem;
-  margin: auto 4rem auto auto;
-  stroke: var(--ocean-blue);
-`;
-const ArrowDownFilter = styled.div`
-  width: 1.45rem;
-  margin: auto 4rem auto auto;
-  stroke: var(--ocean-blue);
-`;
+
 const FilterOptionDiv = styled.div`
   cursor: pointer;
   width: 100%;
   height: 6.4rem;
   display: flex;
-  padding-left: ${(props) => props.padding};
   -webkit-transition: all 500ms ease;
   -moz-transition: all 500ms ease;
   -ms-transition: all 500ms ease;
@@ -60,7 +55,7 @@ const FilterOptionDiv = styled.div`
     background-color: var(--ice-blue);
     border: none;
     border-left: solid 4px var(--ocean-blue);
-    padding-left: 4.5rem;
+    padding-left: 1rem;
     color: var(--ocean-blue);
     g {
       stroke: var(--ocean-blue);
@@ -71,26 +66,56 @@ const FilterOptionDiv = styled.div`
   }
 `;
 
-const OnHold = ({ children, classNameFilter }) => {
+const OnHold = ({ children, classNameFilter, showing }) => {
+  const state = useContext(GlobalStateContext);
+  const dispatch = useContext(GlobalDispatchContext);
   return (
     <div>
       <FilterOptionDiv padding="38px" className={classNameFilter}>
-        <IconProps className="btn_hide">
+        {!state.show ? (
+          <div
+            className="btn__with"
+            onClick={() =>
+              dispatch({ type: "SET_SHOW_CHILDREN", payload: { show: true } })
+            }
+          >
+            <IconProps className="btn_hide">
+              {" "}
+              <OnHoldIcon
+                width="25px"
+                height="24px"
+                color="var(--greyish-brown)"
+              />
+            </IconProps>
+          </div>
+        ) : (
+          <div className="btn__with">
+            {" "}
+            <IconProps className="btn_hide">
+              {" "}
+              <OnHoldIcon
+                width="25px"
+                height="24px"
+                color="var(--greyish-brown)"
+              />
+            </IconProps>{" "}
+          </div>
+        )}
+
+        {/* <IconProps className="btn_hide">
           {" "}
-          <OnHoldIcon
-            width="25px"
-            height="24px"
-            color="var(--greyish-brown)"
+          <OnHoldIcon width="25px" height="24px" color="var(--greyish-brown)" />
+        </IconProps> */}
+        {showing ? <Value>ON HOLD</Value> : null}
+        {showing ? (
+          <CheckboxFilter
+            id={config.filters.onHold.id}
+            field={config.filters.onHold.fields}
+            showCount={false}
+            orderDirection="desc"
+            filter={TermQuery("ON_HOLD_ORDER_AND_LOCKED_FLAG", "1")}
           />
-        </IconProps>
-        <Value>ON HOLD</Value>
-        <CheckboxFilter
-          id={config.filters.onHold.id}
-          field={config.filters.onHold.fields}
-          showCount={false}
-          orderDirection="desc"
-          filter={TermQuery("ON_HOLD_ORDER_AND_LOCKED_FLAG", "1")}
-        />
+        ) : null}
       </FilterOptionDiv>
 
       <div className="content"></div>

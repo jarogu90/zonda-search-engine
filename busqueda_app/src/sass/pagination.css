@@ -64,4 +64,9 @@
       -ms-flex-pack: center;
           justify-content: center;
 }
+
+[class^=ant-] *::before,
+[class*=ant-] *::before {
+  display: none;
+}
 /*# sourceMappingURL=pagination.css.map */

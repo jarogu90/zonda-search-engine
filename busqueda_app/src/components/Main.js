@@ -9,7 +9,6 @@ import {
   SearchkitManager,
   SearchkitProvider,
   Layout,
-  TopBar,
   LayoutBody,
   LayoutResults,
   ActionBar,
@@ -29,6 +28,7 @@ import {
 //Componentes manuales
 import Samples from "./Samples";
 import InputFilterSection from "./InputFilterSection";
+import TopBarHeader from "./TopBarHeader";
 import Sidebar from "./Sidebar";
 import NoResults from "./NoResults";
 import { formatDate } from "../utils/Utils";
@@ -42,8 +42,9 @@ import { dateRange } from "../queries/rangeDateQuery";
 
 import DatesFilter from "./DatesFilter";
 
-export const searchkit = new SearchkitManager(config.endpoint);
+import Download from "../img/download";
 
+export const searchkit = new SearchkitManager(config.endpoint);
 const { RangePicker } = DatePicker;
 
 class Main extends SearchkitComponent {
@@ -56,47 +57,6 @@ class Main extends SearchkitComponent {
     noResults: false,
   };
 
-  /*changeQuery(val) {
-    const formatedStartDate = formatDate(val[0]._d);
-    const formatedEndDate = formatDate(val[1]._d);
-
-    const query = new ImmutableQuery();
-
-    const datesQuery = () => {
-      return query.addQuery(
-        BoolMust([
-          RangeQuery("DELIVERY_FROM_DAT", {
-            gte: formatedStartDate,
-            lte: formatedStartDate,
-          }),
-          RangeQuery("DELIVERY_TO_DAT", {
-            gte: formatedStartDate,
-            lte: formatedStartDate,
-          }),
-        ])
-      );
-    };
-
-    const accessor = new QueryAccessor("dates", {
-      title: "Dates",
-      id: "dates",
-      addToFilters: true,
-      queryBuilder: datesQuery(),
-    });
-
-    searchkit.addAccessor(accessor);
-    accessor.state = accessor.state.setValue([
-      formatedStartDate,
-      formatedEndDate,
-    ]);
-    accessor.resultsState = accessor.resultsState.setValue([
-      formatedStartDate,
-      formatedEndDate,
-    ]);
-
-    console.log(searchkit, accessor);
-  }*/
-
   DownloadButton(props) {
     const result = props.hits;
     if (result == 0) {
@@ -104,11 +64,12 @@ class Main extends SearchkitComponent {
     } else {
       return (
         <a
+          className="download-button-link"
           href="/file/orders.csv"
           download="orders.csv"
-          className="download-button-link"
         >
-          CSV download
+          <Download color="var(--ocean-blue)"></Download>
+          <p>Download data</p>
         </a>
       );
     }
@@ -120,7 +81,8 @@ class Main extends SearchkitComponent {
       <>
         <div className={bemBlocks.container()} data-qa="hits-stats">
           <div className={bemBlocks.container("info")} data-qa="info">
-            {hitsCount} results found in {timeTaken}ms
+            <span className="info_numbers">{hitsCount}</span> results found in{" "}
+            <span className="info_numbers">{timeTaken}ms</span>
           </div>
         </div>
         <this.DownloadButton hits={hitsCount} />
@@ -132,7 +94,7 @@ class Main extends SearchkitComponent {
     this.setState({ arraydata: null });
   };
 
-  getData = (dateFrom, dateTo) => {
+  /*getData = (dateFrom, dateTo) => {
     dateRange(dateFrom, dateTo).then((res) => {
       if (res.hits.hits.length < 1) {
         this.setState({
@@ -143,34 +105,26 @@ class Main extends SearchkitComponent {
       this.setState({ arraydata: res.hits.hits });
       this.setState({ dateFilterOn: true });
     });
-  };
+  };*/
 
   render() {
+    const { state } = this.props;
     return (
       <SearchkitProvider searchkit={searchkit}>
         <Layout>
-          <TopBar className="header">
-            <div className="my-logo">
-              <div className="zonda-logo">
-                <img src="zonda.png"></img>
-              </div>
-            </div>
-          </TopBar>
+          <TopBarHeader></TopBarHeader>
           <LayoutBody>
-            <Sidebar></Sidebar>
+            <Sidebar />
             <LayoutResults className="layout">
               <ActionBar>
                 <DatesFilter />
-                {/* <RangePicker
-                  value={this.state.value}
-                  onChange={this.changeQuery}
-                  id="dates"
-                  title="Dates"
-                /> */}
-                <InputFilterSection></InputFilterSection>
+                <InputFilterSection />
                 <ActionBarRow>
                   <SelectedFilters />
-                  <div onClick={this.changeCleanDateStatus}>
+                  <div
+                    className="resetfilters"
+                    onClick={this.changeCleanDateStatus}
+                  >
                     <ResetFilters onClick={this.changeCleanDateStatus} />
                   </div>
                 </ActionBarRow>

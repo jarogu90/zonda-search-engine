@@ -92,6 +92,10 @@
   padding-left: none !important;
 }
 
+.btn__with {
+  padding-left: 38px;
+}
+
 .arrowDown {
   display: block;
 }

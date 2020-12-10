@@ -8,23 +8,27 @@ import config from "../../../config.json";
 import FilterBase from "../FilterBase/FilterBase";
 
 // services
-import { GlobalStateContext } from "../../../services/GlobalContext";
+import {
+  GlobalStateContext,
+  GlobalDispatchContext,
+} from "../../../services/GlobalContext";
 
 // images
 import Status from "../../../img/status";
 
-const searchkit = new SearchkitManager(config.endpoint);
-
-const OrderSatus = ({ showing }) => {
+const OrderStatus = () => {
   const state = useContext(GlobalStateContext);
+  const dispatch = useContext(GlobalDispatchContext);
+
   return (
     <div className="dropdown-container">
       <input type="checkbox" id="drop_os" />
       <label htmlFor="drop_os">
-        <FilterBase value="ORDER STATUS">
+        <FilterBase value="ORDER STATUS" showing={state.show}>
           <Status width="25px" height="24px" color="var(--greyish-brown)" />
         </FilterBase>
       </label>
+
       <div className="content">
         <RefinementListFilter
           id={config.filters.orderStatus.id}
@@ -36,9 +40,12 @@ const OrderSatus = ({ showing }) => {
           orderDirection="asc"
         />
       </div>
+
+      {/* <div className={showing ? "line" : "line line__hide"}></div> */}
+
       {state.show ? <div className="line"></div> : null}
     </div>
   );
 };
 
-export default OrderSatus;
+export default OrderStatus;

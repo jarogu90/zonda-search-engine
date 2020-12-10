@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 // components
@@ -22,9 +22,7 @@ function App() {
                   <Route
                     exact
                     path="/"
-                    component={Main}
-                    state={state}
-                    dispatch={dispatch}
+                    component={() => <Main state={state} dispatch={dispatch} />}
                   />
                 </Switch>
               </Router>

@@ -1,7 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import "antd/dist/antd.css";
-import "./index.css";
 import { Table, Button, Dropdown, Menu, Checkbox } from "antd";
 import { DownOutlined } from "@ant-design/icons";
 
@@ -69,12 +68,16 @@ class App extends React.Component {
       <Menu>
         <Menu.ItemGroup title="Columns">
           <Menu.Item key="4">
-            <Checkbox id="age" onChange={this.onChange} defaultChecked>
+            <Checkbox id="orderNumber" onChange={this.onChange} defaultChecked>
               Age
             </Checkbox>
           </Menu.Item>
           <Menu.Item key="5">
-            <Checkbox id="address" onChange={this.onChange} defaultChecked>
+            <Checkbox
+              id="sequentialNumber"
+              onChange={this.onChange}
+              defaultChecked
+            >
               Address
             </Checkbox>
           </Menu.Item>

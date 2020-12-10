@@ -14,7 +14,7 @@
     user-select: none;
 }
 
-.dropdown-container .content{
+.dropdown-container .content {
     display: none;
     max-height: 0px;
     margin: 0;
@@ -41,8 +41,7 @@
 .dropdown-container #drop_os,
 .dropdown-container #drop_cs,
 .dropdown-container #drop_pt,
-.dropdown-container #drop_dt
-{
+.dropdown-container #drop_dt {
     display: none;
 }
 
@@ -50,7 +49,7 @@
 .dropdown-container #drop_os:checked~.content,
 .dropdown-container #drop_cs:checked~.content,
 .dropdown-container #drop_pt:checked~.content,
-.dropdown-container #drop_dt:checked~.content{
+.dropdown-container #drop_dt:checked~.content {
     display: block;
     height: auto;
     width: 100%;
@@ -59,13 +58,7 @@
     overflow: hidden;
     position: relative;
     margin-bottom: 1rem;
-
 }
-
-
-
-
-
 
 
 .btn_hide,
@@ -96,22 +89,32 @@
     padding-left: none !important;
 }
 
+.btn__with {
+    // background: red;
+    padding-left: 38px;
+    // padding-right: 38px;
+
+}
+
 // ARROW FILTER
 
-.arrowDown{
-   
- 
+.arrowDown {
+
+
     display: block;
 }
-.arrowUp{
+
+.arrowUp {
     display: none;
 }
+
 .dropdown-container #drop_os:checked~label .arrowDown,
 .dropdown-container #drop_cs:checked~label .arrowDown,
 .dropdown-container #drop_pt:checked~label .arrowDown,
 .dropdown-container #drop_dt:checked~label .arrowDown {
-    display: none; 
+    display: none;
 }
+
 .dropdown-container #drop_os:checked~label .arrowUp,
 .dropdown-container #drop_cs:checked~label .arrowUp,
 .dropdown-container #drop_pt:checked~label .arrowUp,

@@ -1,11 +1,20 @@
-.sk-top-bar {
+.topbar__margin {
   background-color: var(--ocean-blue);
   width: auto;
-  margin-left: 300px;
   position: absolute;
+  height: 7.5rem;
+  padding-top: 1.2rem;
 }
 
-.sk-top-bar .sk-top-bar__content {
+.topbar__margin__true {
+  margin-left: 300px;
+}
+
+.topbar__margin__false {
+  margin-left: 107px;
+}
+
+.topbar__margin .sk-top-bar__content {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -14,7 +23,7 @@
   width: 100%;
 }
 
-.sk-top-bar .sk-top-bar__content .my-logo {
+.topbar__margin .sk-top-bar__content .my-logo {
   font-size: 24px;
   color: #ffffff;
   display: -webkit-box;
@@ -28,7 +37,19 @@
           align-items: center;
 }
 
-.sk-top-bar .sk-top-bar__content .my-logo .zonda-logo {
-  margin-top: 10px;
+.topbar__margin .sk-top-bar__content .my-logo .zonda {
+  margin: 0 0 21px 0;
+  font-family: SofiaPro;
+  font-size: 39px;
+  color: #ffffff;
+}
+
+.topbar__margin .sk-top-bar__content .my-logo .wip {
+  margin: 13px 0 0 10px;
+  -o-object-fit: contain;
+     object-fit: contain;
+  font-family: SofiaPro;
+  font-size: 48px;
+  color: rgba(255, 255, 255, 0.5);
 }
 /*# sourceMappingURL=header.css.map */

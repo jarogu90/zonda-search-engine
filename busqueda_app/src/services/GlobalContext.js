@@ -1,8 +1,5 @@
 import React, { useReducer, createContext } from "react";
 
-// services
-// import { recordLog } from "./auth";
-
 export const GlobalStateContext = createContext();
 export const GlobalDispatchContext = createContext();
 
@@ -87,20 +84,19 @@ const reducer = (state, action) => {
         isRegion: false,
       };
     // REGION AND MODULE PER COUNTRY BASE IN REGION
-    // case "SET_REGION":
-    //   sessionStorage.setItem("region", action.payload.region);
-    //   sessionStorage.setItem("module", action.payload.region);
-    //   let isR = state.regiones.includes(action.payload.region) ? true : false;
-    //   if (isR) {
-    //     sessionStorage.setItem("isRegion", isR);
-    //     recordLog(state.userName, action.payload.region, state.nameApp);
-    //   }
-    //   return {
-    //     ...state,
-    //     region: action.payload.region,
-    //     modulePerCountry: action.payload.region,
-    //     isRegion: isR,
-    //   };
+    case "SET_REGION":
+      sessionStorage.setItem("region", action.payload.region);
+      sessionStorage.setItem("module", action.payload.region);
+      let isR = state.regiones.includes(action.payload.region) ? true : false;
+      if (isR) {
+        sessionStorage.setItem("isRegion", isR);
+      }
+      return {
+        ...state,
+        region: action.payload.region,
+        modulePerCountry: action.payload.region,
+        isRegion: isR,
+      };
     case "SET_SALESAREA":
       sessionStorage.setItem("salesAreas", action.payload.salesAreas);
       let sales = action.payload.salesAreas;
@@ -134,13 +130,7 @@ const reducer = (state, action) => {
         ...state,
         load: action.payload.load,
       };
-    //  VIEW IN CARDS OR TABLE
-    case "SET_DISPLAY":
-      sessionStorage.setItem("display", action.payload.display);
-      return {
-        ...state,
-        display: action.payload.display,
-      };
+
     // HIDE / SHOW FILTERS
     case "SET_SHOW":
       let show = state.show ? false : true;
@@ -149,6 +139,13 @@ const reducer = (state, action) => {
         ...state,
         show: show,
       };
+    case "SET_SHOW_CHILDREN":
+      sessionStorage.setItem("show", action.payload.show);
+      return {
+        ...state,
+        show: action.payload.show,
+      };
+
     case "SET_THEME": {
       let theme = state.theme === "light" ? "dark" : "light";
       sessionStorage.setItem("theme", theme);
@@ -167,13 +164,7 @@ const reducer = (state, action) => {
         componentPrintable: action.payload.componentPrintable,
       };
     }
-    case "SET_LANG": {
-      sessionStorage.setItem("language", action.payload.language);
-      return {
-        ...state,
-        language: action.payload.language,
-      };
-    }
+
     case "SET_DATATYPE": {
       sessionStorage.setItem("dataType", action.payload.dataType);
       return {
@@ -224,11 +215,15 @@ const init = () => {
       error: sessionStorage.getItem("error"),
       errorMsg: sessionStorage.getItem("errorMsg"),
       language: sessionStorage.getItem("language"),
-      theme: sessionStorage.getItem("theme"),
+      theme: sessionStorage.getItem("theme")
+        ? sessionStorage.getItem("theme")
+        : "light",
       display: sessionStorage.getItem("display"),
       load: sessionStorage.getItem("load"),
       modulePerCountry: sessionStorage.getItem("module"),
-      show: sessionStorage.getItem("show"),
+      show: sessionStorage.getItem("show")
+        ? sessionStorage.getItem("show")
+        : true,
       componentPrintable: sessionStorage.getItem("componentPrintable"),
       nameApp: sessionStorage.getItem("nameApp"),
       dataType: sessionStorage.getItem("dataType"),

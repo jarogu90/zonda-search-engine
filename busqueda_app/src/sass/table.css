@@ -6,23 +6,16 @@
   height: auto;
 }
 
-.ant-table-wrapper {
-  width: 100%;
-}
-
-.ant-table-content {
-  max-width: -webkit-min-content;
-  max-width: -moz-min-content;
-  max-width: min-content;
-  width: 400px;
-}
-
 .ant-table-content .ant-table-cell {
   font-size: 12px;
   text-align: center;
   color: var(--greyish-brown);
   padding: 6px 0 0;
   background-color: #f7f8f9;
+}
+
+.ant-table.ant-table-bordered > .ant-table-container {
+  width: auto;
 }
 
 header {
@@ -62,6 +55,10 @@ header {
   background-color: #0074b4;
   color: white;
   padding: 4px 25px;
+}
+
+.table-header .header__hide {
+  margin-left: 0px !important;
 }
 
 /*  &:nth-child(1){

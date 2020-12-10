@@ -12,6 +12,13 @@
   flex: 1;
   top: 0;
   margin-top: -80px;
+  min-height: 900px;
+
+  &__hide {
+    max-width: 107px;
+    min-width: 107px;
+
+  }
 
 
   .logo {
@@ -21,6 +28,11 @@
     margin: auto;
     margin-top: 11px;
     margin-bottom: 102px;
+
+    &__hide {
+      height: 43px;
+      margin: 11px auto 112px auto;
+    }
   }
 
   .sk-panel {
@@ -70,11 +82,12 @@
   width: 225px;
   border: solid 1px #e7e7e7;
   margin-left: 3.5rem;
-  -webkit-transition: all 2s ease;
-  -moz-transition: all 2s ease;
-  -ms-transition: all 2s ease;
-  -o-transition: all 2s ease;
-  transition: all 2s ease;
+
+
+  &__hide {
+    width: 22px;
+    border: solid 1px #fafafa;
+  }
 }
 
 .saved-search-link {
@@ -107,14 +120,6 @@
   }
 }
 
-/* .filter--event_date_filter{
-  .sk-panel__header {
-    &:before {
-      content: url("../img/calendar.svg");
-      margin-right: 26px;
-    }
-  }
-} */
 
 .filter--searches {
   .sk-panel__header {
@@ -124,62 +129,3 @@
     }
   }
 }
-
-
-
-// PRUEBA
-
-// .sidebar-hide ul {
-//   list-style-type: none;
-//   padding: 0;
-// }
-
-// .sidebar-hide .content ul {
-//   margin-left: 7.7rem;
-// }
-
-// .sidebar-hide .content li {
-//   padding: 3px 10px;
-//   font-size: 1.4rem;
-//   margin-bottom: 1.5rem;
-//   display: flex;
-//   width: 85%;
-// }
-
-
-// .sidebar-hide {
-//   position: relative;
-// }
-
-
-// .sidebar-hide label {
-//   position: relative;
-//   background: yellowgreen;
-//   width: 100%;
-//   user-select: none;
-// }
-
-// .sidebar-hide .content {}
-
-
-// .sidebar-hide #side {
-//   display: none;
-// }
-
-
-// .sidebar-hide #side:checked~.content {
-//   width: 40px;
-//   background: rgb(161, 128, 128);
-
-//   .arrowUp,
-//   .arrowDown,
-//   .value__sidebar,
-//   .line {
-//     display: none;
-//   }
-
-// }
-
-// .sidebar-hide #side:checked~.sk-layout__filters .sidebar {
-//   display: none;
-// }

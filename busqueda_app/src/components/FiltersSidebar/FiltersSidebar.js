@@ -10,13 +10,10 @@ const FilterSidebar = ({ showing }) => {
   return (
     <div>
       <OrderStatus showing={showing}></OrderStatus>
-      {/* <div className="line"></div> */}
-      <CreationSystem></CreationSystem>
-      {/* <div className="line"></div> */}
-      <ProcessType></ProcessType>
-      {/* <div className="line"></div> */}
-      <DeliveryType></DeliveryType>
-      <OnHold></OnHold>
+      <CreationSystem showing={showing}></CreationSystem>
+      <ProcessType showing={showing}></ProcessType>
+      <DeliveryType showing={showing}></DeliveryType>
+      <OnHold showing={showing}></OnHold>
     </div>
   );
 };
