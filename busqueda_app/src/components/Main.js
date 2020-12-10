@@ -20,6 +20,10 @@ import {
   RangeQuery,
   RangeFilter,
   RangeAccessor,
+  SimpleQueryString,
+  setQueryString,
+  AxiosESTransport,
+  FilteredQuery,
 } from "searchkit";
 
 //Componentes manuales
@@ -36,11 +40,9 @@ import config from "../config.json";
 import { DatePicker } from "antd";
 import { dateRange } from "../queries/rangeDateQuery";
 
-const searchkit = new SearchkitManager(config.endpoint);
+import DatesFilter from "./DatesFilter";
 
-//const accessorTo = new QueryAccessor("dateTo");
-
-//searchkit.addAccessor(accessorTo);
+export const searchkit = new SearchkitManager(config.endpoint);
 
 const { RangePicker } = DatePicker;
 
@@ -54,50 +56,32 @@ class Main extends SearchkitComponent {
     noResults: false,
   };
 
-  changeQuery(val) {
-    /*const formatedStartDate = new Date(formatDate(val[0]._d)).getTime();
-    const formatedEndDate = new Date(formatDate(val[1]._d)).getTime();
-
-    const accessor = new RangeAccessor("dates", {
-      title: "Dates",
-      id: "dates",
-      min: formatedStartDate, //946722254000,
-      max: formatedEndDate, //new Date().getTime(),
-      field: "DELIVERY_FROM_DAT",
-      loadHistogram: false,
-    });
-
-    searchkit.addAccessor(accessor);
-    accessor.state = accessor.state.setValue([
-      formatedStartDate,
-      formatedEndDate,
-    ]);
-
-    const query = new ImmutableQuery().setSize(10).addQuery(
-      BoolMust(
-        RangeQuery("dates", {
-          gte: accessor.state.value[0],
-          lte: accessor.state.value[1],
-        })
-      )
-    );
-
-    console.log(searchkit);*/
-
+  /*changeQuery(val) {
     const formatedStartDate = formatDate(val[0]._d);
     const formatedEndDate = formatDate(val[1]._d);
+
+    const query = new ImmutableQuery();
+
+    const datesQuery = () => {
+      return query.addQuery(
+        BoolMust([
+          RangeQuery("DELIVERY_FROM_DAT", {
+            gte: formatedStartDate,
+            lte: formatedStartDate,
+          }),
+          RangeQuery("DELIVERY_TO_DAT", {
+            gte: formatedStartDate,
+            lte: formatedStartDate,
+          }),
+        ])
+      );
+    };
 
     const accessor = new QueryAccessor("dates", {
       title: "Dates",
       id: "dates",
-      prefixQueryFields: ["DELIVERY_FROM_DAT"],
-      prefixQueryOptions: {
-        fields: ["DELIVERY_FROM_DAT"],
-      },
       addToFilters: true,
-      onQueryStateChange: () => {
-        searchkit.performSearch(true, true);
-      },
+      queryBuilder: datesQuery(),
     });
 
     searchkit.addAccessor(accessor);
@@ -105,28 +89,13 @@ class Main extends SearchkitComponent {
       formatedStartDate,
       formatedEndDate,
     ]);
+    accessor.resultsState = accessor.resultsState.setValue([
+      formatedStartDate,
+      formatedEndDate,
+    ]);
 
-    const query = new ImmutableQuery();
-    const newQuery = query.setSize(10).buildQuery(
-      BoolMust(
-        RangeQuery("dates", {
-          gte: accessor.state.value[0],
-          lte: accessor.state.value[1],
-        })
-      )
-    );
-    //console.log(newQuery);
-    /*searchkit.setQueryProcessor(
-      BoolMust(
-        RangeQuery("dates", {
-          gte: accessor.state.value[0],
-          lte: accessor.state.value[1],
-        })
-      )
-    );*/
-
-    console.log(searchkit.currentSearchRequest);
-  }
+    console.log(searchkit, accessor);
+  }*/
 
   DownloadButton(props) {
     const result = props.hits;
@@ -163,7 +132,6 @@ class Main extends SearchkitComponent {
     this.setState({ arraydata: null });
   };
 
-  //AQUI EMPIEZAN LAS FUNCIONES RELACIONADAS CON LAS FECHAS
   getData = (dateFrom, dateTo) => {
     dateRange(dateFrom, dateTo).then((res) => {
       if (res.hits.hits.length < 1) {
@@ -175,22 +143,6 @@ class Main extends SearchkitComponent {
       this.setState({ arraydata: res.hits.hits });
       this.setState({ dateFilterOn: true });
     });
-  };
-
-  onChange = (val) => {
-    this.setState({ value: val, noResults: false });
-    if (val === null) {
-      this.changeCleanDateStatus();
-      return;
-    } else {
-      const formatedStartDate = formatDate(val[0]._d);
-      const formatedEndDate = formatDate(val[1]._d);
-      this.setState({
-        startDate: formatedStartDate,
-        endDate: formatedEndDate,
-      });
-      this.getData(formatedStartDate, formatedStartDate);
-    }
   };
 
   render() {
@@ -205,20 +157,16 @@ class Main extends SearchkitComponent {
             </div>
           </TopBar>
           <LayoutBody>
-            <div onClick={this.changeQuery}>AAAAA</div>
             <Sidebar></Sidebar>
             <LayoutResults className="layout">
               <ActionBar>
+                <DatesFilter />
                 {/* <RangePicker
-                  value={this.state.value}
-                  onChange={this.onChange}
-                /> */}
-                <RangePicker
                   value={this.state.value}
                   onChange={this.changeQuery}
                   id="dates"
                   title="Dates"
-                />
+                /> */}
                 <InputFilterSection></InputFilterSection>
                 <ActionBarRow>
                   <SelectedFilters />
@@ -230,14 +178,7 @@ class Main extends SearchkitComponent {
                   <HitsStats component={this.CustomHitStats} />
                 </div>
               </ActionBar>
-              {this.state.noResults ? (
-                <NoResults
-                  startDate={this.state.startDate}
-                  endDate={this.state.endDate}
-                />
-              ) : (
-                <Samples dataDateFilter={this.state.arraydata} />
-              )}
+              <Samples dataDateFilter={this.state.arraydata} />
             </LayoutResults>
           </LayoutBody>
         </Layout>
