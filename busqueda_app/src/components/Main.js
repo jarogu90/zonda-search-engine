@@ -57,6 +57,47 @@ class Main extends SearchkitComponent {
     noResults: false,
   };
 
+  /*changeQuery(val) {
+    const formatedStartDate = formatDate(val[0]._d);
+    const formatedEndDate = formatDate(val[1]._d);
+
+    const query = new ImmutableQuery();
+
+    const datesQuery = () => {
+      return query.addQuery(
+        BoolMust([
+          RangeQuery("DELIVERY_FROM_DAT", {
+            gte: formatedStartDate,
+            lte: formatedStartDate,
+          }),
+          RangeQuery("DELIVERY_TO_DAT", {
+            gte: formatedStartDate,
+            lte: formatedStartDate,
+          }),
+        ])
+      );
+    };
+
+    const accessor = new QueryAccessor("dates", {
+      title: "Dates",
+      id: "dates",
+      addToFilters: true,
+      queryBuilder: datesQuery(),
+    });
+
+    searchkit.addAccessor(accessor);
+    accessor.state = accessor.state.setValue([
+      formatedStartDate,
+      formatedEndDate,
+    ]);
+    accessor.resultsState = accessor.resultsState.setValue([
+      formatedStartDate,
+      formatedEndDate,
+    ]);
+
+    console.log(searchkit, accessor);
+  }*/
+
   DownloadButton(props) {
     const result = props.hits;
     if (result == 0) {
@@ -94,7 +135,7 @@ class Main extends SearchkitComponent {
     this.setState({ arraydata: null });
   };
 
-  /*getData = (dateFrom, dateTo) => {
+  /* getData = (dateFrom, dateTo) => {
     dateRange(dateFrom, dateTo).then((res) => {
       if (res.hits.hits.length < 1) {
         this.setState({
@@ -105,7 +146,7 @@ class Main extends SearchkitComponent {
       this.setState({ arraydata: res.hits.hits });
       this.setState({ dateFilterOn: true });
     });
-  };*/
+  }; */
 
   render() {
     const { state } = this.props;
@@ -118,7 +159,13 @@ class Main extends SearchkitComponent {
             <LayoutResults className="layout">
               <ActionBar>
                 <DatesFilter />
-                <InputFilterSection />
+                {/* <RangePicker
+                  value={this.state.value}
+                  onChange={this.changeQuery}
+                  id="dates"
+                  title="Dates"
+                /> */}
+                <InputFilterSection></InputFilterSection>
                 <ActionBarRow>
                   <SelectedFilters />
                   <div

@@ -1,12 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
 import { formatDate } from "../utils/Utils";
 import { DatePicker } from "antd";
 import { searchkit } from "./Main";
+
+//Searchkit
 import { QueryAccessor, ImmutableQuery, BoolMust, RangeQuery } from "searchkit";
+
 const { RangePicker } = DatePicker;
 
 const DatesFilter = () => {
-  console.log(searchkit);
+  const [dates, setDates] = useState([]);
 
   const changeQuery = (val) => {
     const formatedStartDate = formatDate(val[0]._d);
@@ -32,7 +35,7 @@ const DatesFilter = () => {
       title: "Dates",
       id: "dates",
       addToFilters: true,
-      queryBuilder: datesQuery(),
+      //queryBuilder: datesQuery(),
     });
 
     searchkit.addAccessor(accessor);
@@ -45,11 +48,18 @@ const DatesFilter = () => {
       formatedEndDate,
     ]);
 
-    console.log(searchkit, accessor);
-    return searchkit._search();
+    console.log(searchkit, accessor.buildSharedQuery(datesQuery()));
+    return searchkit.search(true);
   };
 
-  return <RangePicker onChange={changeQuery} id="dates" title="Dates" />;
+  return (
+    <RangePicker
+      value={dates}
+      onChange={changeQuery}
+      id="dates"
+      title="Dates"
+    />
+  );
 };
 
 export default DatesFilter;
