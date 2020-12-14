@@ -8,7 +8,6 @@ const Samples = ({ dataDateFilter }) => {
     <div>
       <Hits
         hitsPerPage={1000}
-        highlightFields={["ORDER_ID"]}
         listComponent={<OrderHitsTable dataDateFilter={dataDateFilter} />}
         hitComponents={[
           { key: config.samples.table.key, title: config.samples.table.title },
