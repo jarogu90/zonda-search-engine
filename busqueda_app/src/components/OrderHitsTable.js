@@ -6,12 +6,15 @@ import {
   formatDateTime,
 } from "../utils/Utils";
 import TableColumns from "./TableColumns";
-import { Table } from "antd";
+import ColumnsCheckbox from "./GenericComponents/ColumnsCheckbox";
+import { Table, Checkbox } from "antd";
 
 import "antd/dist/antd.css";
 
 const OrderHitsTable = ({ hits, dataDateFilter }) => {
   const [data, setData] = useState([]);
+  const [isChecked, setIsChecked] = useState();
+  const [columnas, setColumnas] = useState(TableColumns());
 
   useEffect(() => {
     const getData = async () => {
@@ -24,7 +27,7 @@ const OrderHitsTable = ({ hits, dataDateFilter }) => {
       }
     };
     getData();
-  }, [hits, dataDateFilter]);
+  }, [hits, dataDateFilter, columnas]);
 
   const fillDataTable = async (data) => {
     const arrayData = [];
@@ -55,8 +58,36 @@ const OrderHitsTable = ({ hits, dataDateFilter }) => {
     return arrayData;
   };
 
+  const checkboxOnChange = (e) => {
+    const columns = TableColumns();
+    const column = {
+      title: e.target.id,
+      dataIndex: e.target.id,
+      key: e.target.id,
+    };
+    if (!e.target.checked) {
+      for (let i = 0; i <= columns.length; i++) {
+        if (columns[i].dataIndex === column.dataIndex) {
+          columns.splice([i], 1);
+          console.log(columns);
+          setColumnas(columns);
+          break;
+        }
+      }
+    } else {
+      console.log(columns);
+      setColumnas(columns);
+    }
+  };
+
   return (
-    <Table columns={TableColumns()} dataSource={data} size="small" bordered />
+    <>
+      {/* <div onClick={editColumns}>Add columns</div> */}
+      <Checkbox id="orderNumber" onChange={checkboxOnChange} defaultChecked>
+        Hola
+      </Checkbox>
+      <Table columns={columnas} dataSource={data} size="small" bordered />
+    </>
   );
 };
 
