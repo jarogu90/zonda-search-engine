@@ -193,13 +193,13 @@ const init = () => {
   if (typeof window !== `undefined`) {
     return {
       isAuthenticated: sessionStorage.getItem("isAuthenticated")
-        ? sessionStorage.getItem("isAuthenticated")
+        ? JSON.parse(sessionStorage.getItem("isAuthenticated"))
         : false,
       isFunction: sessionStorage.getItem("isFunction")
-        ? sessionStorage.getItem("isFunction")
+        ? JSON.parse(sessionStorage.getItem("isFunction"))
         : false,
       isRegion: sessionStorage.getItem("isRegion")
-        ? sessionStorage.getItem("isRegion")
+        ? JSON.parse(sessionStorage.getItem("isRegion"))
         : false,
       email: sessionStorage.getItem("email"),
       userName: sessionStorage.getItem("userName"),
@@ -212,17 +212,21 @@ const init = () => {
       salesAreas: sessionStorage.getItem("salesAreas"),
       roles: sessionStorage.getItem("roles"),
       region: sessionStorage.getItem("region"),
-      error: sessionStorage.getItem("error"),
+      error: sessionStorage.getItem("error")
+        ? JSON.parse(sessionStorage.getItem("error"))
+        : false,
       errorMsg: sessionStorage.getItem("errorMsg"),
       language: sessionStorage.getItem("language"),
       theme: sessionStorage.getItem("theme")
         ? sessionStorage.getItem("theme")
         : "light",
       display: sessionStorage.getItem("display"),
-      load: sessionStorage.getItem("load"),
+      load: sessionStorage.getItem("load")
+        ? JSON.parse(sessionStorage.getItem("load"))
+        : false,
       modulePerCountry: sessionStorage.getItem("module"),
       show: sessionStorage.getItem("show")
-        ? sessionStorage.getItem("show")
+        ? JSON.parse(sessionStorage.getItem("show"))
         : true,
       componentPrintable: sessionStorage.getItem("componentPrintable"),
       nameApp: sessionStorage.getItem("nameApp"),
