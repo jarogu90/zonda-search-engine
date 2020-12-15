@@ -13,10 +13,10 @@ const hide = ({ color, width, height }) => {
       <g
         id="Symbols"
         stroke="none"
-        stroke-width="1"
+        strokeWidth="1"
         fill="none"
-        fill-rule="evenodd"
-        stroke-linecap="round"
+        fillRule="evenodd"
+        strokeLinecap="round"
       >
         <g
           id="atoms-/-icons-/-blue-/-hide-filters"

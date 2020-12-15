@@ -8,12 +8,12 @@ const download = ({ color }) => {
       height="23"
       viewBox="0 0 22 23"
     >
-      <g fill="none" fill-rule="evenodd" stroke-linecap="round">
+      <g fill="none" fillRule="evenodd" strokeLinecap="round">
         <g stroke={color}>
           <g>
             <g>
               <path
-                stroke-width=".927"
+                strokeWidth=".927"
                 d="M0 16.299L0 20.551 19.843 20.551 19.843 16.299"
                 transform="translate(-1277 -420) translate(1270 414) translate(8 7)"
               />
