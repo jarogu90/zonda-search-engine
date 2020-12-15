@@ -1,20 +1,73 @@
 {
-    "1": "New",
-    "2": "Transmitted to pool",
-    "3": "Confirmed by pool",
-    "4": "Transmitted to comm. Carrier",
-    "5": "Confirmed by comm. Carrier",
-    "6": "Scheduled",
-    "7": "Released for execution",
-    "8": "Confirmed by driver",
-    "9": "Arrived at loadingpoint",
-    "10": "Loading",
-    "11": "Loaded",
-    "12": "Shipping",
-    "13": "Arrived at delivery point",
-    "14": "Unloading",
-    "15": "Delivered",
-    "16": "Finished",
-    "17": "Deleted",
-    "18": "Transmitted to rail company"
+    "1": {
+        "txt": "New",
+        "color": "#a079d0"},
+    "2":{
+        "txt": "Transmitted to pool",
+        "color": "#a079d0"
+    },
+    "3":{
+        "txt": "Confirmed by pool",
+        "color": "#a079d0"
+    },
+    "4":{
+        "txt": "Transmitted to comm. Carrier",
+        "color": "#a079d0"
+    },
+    "5":{
+        "txt": "Confirmed by comm. Carrier",
+        "color": "#a079d0"
+    },
+    "6":{
+        "txt": "Scheduled",
+        "color": "#a079d0"
+    },
+    "7": {
+        "txt": "Released for execution",
+        "color": "#ffc500"
+    },
+    "8":{
+        "txt": "Confirmed by driver",
+        "color": "#ffc500"
+    },
+    "9": {
+        "txt": "Arrived at loadingpoint",
+        "color": "#ffc500"
+    },
+    "10":{
+        "txt": "Loading",
+        "color": "#ffc500"
+    },
+    "11":{
+        "txt": "Loaded",
+        "color": "#00bbd6"
+    },
+    "12":{
+        "txt": "Shipping",
+        "color": "#00bbd6"
+    },
+    "13": {
+        "txt": "Arrived at delivery point",
+        "color": "#00bbd6"
+    },
+    "14":{
+        "txt":"Unloading",
+        "color": "#00bbd6"
+    },
+    "15": {
+        "txt": "Delivered",
+        "color": "#00bbd6"
+    },
+    "16":{
+        "txt": "Finished",
+        "color": "#7ecb34"
+    },
+    "17":{
+        "txt": "Deleted",
+        "color": "#ff0000"
+    },
+    "18": {
+        "txt": "Transmitted to rail company",
+        "color": "#a079d0"
+    }
 }

@@ -9,8 +9,14 @@ import TableColumns from "./TableColumns";
 import { Table } from "antd";
 
 import "antd/dist/antd.css";
+import styled from "styled-components";
 
-const OrderHitsTable = ({ hits, dataDateFilter }) => {
+const Status = styled.div`
+  color:  ${({ color }) => color}  !important;
+  font-weight: bold;
+`;
+
+const OrderHitsTable = ({ hits, dataDateFilter, orderStatus }) => {
   const [data, setData] = useState([]);
 
   useEffect(() => {
@@ -29,15 +35,23 @@ const OrderHitsTable = ({ hits, dataDateFilter }) => {
   const fillDataTable = async (data) => {
     const arrayData = [];
     await data.map((hit) => {
+     /*  let color 
+        switch(hit._source.ORDER_STATUS_CD) {
+          case 1:
+            color = "#00beda"
+           break;
+          case 2:
+           color = "#90c84f"
+           break;
+      }; */
+
       let row = {
         orderNumber: hit._source.ORDER_NUMBER,
         sequentialNumber: notExist(hit._source.ORDER_NUMBER_FROM_SEQ_USAGE),
         shippingPoint: hit._source.SHIPPINGPOINT_ID,
         ldsNumber: notExist(hit._source.LDS_DELIVERY_NOTE_NO),
-        orderStatus: statusMigration(hit._source.ORDER_STATUS_CD),
-        orderCreationSystem: orderCreationSystemMigration(
-          hit._source.ORDER_CREATION_TYPE_CD
-        ),
+        orderStatus:<Status color={statusMigration(hit._source.ORDER_STATUS_CD).color}> {statusMigration(hit._source.ORDER_STATUS_CD).txt} </Status>,
+        orderCreationSystem: orderCreationSystemMigration(hit._source.ORDER_CREATION_TYPE_CD),
         shipTo: hit._source.SHIPTO_SAP_BP_ID,
         soldTo: hit._source.SOLDTO_SAP_BP_ID,
         billTo: hit._source.BILLTO_SAP_BP_ID,
