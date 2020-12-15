@@ -22,6 +22,7 @@ import TopBarHeader from "./TopBarHeader";
 import Sidebar from "./Sidebar";
 import NoResults from "./NoResults";
 import { formatDate } from "../utils/Utils";
+import DownloadButton from "./DownloadButton";
 
 //Configuración del json para filtros y endpoint
 import config from "../config.json";
@@ -29,8 +30,6 @@ import config from "../config.json";
 //Imports para las fechas
 import { DatePicker } from "antd";
 import { dateRange } from "../queries/rangeDateQuery";
-
-import Download from "../img/download";
 
 const searchkit = new SearchkitManager(config.endpoint);
 const { RangePicker } = DatePicker;
@@ -45,24 +44,6 @@ class Main extends SearchkitComponent {
     noResults: false,
   };
 
-  DownloadButton(props) {
-    const result = props.hits;
-    if (result == 0) {
-      return <></>;
-    } else {
-      return (
-        <a
-          className="download-button-link"
-          href="/file/orders.csv"
-          download="orders.csv"
-        >
-          <Download color="var(--ocean-blue)"></Download>
-          <p>Download data</p>
-        </a>
-      );
-    }
-  }
-
   CustomHitStats = (props) => {
     const { bemBlocks, hitsCount, timeTaken } = props;
     return (
@@ -73,7 +54,7 @@ class Main extends SearchkitComponent {
             <span className="info_numbers">{timeTaken}ms</span>
           </div>
         </div>
-        <this.DownloadButton hits={hitsCount} />
+        <DownloadButton hits={hitsCount} />
       </>
     );
   };
