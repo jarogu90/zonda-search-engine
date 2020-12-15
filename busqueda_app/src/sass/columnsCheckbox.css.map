@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,AAAA,gBAAgB,CAAC;EACf,KAAK,EAAE,KAAK;EACZ,MAAM,EAAE,KAAK;EACb,MAAM,EAAE,eAAe;EACvB,gBAAgB,EAAE,IAAI;CACvB",
+    "sources": [
+        "columnsCheckbox.scss"
+    ],
+    "names": [],
+    "file": "columnsCheckbox.css"
+}

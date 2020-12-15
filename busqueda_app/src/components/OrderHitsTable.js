@@ -13,8 +13,10 @@ import "antd/dist/antd.css";
 
 const OrderHitsTable = ({ hits, dataDateFilter }) => {
   const [data, setData] = useState([]);
-  const [isChecked, setIsChecked] = useState();
-  const [columnas, setColumnas] = useState(TableColumns());
+  const [isChecked, setIsChecked] = useState(false);
+  const [checkedColumns, setCheckedColumns] = useState(TableColumns);
+  //const [initialColumns, setInitalColumns] = useState();
+  const [columns, setColumns] = useState(TableColumns);
 
   useEffect(() => {
     const getData = async () => {
@@ -27,7 +29,7 @@ const OrderHitsTable = ({ hits, dataDateFilter }) => {
       }
     };
     getData();
-  }, [hits, dataDateFilter, columnas]);
+  }, [hits, dataDateFilter, checkedColumns]);
 
   const fillDataTable = async (data) => {
     const arrayData = [];
@@ -58,35 +60,75 @@ const OrderHitsTable = ({ hits, dataDateFilter }) => {
     return arrayData;
   };
 
-  const checkboxOnChange = (e) => {
-    const columns = TableColumns();
+  const onChangeCheckbox = (e) => {
+    let selectedColumns = checkedColumns;
     const column = {
       title: e.target.id,
       dataIndex: e.target.id,
       key: e.target.id,
     };
+
     if (!e.target.checked) {
-      for (let i = 0; i <= columns.length; i++) {
-        if (columns[i].dataIndex === column.dataIndex) {
-          columns.splice([i], 1);
-          console.log(columns);
-          setColumnas(columns);
-          break;
-        }
-      }
+      console.log("deschequeado");
+      setIsChecked(false);
+      selectedColumns = selectedColumns.filter((col) => {
+        return col.dataIndex !== column.dataIndex;
+      });
+      console.log(selectedColumns);
     } else {
-      console.log(columns);
-      setColumnas(columns);
+      console.log("chequeado", column);
+      setIsChecked(true);
+      selectedColumns.push(column);
+      console.log(selectedColumns);
     }
+    setCheckedColumns(selectedColumns);
+  };
+
+  const CheckboxList = ({ columnas }) => {
+    console.log(columnas);
+    for (let i = 0; i <= columnas.length; i++) {
+      return (
+        <Checkbox
+          id={columnas[i].dataIndex}
+          onChange={onChangeCheckbox}
+          defaultChecked
+        >
+          {columnas[i].title}
+        </Checkbox>
+      );
+    }
+    /*columns.map((column) => {
+      console.log(column);
+      return (
+        <Checkbox
+          id={column.dataIndex}
+          onChange={onChangeCheckbox}
+          defaultChecked
+        >
+          {column.title}
+        </Checkbox>
+      );
+    });*/
   };
 
   return (
     <>
       {/* <div onClick={editColumns}>Add columns</div> */}
-      <Checkbox id="orderNumber" onChange={checkboxOnChange} defaultChecked>
-        Hola
+      <CheckboxList columnas={columns} />
+      <Checkbox id="orderNumber" onChange={onChangeCheckbox} defaultChecked>
+        Order Number
       </Checkbox>
-      <Table columns={columnas} dataSource={data} size="small" bordered />
+      <Checkbox
+        id="sequentialNumber"
+        onChange={onChangeCheckbox}
+        defaultChecked
+      >
+        Sequential Number
+      </Checkbox>
+      <Checkbox id="shippingPoint" onChange={onChangeCheckbox} defaultChecked>
+        Shipping Point
+      </Checkbox>
+      <Table columns={checkedColumns} dataSource={data} size="small" bordered />
     </>
   );
 };

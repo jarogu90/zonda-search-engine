@@ -68,7 +68,7 @@ class App extends React.Component {
       <Menu>
         <Menu.ItemGroup title="Columns">
           <Menu.Item key="4">
-            <Checkbox id="orderNumber" onChange={this.onChange} defaultChecked>
+            <Checkbox id="orderNumber" onChange={this.onChange}>
               Age
             </Checkbox>
           </Menu.Item>
