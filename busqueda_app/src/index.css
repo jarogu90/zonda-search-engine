@@ -16,10 +16,10 @@ h3 {
   margin-top: 0em;
 }
 
-.sk-panel__header,
+/* .sk-panel__header,
 th {
   color: #2a4466;
-}
+} */
 
 .sk-select select {
   color: #2a4466;
@@ -47,11 +47,11 @@ ul li::before {
   margin-left: 1em;
 }
 
-th {
+/* th {
   box-shadow: none;
   background-color: #2a4466;
   color: #fff;
-}
+} */
 
 .sk-hits-grid-hit {
   padding-right: 1em;
