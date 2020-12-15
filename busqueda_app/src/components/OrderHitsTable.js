@@ -7,16 +7,15 @@ import {
 } from "../utils/Utils";
 import TableColumns from "./TableColumns";
 import ColumnsCheckbox from "./GenericComponents/ColumnsCheckbox";
-import { Table, Checkbox } from "antd";
+import { Table, Button, Dropdown, Menu, Checkbox } from "antd";
 
 import "antd/dist/antd.css";
 
 const OrderHitsTable = ({ hits, dataDateFilter }) => {
   const [data, setData] = useState([]);
-  const [isChecked, setIsChecked] = useState(false);
   const [checkedColumns, setCheckedColumns] = useState(TableColumns);
-  //const [initialColumns, setInitalColumns] = useState();
   const [columns, setColumns] = useState(TableColumns);
+  const [visibleMenuSettings, setVisibleMenuSettings] = useState(false);
 
   const fillDataTable = async (data) => {
     const arrayData = [];
@@ -56,41 +55,39 @@ const OrderHitsTable = ({ hits, dataDateFilter }) => {
     };
 
     if (!e.target.checked) {
-      setIsChecked(false);
       setCheckedColumns(
         checkedColumns.filter((col) => col.dataIndex !== column.dataIndex)
       );
     } else {
-      setIsChecked(true);
       setCheckedColumns([...checkedColumns, column]);
     }
   };
 
-  const CheckboxList = ({ columnas }) => {
-    // console.log(columnas);
-    for (let i = 0; i <= columnas.length; i++) {
-      return (
-        <Checkbox
-          id={columnas[i].dataIndex}
-          onChange={onChangeCheckbox}
-          defaultChecked
-        >
-          {columnas[i].title}
-        </Checkbox>
-      );
-    }
-    /*columns.map((column) => {
-      console.log(column);
-      return (
-        <Checkbox
-          id={column.dataIndex}
-          onChange={onChangeCheckbox}
-          defaultChecked
-        >
-          {column.title}
-        </Checkbox>
-      );
-    });*/
+  const ColumnsDropdown = () => {
+    return (
+      <Menu>
+        <Menu.ItemGroup title="Columns">
+          {columns.map((column) => {
+            console.log(column);
+            return (
+              <Menu.Item key={column.dataIndex}>
+                <Checkbox
+                  id={column.dataIndex}
+                  onChange={onChangeCheckbox}
+                  defaultChecked
+                >
+                  {column.title}
+                </Checkbox>
+              </Menu.Item>
+            );
+          })}
+        </Menu.ItemGroup>
+      </Menu>
+    );
+  };
+
+  const handleVisibleChange = (flag) => {
+    setVisibleMenuSettings(flag);
   };
 
   useEffect(() => {
@@ -108,20 +105,14 @@ const OrderHitsTable = ({ hits, dataDateFilter }) => {
 
   return (
     <>
-      {/* <CheckboxList columnas={columns} /> */}
-      <Checkbox id="orderNumber" onChange={onChangeCheckbox} defaultChecked>
-        Order Number
-      </Checkbox>
-      <Checkbox
-        id="sequentialNumber"
-        onChange={onChangeCheckbox}
-        defaultChecked
+      <Dropdown
+        overlay={ColumnsDropdown}
+        onVisibleChange={handleVisibleChange}
+        visible={visibleMenuSettings}
+        trigger="click"
       >
-        Sequential Number
-      </Checkbox>
-      <Checkbox id="shippingPoint" onChange={onChangeCheckbox} defaultChecked>
-        Shipping Point
-      </Checkbox>
+        <Button>Show/Hide</Button>
+      </Dropdown>
       <Table columns={checkedColumns} dataSource={data} size="small" bordered />
     </>
   );
