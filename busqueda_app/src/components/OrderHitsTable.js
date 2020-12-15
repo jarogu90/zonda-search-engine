@@ -49,7 +49,6 @@ const OrderHitsTable = ({ hits, dataDateFilter }) => {
   };
 
   const onChangeCheckbox = (e) => {
-    // let selectedColumns = checkedColumns;
     const column = {
       title: e.target.id,
       dataIndex: e.target.id,
@@ -57,31 +56,14 @@ const OrderHitsTable = ({ hits, dataDateFilter }) => {
     };
 
     if (!e.target.checked) {
-      // console.log("deschequeado");
       setIsChecked(false);
-      // selectedColumns = selectedColumns.filter((col) => {
-      //   return col.dataIndex !== column.dataIndex;
-      // });
       setCheckedColumns(
         checkedColumns.filter((col) => col.dataIndex !== column.dataIndex)
       );
-      console.log( checkedColumns.filter((col) => col.dataIndex !== column.dataIndex))
-      // console.log(selectedColumns);
     } else {
-      // console.log("chequeado", column);
       setIsChecked(true);
-      // selectedColumns.push(column);
-      setCheckedColumns([
-        ...checkedColumns,
-        { title: e.target.id, dataIndex: e.target.id, key: e.target.id },
-      ]);
-      console.log([
-        ...checkedColumns,
-        { title: e.target.id, dataIndex: e.target.id, key: e.target.id },
-      ])
-      // console.log(selectedColumns);
+      setCheckedColumns([...checkedColumns, column]);
     }
-    // setCheckedColumns(selectedColumns);
   };
 
   const CheckboxList = ({ columnas }) => {
@@ -126,8 +108,7 @@ const OrderHitsTable = ({ hits, dataDateFilter }) => {
 
   return (
     <>
-      {/* <div onClick={editColumns}>Add columns</div> */}
-      <CheckboxList columnas={columns} />
+      {/* <CheckboxList columnas={columns} /> */}
       <Checkbox id="orderNumber" onChange={onChangeCheckbox} defaultChecked>
         Order Number
       </Checkbox>
