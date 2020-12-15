@@ -6,8 +6,8 @@ import {
   formatDateTime,
 } from "../utils/Utils";
 import TableColumns from "./TableColumns";
-import ColumnsCheckbox from "./GenericComponents/ColumnsCheckbox";
-import { Table, Button, Dropdown, Menu, Checkbox } from "antd";
+import { Table } from "antd";
+import ColumnsMenu from "./ColumnsMenu";
 
 import "antd/dist/antd.css";
 
@@ -15,7 +15,6 @@ const OrderHitsTable = ({ hits, dataDateFilter }) => {
   const [data, setData] = useState([]);
   const [checkedColumns, setCheckedColumns] = useState(TableColumns);
   const [columns, setColumns] = useState(TableColumns);
-  const [visibleMenuSettings, setVisibleMenuSettings] = useState(false);
 
   const fillDataTable = async (data) => {
     const arrayData = [];
@@ -63,33 +62,6 @@ const OrderHitsTable = ({ hits, dataDateFilter }) => {
     }
   };
 
-  const ColumnsDropdown = () => {
-    return (
-      <Menu>
-        <Menu.ItemGroup title="Columns">
-          {columns.map((column) => {
-            console.log(column);
-            return (
-              <Menu.Item key={column.dataIndex}>
-                <Checkbox
-                  id={column.dataIndex}
-                  onChange={onChangeCheckbox}
-                  defaultChecked
-                >
-                  {column.title}
-                </Checkbox>
-              </Menu.Item>
-            );
-          })}
-        </Menu.ItemGroup>
-      </Menu>
-    );
-  };
-
-  const handleVisibleChange = (flag) => {
-    setVisibleMenuSettings(flag);
-  };
-
   useEffect(() => {
     const getData = async () => {
       if (dataDateFilter && dataDateFilter.length > 0) {
@@ -101,18 +73,11 @@ const OrderHitsTable = ({ hits, dataDateFilter }) => {
       }
     };
     getData();
-  }, [hits, dataDateFilter, checkedColumns]);
+  }, [hits, dataDateFilter]);
 
   return (
     <>
-      <Dropdown
-        overlay={ColumnsDropdown}
-        onVisibleChange={handleVisibleChange}
-        visible={visibleMenuSettings}
-        trigger="click"
-      >
-        <Button>Show/Hide</Button>
-      </Dropdown>
+      <ColumnsMenu columns={columns} onChangeCheckbox={onChangeCheckbox} />
       <Table columns={checkedColumns} dataSource={data} size="small" bordered />
     </>
   );
