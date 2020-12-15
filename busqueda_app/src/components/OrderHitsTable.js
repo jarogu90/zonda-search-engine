@@ -18,22 +18,9 @@ const OrderHitsTable = ({ hits, dataDateFilter }) => {
   //const [initialColumns, setInitalColumns] = useState();
   const [columns, setColumns] = useState(TableColumns);
 
-  useEffect(() => {
-    const getData = async () => {
-      if (dataDateFilter && dataDateFilter.length > 0) {
-        const datesData = await fillDataTable(dataDateFilter);
-        setData(datesData);
-      } else {
-        const restData = await fillDataTable(hits);
-        setData(restData);
-      }
-    };
-    getData();
-  }, [hits, dataDateFilter, checkedColumns]);
-
   const fillDataTable = async (data) => {
     const arrayData = [];
-    await data.map((hit) => {
+    await data.map((hit, idx) => {
       let row = {
         orderNumber: hit._source.ORDER_NUMBER,
         sequentialNumber: notExist(hit._source.ORDER_NUMBER_FROM_SEQ_USAGE),
@@ -54,6 +41,7 @@ const OrderHitsTable = ({ hits, dataDateFilter }) => {
         deliveryFrom: formatDateTime(hit._source.DELIVERY_FROM_DAT),
         deliveryTo: formatDateTime(hit._source.DELIVERY_TO_DAT),
         createdBy: hit._source.CTL_CRE_UID,
+        key: idx,
       };
       arrayData.push(row);
     });
@@ -61,7 +49,7 @@ const OrderHitsTable = ({ hits, dataDateFilter }) => {
   };
 
   const onChangeCheckbox = (e) => {
-    let selectedColumns = checkedColumns;
+    // let selectedColumns = checkedColumns;
     const column = {
       title: e.target.id,
       dataIndex: e.target.id,
@@ -69,23 +57,35 @@ const OrderHitsTable = ({ hits, dataDateFilter }) => {
     };
 
     if (!e.target.checked) {
-      console.log("deschequeado");
+      // console.log("deschequeado");
       setIsChecked(false);
-      selectedColumns = selectedColumns.filter((col) => {
-        return col.dataIndex !== column.dataIndex;
-      });
-      console.log(selectedColumns);
+      // selectedColumns = selectedColumns.filter((col) => {
+      //   return col.dataIndex !== column.dataIndex;
+      // });
+      setCheckedColumns(
+        checkedColumns.filter((col) => col.dataIndex !== column.dataIndex)
+      );
+      console.log( checkedColumns.filter((col) => col.dataIndex !== column.dataIndex))
+      // console.log(selectedColumns);
     } else {
-      console.log("chequeado", column);
+      // console.log("chequeado", column);
       setIsChecked(true);
-      selectedColumns.push(column);
-      console.log(selectedColumns);
+      // selectedColumns.push(column);
+      setCheckedColumns([
+        ...checkedColumns,
+        { title: e.target.id, dataIndex: e.target.id, key: e.target.id },
+      ]);
+      console.log([
+        ...checkedColumns,
+        { title: e.target.id, dataIndex: e.target.id, key: e.target.id },
+      ])
+      // console.log(selectedColumns);
     }
-    setCheckedColumns(selectedColumns);
+    // setCheckedColumns(selectedColumns);
   };
 
   const CheckboxList = ({ columnas }) => {
-    console.log(columnas);
+    // console.log(columnas);
     for (let i = 0; i <= columnas.length; i++) {
       return (
         <Checkbox
@@ -110,6 +110,19 @@ const OrderHitsTable = ({ hits, dataDateFilter }) => {
       );
     });*/
   };
+
+  useEffect(() => {
+    const getData = async () => {
+      if (dataDateFilter && dataDateFilter.length > 0) {
+        const datesData = await fillDataTable(dataDateFilter);
+        setData(datesData);
+      } else {
+        const restData = await fillDataTable(hits);
+        setData(restData);
+      }
+    };
+    getData();
+  }, [hits, dataDateFilter, checkedColumns]);
 
   return (
     <>
