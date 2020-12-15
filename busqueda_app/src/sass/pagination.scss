@@ -48,16 +48,57 @@
     }
 }
 
+
 .ant-pagination {
-    margin: 16px 0;
+    justify-content: center !important;
+    width: fit-content;
+    margin: 2rem auto !important;
 
+    height: 36px;
+    padding: 0;
+    border-radius: 4px;
+    background-color: #ffffff;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.21);
 
+    .ant-pagination-item-active {
+        font-weight: 500;
+        border-color: #009fce;
+        background-color: #009fce;
+
+        a {
+            color: white;
+        }
+
+    }
+
+    li {
+        height: 36px !important;
+        text-align: center;
+        display: table;
+
+        a {
+            display: table-cell;
+            vertical-align: middle;
+
+            &:hover {
+                color: var(--ocean-blue)
+            }
+        }
+    }
+
+    .ant-pagination-options {
+        align-items: center;
+        display: flex;
+
+        .ant-select:not(.ant-select-customize-input) .ant-select-selector {
+            border: none;
+        }
+    }
 }
 
-.ant-spin-container .ant-table-pagination-right {
 
-    justify-content: center;
-}
+
+
 
 [class^=ant-] *::before,
 [class*=ant-] *::before {

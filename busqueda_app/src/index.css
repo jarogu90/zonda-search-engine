@@ -4,6 +4,10 @@
   src: local('SofiaPro'), url(./fonts/SofiaPro/SofiaProRegular.woff) format('woff');
 }
 
+*:focus {
+  outline: none;
+  border: none;
+}
 
 .sk-layout__body {
   margin-top: 80px;

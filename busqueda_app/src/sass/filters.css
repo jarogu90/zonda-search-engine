@@ -39,7 +39,7 @@
 }
 
 .sk-selected-filters {
-  height: 36px;
+  height: auto;
   padding: 3px 8px 4px 9px;
   border-radius: 4px;
   border: solid 1px var(--light-blue-grey);
@@ -75,5 +75,10 @@
   color: #959595;
   border-left: none;
   padding-left: 0;
+}
+
+.sk-selected-filters .ant-select-open {
+  border: none;
+  background: red;
 }
 /*# sourceMappingURL=filters.css.map */

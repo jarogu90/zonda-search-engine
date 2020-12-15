@@ -56,13 +56,57 @@
 }
 
 .ant-pagination {
-  margin: 16px 0;
+  -webkit-box-pack: center !important;
+      -ms-flex-pack: center !important;
+          justify-content: center !important;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  margin: 2rem auto !important;
+  height: 36px;
+  padding: 0;
+  border-radius: 4px;
+  background-color: #ffffff;
+  -webkit-box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.21);
+          box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.21);
 }
 
-.ant-spin-container .ant-table-pagination-right {
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+.ant-pagination .ant-pagination-item-active {
+  font-weight: 500;
+  border-color: #009fce;
+  background-color: #009fce;
+}
+
+.ant-pagination .ant-pagination-item-active a {
+  color: white;
+}
+
+.ant-pagination li {
+  height: 36px !important;
+  text-align: center;
+  display: table;
+}
+
+.ant-pagination li a {
+  display: table-cell;
+  vertical-align: middle;
+}
+
+.ant-pagination li a:hover {
+  color: var(--ocean-blue);
+}
+
+.ant-pagination .ant-pagination-options {
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.ant-pagination .ant-pagination-options .ant-select:not(.ant-select-customize-input) .ant-select-selector {
+  border: none;
 }
 
 [class^=ant-] *::before,

@@ -62,7 +62,7 @@
         color: #445870;
     }
 
-    height: 36px;
+    height: auto;
     padding: 3px 8px 4px 9px;
     border-radius: 4px;
     border: solid 1px var(--light-blue-grey);
@@ -90,5 +90,12 @@
             border-left: none;
             padding-left: 0;
         }
+    }
+
+
+    .ant-select-open {
+        border: none;
+        background: red;
+
     }
 }
