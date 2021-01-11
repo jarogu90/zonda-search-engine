@@ -8,6 +8,7 @@
     "@testing-library/react": "^9.5.0",
     "@testing-library/user-event": "^7.2.1",
     "@wojtekmaj/react-daterange-picker": "^2.5.0",
+    "ant-table-extensions": "^1.1.7",
     "antd": "^4.8.5",
     "lodash": "^4.17.20",
     "moment": "^2.25.3",

@@ -11,6 +11,7 @@ import ColumnsMenu from "./ColumnsMenu";
 
 import "antd/dist/antd.css";
 import styled from "styled-components";
+import { ExportTableButton } from "ant-table-extensions";
 
 const Status = styled.div`
   color: ${({ color }) => color} !important;
@@ -186,6 +187,14 @@ const OrderHitsTable = ({ hits, dataDateFilter, orderStatus }) => {
   return (
     <>
       <ColumnsMenu columns={columns} onChangeCheckbox={onChangeCheckbox} />
+      <ExportTableButton
+        columns={checkedColumns}
+        dataSource={data}
+        btnProps={{ type: "primary" }}
+        showColumnPicker
+      >
+        Export to CSV
+      </ExportTableButton>
       <Table columns={checkedColumns} dataSource={data} size="small" bordered />
     </>
   );

@@ -2,9 +2,7 @@ import React from "react";
 
 import Download from "../img/download";
 
-import Export from "../services/export";
-
-const DownloadButton = (props, datos) => {
+const DownloadButton = (props) => {
   const result = props.hits;
   if (result == 0) {
     return <></>;
@@ -15,7 +13,7 @@ const DownloadButton = (props, datos) => {
         href="/file/orders.csv"
         download="orders.csv"
       >
-        <Download color="var(--ocean-blue)">data={datos}</Download>
+        <Download color="var(--ocean-blue)"></Download>
         <p>Download data</p>
       </a>
     );
