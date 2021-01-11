@@ -36,7 +36,7 @@ const OrderHitsTable = ({ hits, dataDateFilter, orderStatus }) => {
           backgroundcolor = "rgba(0, 115, 175, 0.2)";
           break;
         case 0:
-          backgroundcolor = "#ffffff";
+          backgroundcolor = "rgba(255, 255, 255, 0.2)";
           break;
       }
 

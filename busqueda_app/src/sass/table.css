@@ -10,8 +10,16 @@
   font-size: 12px;
   text-align: center;
   color: var(--greyish-brown);
-  padding: 6px 0 0;
-  background-color: #f7f8f9;
+  height: 70px;
+  padding: 0 !important;
+}
+
+.ant-table-content .ant-table-cell div {
+  height: 70px;
+  width: 100vh;
+  display: table-cell;
+  vertical-align: middle;
+  padding: 0 20px 0 20px !important;
 }
 
 .ant-table.ant-table-bordered > .ant-table-container {
@@ -27,24 +35,6 @@ header {
 
 .table-header {
   height: 52px;
-  /*  th:nth-child(2){
-        width: 15%;
-    }
-    th:nth-child(4){
-        width: 10%;
-    }
-    th:nth-child(5){
-        width: 11%;
-    }
-    th:nth-child(7){
-        width: 10%;
-    }
-    th:nth-child(8){
-        width: 8%;
-    }
-    th:nth-child(9){
-        width: 8%;
-    } */
 }
 
 .table-header:nth-child(even) {
@@ -61,24 +51,6 @@ header {
   margin-left: 0px !important;
 }
 
-/*  &:nth-child(1){
-        cursor: pointer;
-    }
-
-    &:nth-child(7),
-    &:nth-child(8),
-    &:nth-child(9){
-        color: var(--ocean-blue);
-    }
-
-    &:nth-child(7)::after,
-    &:nth-child(8)::after{
-        content: " m";
-    }
-
-    &:nth-child(9)::after{
-        content: " min";
-    } */
 .Rectangle-value-1 {
   width: 17px;
   height: 23px;
