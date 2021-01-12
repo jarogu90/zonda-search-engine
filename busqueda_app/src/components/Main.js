@@ -13,6 +13,7 @@ import {
   LayoutResults,
   ActionBar,
   ActionBarRow,
+  RangeFilter,
 } from "searchkit";
 
 //Componentes manuales
@@ -30,6 +31,7 @@ import config from "../config.json";
 //Imports para las fechas
 import { DatePicker } from "antd";
 import { dateRange } from "../queries/rangeDateQuery";
+import DatesRangeFilter from "./DatesRangeFilter";
 
 const searchkit = new SearchkitManager(config.endpoint);
 const { RangePicker } = DatePicker;
@@ -64,7 +66,7 @@ class Main extends SearchkitComponent {
   };
 
   //AQUI EMPIEZAN LAS FUNCIONES RELACIONADAS CON LAS FECHAS
-  getData = (dateFrom, dateTo) => {
+  /* getData = (dateFrom, dateTo) => {
     dateRange(dateFrom, dateTo).then((res) => {
       if (res.hits.hits.length < 1) {
         this.setState({
@@ -91,7 +93,7 @@ class Main extends SearchkitComponent {
       });
       this.getData(formatedStartDate, formatedStartDate);
     }
-  };
+  }; */
 
   render() {
     const { state } = this.props;
@@ -103,10 +105,10 @@ class Main extends SearchkitComponent {
             <Sidebar />
             <LayoutResults className="layout">
               <ActionBar>
-                <RangePicker
+                {/* <RangePicker
                   value={this.state.value}
                   onChange={this.onChange}
-                />
+                /> */}
                 <InputFilterSection />
                 <ActionBarRow>
                   <SelectedFilters />

@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 
-import { SearchBox, ActionBarRow, InputFilter } from "searchkit";
+import { SearchBox, ActionBarRow, InputFilter, RangeFilter } from "searchkit";
 import config from "../config.json";
+import DatesRangeFilter from "./DatesRangeFilter";
 
 // components
 //import ButtonPrimary from "./GenericComponents/ButtonPrimary";
@@ -94,6 +95,22 @@ const InputFilterSection = () => {
               searchOnChange={true}
               prefixQueryFields={config.filters.searchboxCreatedBy.fields}
               blurAction="search"
+            />
+            <RangeFilter
+              id="dateFrom"
+              title="Date from"
+              field="DELIVERY_FROM_DAT"
+              rangeComponent={DatesRangeFilter}
+              min={946684800000}
+              max={new Date().getTime()}
+            />
+            <RangeFilter
+              id="dateTo"
+              title="Date to"
+              field="DELIVERY_TO_DAT"
+              rangeComponent={DatesRangeFilter}
+              min={946684800000}
+              max={new Date().getTime()}
             />
           </GridInputs>
 
