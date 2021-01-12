@@ -184,6 +184,12 @@ const OrderHitsTable = ({ hits, dataDateFilter, orderStatus }) => {
     getData();
   }, [hits, dataDateFilter]);
 
+  const DataToExport = () => {
+    data.map((row) => {
+      return JSON.stringify(row);
+    });
+  };
+  console.log(checkedColumns);
   return (
     <>
       <ColumnsMenu columns={columns} onChangeCheckbox={onChangeCheckbox} />
