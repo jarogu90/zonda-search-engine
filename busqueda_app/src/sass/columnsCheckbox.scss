@@ -3,4 +3,16 @@
   height: 500px;
   border: 1px solid black;
   background-color: blue;
+  display: none;
+}
+
+
+.ant-dropdown-menu-item-group-list {
+  width: 900px;
+  display: flex;
+  flex-wrap: wrap;
+
+  li {
+    width: 180px;
+  }
 }
