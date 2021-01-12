@@ -63,7 +63,29 @@ class Main extends SearchkitComponent {
 
   changeCleanDateStatus = () => {
     this.setState({ arraydata: null });
+    this.setState({ cleanDate: true });
   };
+
+  turnFalseDateFilter = () => {
+    this.setState({ cleanDate: false });
+  };
+
+  SelectedFilter = (props) => (
+    <div className="sk-selected-filters-option">
+      <div className={props.bemBlocks.option("name")}>
+        {props.labelKey}: {props.labelValue}
+      </div>
+      <div
+        className={props.bemBlocks.option("remove-action")}
+        onClick={() => {
+          props.removeFilter();
+          this.setState({ cleanDate: true });
+        }}
+      >
+        x
+      </div>
+    </div>
+  );
 
   //AQUI EMPIEZAN LAS FUNCIONES RELACIONADAS CON LAS FECHAS
   /* getData = (dateFrom, dateTo) => {
@@ -109,9 +131,13 @@ class Main extends SearchkitComponent {
                   value={this.state.value}
                   onChange={this.onChange}
                 /> */}
-                <InputFilterSection />
+                <InputFilterSection
+                  cleanDate={this.state.cleanDate}
+                  turnFalseDateFilter={this.turnFalseDateFilter}
+                />
                 <ActionBarRow>
-                  <SelectedFilters />
+                  <SelectedFilters itemComponent={this.SelectedFilter} />
+
                   <div
                     className="resetfilters"
                     onClick={this.changeCleanDateStatus}

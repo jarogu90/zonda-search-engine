@@ -1,11 +1,17 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { DatePicker } from "antd";
 import { formatDate } from "./../utils/Utils";
 
 const { RangePicker } = DatePicker;
 
-const DatesRangeFilter = ({ onFinished }) => {
+const DatesRangeFilter = ({ onFinished, cleanDate, turnFalseDateFilter }) => {
   const [dates, setDates] = useState({});
+
+  const cleanInput = () => {
+    if (cleanDate) {
+      setDates(null);
+    }
+  };
 
   const handleOnChange = (val) => {
     console.log(val);
@@ -17,38 +23,14 @@ const DatesRangeFilter = ({ onFinished }) => {
       min: formatDate(val[0]._d),
       max: formatDate(val[1]._d),
     });
+    turnFalseDateFilter();
   };
 
-  const handleChangeFrom = (val) => {
-    if (val === null) {
-      return;
-    }
-    onFinished({
-      min: formatDate(val._d),
-      max: formatDate(val._d),
-    });
-  };
-  const handleChangeTo = (val) => {
-    if (val === null) {
-      return;
-    }
-    onFinished({
-      min: formatDate(val._d),
-      max: formatDate(val._d),
-    });
-  };
+  useEffect(() => {
+    cleanInput();
+  }, [cleanDate]);
 
-  return (
-    <>
-      <RangePicker
-        value={dates}
-        onChange={handleOnChange}
-        //disabled={[false, true]}
-      />
-      {/* <DatePicker onChange={handleChangeFrom} /> */}
-      {/* <DatePicker onChange={handleChangeTo} /> */}
-    </>
-  );
+  return <RangePicker value={dates} onChange={handleOnChange} />;
 };
 
 export default DatesRangeFilter;

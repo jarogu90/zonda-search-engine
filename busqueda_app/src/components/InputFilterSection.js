@@ -46,20 +46,7 @@ const GridInputs = styled.div`
   }
 `;
 
-const InputFilterSection = () => {
-  // state
-  /*const [date, setDate] = useState([new Date(), new Date()]);
-  const [cleanDate, setcleanDate] = useState(false);
-  const [searcher, setSearcher] = useState(true);
-
-  const OnSearch = () => {
-    setSearcher(false);
-  };
-
-  const turnFalseDateFilter = () => {
-    setcleanDate(false);
-  };*/
-
+const InputFilterSection = ({ cleanDate, turnFalseDateFilter }) => {
   return (
     <>
       <ActionBarRow>
@@ -100,7 +87,12 @@ const InputFilterSection = () => {
               id="dateFrom"
               title="Date from"
               field="DELIVERY_FROM_DAT"
-              rangeComponent={DatesRangeFilter}
+              rangeComponent={
+                <DatesRangeFilter
+                  cleanDate={cleanDate}
+                  turnFalseDateFilter={turnFalseDateFilter}
+                />
+              }
               min={946684800000}
               max={new Date().getTime()}
             />
@@ -108,7 +100,12 @@ const InputFilterSection = () => {
               id="dateTo"
               title="Date to"
               field="DELIVERY_TO_DAT"
-              rangeComponent={DatesRangeFilter}
+              rangeComponent={
+                <DatesRangeFilter
+                  cleanDate={cleanDate}
+                  turnFalseDateFilter={turnFalseDateFilter}
+                />
+              }
               min={946684800000}
               max={new Date().getTime()}
             />
