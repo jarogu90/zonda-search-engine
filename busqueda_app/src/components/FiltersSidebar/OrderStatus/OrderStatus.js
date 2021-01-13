@@ -34,7 +34,10 @@ const OrderStatus = () => {
         <div className={props.bemBlocks.option("text")}>
           {statusMigration(parseInt(props.label)).txt}
         </div>
-        <div className={props.bemBlocks.option("count")}>{props.count}</div>
+
+        <div className={props.bemBlocks.option("count")}>
+          <input type="checkbox" />
+        </div>
       </div>
     );
   };
