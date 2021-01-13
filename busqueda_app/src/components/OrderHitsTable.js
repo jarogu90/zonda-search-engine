@@ -210,7 +210,7 @@ const OrderHitsTable = ({ hits, dataDateFilter, orderStatus }) => {
     // "createdBy"
 
     dta.forEach((element) => {
-      console.log(element);
+      //console.log(element);
       dataPrintable.push({
         orderNumber: element._source.ORDER_NUMBER,
         billTo: element._source.BILLTO_SAP_BP_ID,
@@ -238,14 +238,14 @@ const OrderHitsTable = ({ hits, dataDateFilter, orderStatus }) => {
     setPrintable(newData);
   }, [hits, dataDateFilter, checkedColumns]);
 
-  console.log(dataPrintable);
+  //console.log(dataPrintable);
 
   const DataToExport = () => {
     data.map((row) => {
       return JSON.stringify(row);
     });
   };
-  console.log(checkedColumns);
+  //console.log(checkedColumns);
   return (
     <>
       <ColumnsMenu columns={columns} onChangeCheckbox={onChangeCheckbox} />
