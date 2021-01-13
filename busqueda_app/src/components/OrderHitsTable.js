@@ -160,9 +160,14 @@ const OrderHitsTable = ({ hits, dataDateFilter, orderStatus }) => {
     return arrayData;
   };
 
+  const getColumnTitleByKey = (key) => {
+    const column = columns.filter((col) => col.key === key);
+    return column[0].title;
+  };
+
   const onChangeCheckbox = (e) => {
     const column = {
-      title: e.target.id,
+      title: getColumnTitleByKey(e.target.id),
       dataIndex: e.target.id,
       key: e.target.id,
     };

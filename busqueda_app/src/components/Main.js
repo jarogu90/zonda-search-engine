@@ -13,6 +13,7 @@ import {
   LayoutResults,
   ActionBar,
   ActionBarRow,
+  RangeFilter,
 } from "searchkit";
 
 //Componentes manuales
@@ -30,6 +31,7 @@ import config from "../config.json";
 //Imports para las fechas
 import { DatePicker } from "antd";
 import { dateRange } from "../queries/rangeDateQuery";
+import DatesRangeFilter from "./DatesRangeFilter";
 
 const searchkit = new SearchkitManager(config.endpoint);
 const { RangePicker } = DatePicker;
@@ -61,10 +63,32 @@ class Main extends SearchkitComponent {
 
   changeCleanDateStatus = () => {
     this.setState({ arraydata: null });
+    this.setState({ cleanDate: true });
   };
 
+  turnFalseDateFilter = () => {
+    this.setState({ cleanDate: false });
+  };
+
+  SelectedFilter = (props) => (
+    <div className="sk-selected-filters-option">
+      <div className={props.bemBlocks.option("name")}>
+        {props.labelKey}: {props.labelValue}
+      </div>
+      <div
+        className={props.bemBlocks.option("remove-action")}
+        onClick={() => {
+          props.removeFilter();
+          this.setState({ cleanDate: true });
+        }}
+      >
+        x
+      </div>
+    </div>
+  );
+
   //AQUI EMPIEZAN LAS FUNCIONES RELACIONADAS CON LAS FECHAS
-  getData = (dateFrom, dateTo) => {
+  /* getData = (dateFrom, dateTo) => {
     dateRange(dateFrom, dateTo).then((res) => {
       if (res.hits.hits.length < 1) {
         this.setState({
@@ -91,7 +115,7 @@ class Main extends SearchkitComponent {
       });
       this.getData(formatedStartDate, formatedStartDate);
     }
-  };
+  }; */
 
   render() {
     const { state } = this.props;
@@ -103,13 +127,17 @@ class Main extends SearchkitComponent {
             <Sidebar />
             <LayoutResults className="layout">
               <ActionBar>
-                <RangePicker
+                {/* <RangePicker
                   value={this.state.value}
                   onChange={this.onChange}
+                /> */}
+                <InputFilterSection
+                  cleanDate={this.state.cleanDate}
+                  turnFalseDateFilter={this.turnFalseDateFilter}
                 />
-                <InputFilterSection />
                 <ActionBarRow>
-                  <SelectedFilters />
+                  <SelectedFilters itemComponent={this.SelectedFilter} />
+
                   <div
                     className="resetfilters"
                     onClick={this.changeCleanDateStatus}

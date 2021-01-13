@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import React from "react";
 import styled from "styled-components";
 
-import { SearchBox, ActionBarRow, InputFilter } from "searchkit";
+import { SearchBox, ActionBarRow, InputFilter, RangeFilter } from "searchkit";
 import config from "../config.json";
+import DatesRangeFilter from "./DatesRangeFilter";
 
 // components
 //import ButtonPrimary from "./GenericComponents/ButtonPrimary";
@@ -45,20 +46,7 @@ const GridInputs = styled.div`
   }
 `;
 
-const InputFilterSection = () => {
-  // state
-  /*const [date, setDate] = useState([new Date(), new Date()]);
-  const [cleanDate, setcleanDate] = useState(false);
-  const [searcher, setSearcher] = useState(true);
-
-  const OnSearch = () => {
-    setSearcher(false);
-  };
-
-  const turnFalseDateFilter = () => {
-    setcleanDate(false);
-  };*/
-
+const InputFilterSection = ({ cleanDate, turnFalseDateFilter }) => {
   return (
     <>
       <ActionBarRow>
@@ -94,6 +82,32 @@ const InputFilterSection = () => {
               searchOnChange={true}
               prefixQueryFields={config.filters.searchboxCreatedBy.fields}
               blurAction="search"
+            />
+            <RangeFilter
+              id={config.filters.dateFrom.id}
+              title={config.filters.dateFrom.title}
+              field={config.filters.dateFrom.field}
+              rangeComponent={
+                <DatesRangeFilter
+                  cleanDate={cleanDate}
+                  turnFalseDateFilter={turnFalseDateFilter}
+                />
+              }
+              min={946684800000}
+              max={new Date().getTime()}
+            />
+            <RangeFilter
+              id={config.filters.dateTo.id}
+              title={config.filters.dateTo.title}
+              field={config.filters.dateTo.field}
+              rangeComponent={
+                <DatesRangeFilter
+                  cleanDate={cleanDate}
+                  turnFalseDateFilter={turnFalseDateFilter}
+                />
+              }
+              min={946684800000}
+              max={new Date().getTime()}
             />
           </GridInputs>
 

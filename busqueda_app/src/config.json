@@ -82,12 +82,12 @@
             "id": "createdBy"
         },
         "dateFrom": {
-            "fields": "DELIVERY_FROM_DAT",
+            "field": "DELIVERY_FROM_DAT",
             "title": "Delivery Dates:",
             "id": "event_date_filter_from"
         },
         "dateTo": {
-            "fields": "DELIVERY_TO_DAT",
+            "field": "DELIVERY_TO_DAT",
             "title": "Delivery Dates:",
             "id": "event_date_filter_to"
         }
