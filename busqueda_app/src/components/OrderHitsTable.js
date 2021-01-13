@@ -214,7 +214,21 @@ const OrderHitsTable = ({ hits, dataDateFilter, orderStatus }) => {
       dataPrintable.push({
         orderNumber: element._source.ORDER_NUMBER,
         billTo: element._source.BILLTO_SAP_BP_ID,
-        // sequentialNumber: element._source.
+        sequentialNumber: element._source.ORDER_NUMBER_FROM_SEQ_USAGE,
+        shippingPoint: element._source.SHIPPINGPOINT_ID,
+        ldsNumber: element._source.LDS_DELIVERY_NOTE_NO,
+        orderStatus: element._source.ORDER_STATUS_CD,
+        orderCreationSystem: element._source.ORDER_CREATION_TYPE_CD,
+        shipTo: element._source.SHIPTO_SAP_BP_ID,
+        soldTo: element._source.SOLDTO_SAP_BP_ID,
+        payer: element._source.PAYER_SAP_BP_ID,
+        commercialCarrier: element._source.COMM_CARRIER_ID,
+        executingCarrier: element._source.EXEC_CARRIER_ID,
+        deliveryType: element._source.DELIVERY_TYPE_CD,
+        processType: element._source.DISTRIBUTION_DEST_CD,
+        deliveryFrom: element._source.DELIVERY_FROM_DAT,
+        deliveryTo: element._source.DELIVERY_TO_DAT,
+        createdBy: element._source.CTL_CRE_UID,
       });
     });
     return dataPrintable;
@@ -245,7 +259,7 @@ const OrderHitsTable = ({ hits, dataDateFilter, orderStatus }) => {
       return JSON.stringify(row);
     });
   };
-  console.log(checkedColumns);
+  console.table(headerPrintable);
   return (
     <>
       <ColumnsMenu columns={columns} onChangeCheckbox={onChangeCheckbox} />
