@@ -84,9 +84,9 @@ const InputFilterSection = ({ cleanDate, turnFalseDateFilter }) => {
               blurAction="search"
             />
             <RangeFilter
-              id="dateFrom"
-              title="Date from"
-              field="DELIVERY_FROM_DAT"
+              id={config.filters.dateFrom.id}
+              title={config.filters.dateFrom.title}
+              field={config.filters.dateFrom.field}
               rangeComponent={
                 <DatesRangeFilter
                   cleanDate={cleanDate}
@@ -97,9 +97,9 @@ const InputFilterSection = ({ cleanDate, turnFalseDateFilter }) => {
               max={new Date().getTime()}
             />
             <RangeFilter
-              id="dateTo"
-              title="Date to"
-              field="DELIVERY_TO_DAT"
+              id={config.filters.dateTo.id}
+              title={config.filters.dateTo.title}
+              field={config.filters.dateTo.field}
               rangeComponent={
                 <DatesRangeFilter
                   cleanDate={cleanDate}
