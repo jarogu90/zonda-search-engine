@@ -30,7 +30,9 @@ const DatesRangeFilter = ({ onFinished, cleanDate, turnFalseDateFilter }) => {
     cleanInput();
   }, [cleanDate]);
 
-  return <RangePicker value={dates} onChange={handleOnChange} />;
+  return (
+    <RangePicker value={dates} onChange={handleOnChange} allowClear={false} />
+  );
 };
 
 export default DatesRangeFilter;
