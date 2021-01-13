@@ -5,13 +5,16 @@ import {
   orderCreationSystemMigration,
   formatDateTime,
 } from "../utils/Utils";
-import TableColumns from "./TableColumns";
+import styled from "styled-components";
 import { Table } from "antd";
+import { ExportTableButton } from "ant-table-extensions";
+
+// components
+import TableColumns from "./TableColumns";
 import ColumnsMenu from "./ColumnsMenu";
 
+// styles
 import "antd/dist/antd.css";
-import styled from "styled-components";
-import { ExportTableButton } from "ant-table-extensions";
 
 const Status = styled.div`
   color: ${({ color }) => color} !important;
@@ -24,6 +27,8 @@ const OnHold = styled.div`
 
 const OrderHitsTable = ({ hits, dataDateFilter, orderStatus }) => {
   const [data, setData] = useState([]);
+  const [headerPrintable, setheaderPrintable] = useState([]);
+  const [dataPrintable, setPrintable] = useState([]);
   const [checkedColumns, setCheckedColumns] = useState(TableColumns);
   const [columns, setColumns] = useState(TableColumns);
 
@@ -171,6 +176,45 @@ const OrderHitsTable = ({ hits, dataDateFilter, orderStatus }) => {
     }
   };
 
+  const changeHeader = (hdr) => {
+    let newH = [];
+    for (let index = 0; index < hdr.length; index++) {
+      if (checkedColumns[index]) {
+        newH.push(checkedColumns[index]);
+      }
+    }
+    return newH;
+  };
+
+  const changeData = (dta) => {
+    const dataPrintable = [];
+    // "sequentialNumber"
+    // "shippingPoint"
+    // "ldsNumber"
+    // "orderStatus"
+    // "orderCreationSystem"
+    // "shipTo"
+    // "soldTo"
+    // "payer"
+    // "commercialCarrier"
+    // "executingCarrier"
+    // "deliveryType"
+    // "processType"
+    // "deliveryFrom"
+    // "deliveryTo"
+    // "createdBy"
+
+    dta.forEach((element) => {
+      console.log(element);
+      dataPrintable.push({
+        orderNumber: element._source.ORDER_NUMBER,
+        billTo: element._source.BILLTO_SAP_BP_ID,
+        // sequentialNumber: element._source.
+      });
+    });
+    return dataPrintable;
+  };
+
   useEffect(() => {
     const getData = async () => {
       if (dataDateFilter && dataDateFilter.length > 0) {
@@ -182,14 +226,27 @@ const OrderHitsTable = ({ hits, dataDateFilter, orderStatus }) => {
       }
     };
     getData();
-  }, [hits, dataDateFilter]);
 
+    const newHeader = changeHeader(checkedColumns);
+    const newData = changeData(hits);
+    setheaderPrintable(newHeader);
+    setPrintable(newData);
+  }, [hits, dataDateFilter, checkedColumns]);
+
+  console.log(dataPrintable);
+
+  const DataToExport = () => {
+    data.map((row) => {
+      return JSON.stringify(row);
+    });
+  };
+  console.log(checkedColumns);
   return (
     <>
       <ColumnsMenu columns={columns} onChangeCheckbox={onChangeCheckbox} />
       <ExportTableButton
-        columns={checkedColumns}
-        dataSource={data}
+        columns={headerPrintable}
+        dataSource={dataPrintable}
         btnProps={{ type: "primary" }}
         showColumnPicker
       >

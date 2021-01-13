@@ -19,7 +19,7 @@
   width: 100vh;
   display: table-cell;
   vertical-align: middle;
-  padding: 0 20px 0 20px !important;
+  padding: 0 8px 0 8px !important;
 }
 
 .ant-table.ant-table-bordered > .ant-table-container {

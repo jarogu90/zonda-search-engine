@@ -3,5 +3,44 @@
   height: 500px;
   border: 1px solid black;
   background-color: blue;
+  display: none;
+}
+
+.ant-dropdown-menu-item-group-list {
+  width: 900px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+.ant-dropdown-menu-item-group-list li {
+  width: 180px;
+}
+
+.ant-dropdown-menu-item-group-list li .ant-checkbox-checked .ant-checkbox-inner {
+  background-color: #fff;
+  border-color: var(--turquoise-blue);
+  padding: 1px;
+  border-radius: 2px;
+}
+
+.ant-checkbox-checked .ant-checkbox-inner::after {
+  position: absolute;
+  display: table;
+  border: 2px solid var(--turquoise-blue) !important;
+  /* border-top: 0; */
+  /* border-left: 0; */
+  -webkit-transform: scale(1) !important;
+  /* transform: rotate(45deg) scale(1) translate(-50%, -50%); */
+  opacity: 1;
+  content: ' ';
+  width: 12px;
+  height: 12px;
+  top: 1;
+  left: 1;
+  border-radius: 2px;
+  background: var(--turquoise-blue);
 }
 /*# sourceMappingURL=columnsCheckbox.css.map */
