@@ -13,7 +13,7 @@ input[type="checkbox"]:checked + div.sk-item-list-option__text + div.sk-item-lis
   position: relative;
 }
 
-input[type="checkbox"] {
+.filter--onhold input[type="checkbox"] {
   opacity: 0;
   position: absolute;
   top: 0;
