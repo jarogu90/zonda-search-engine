@@ -4,6 +4,7 @@ import {
   statusMigration,
   orderCreationSystemMigration,
   formatDateTime,
+  deliveryTypeMigration,
 } from "../utils/Utils";
 import styled from "styled-components";
 import { Table } from "antd";
@@ -126,7 +127,7 @@ const OrderHitsTable = ({ hits, dataDateFilter, orderStatus }) => {
         deliveryType: (
           <OnHold backgroundcolor={backgroundcolor}>
             {" "}
-            {hit._source.DELIVERY_TYPE_CD}{" "}
+            {deliveryTypeMigration(hit._source.DELIVERY_TYPE_CD)}{" "}
           </OnHold>
         ),
         processType: (
