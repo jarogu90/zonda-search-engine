@@ -7,6 +7,7 @@ import config from "../../../config.json";
 import FilterBase from "../FilterBase/FilterBase";
 
 import { Select, RefinementListFilter, SearchkitManager } from "searchkit";
+import { orderCreationSystemMigration } from "./../../../utils/Utils";
 
 // services
 import {
@@ -20,6 +21,26 @@ import CreationSystemIcon from "../../../img/creationSystemIcon";
 const CreationSystem = () => {
   const state = useContext(GlobalStateContext);
   const dispatch = useContext(GlobalDispatchContext);
+
+  const RefinementOption = (props) => {
+    console.log(props);
+    return (
+      <div
+        className={props.bemBlocks
+          .option()
+          .state({ selected: props.selected })
+          .mix(props.bemBlocks.container("item"))}
+        onClick={props.onClick}
+      >
+        <div className={props.bemBlocks.option("text")}>
+          {orderCreationSystemMigration(parseInt(props.label))}
+        </div>
+        <div className={props.bemBlocks.option("count")}>
+          <input type="checkbox" />
+        </div>
+      </div>
+    );
+  };
 
   return (
     <div className="dropdown-container">
@@ -42,6 +63,7 @@ const CreationSystem = () => {
           showCount={false}
           orderKey="_term"
           orderDirection="asc"
+          itemComponent={RefinementOption}
         />
       </div>
       {state.show ? <div className="line"></div> : null}

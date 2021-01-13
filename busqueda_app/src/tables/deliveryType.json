@@ -1,0 +1,14 @@
+{
+    "1": "Road scheduled",
+    "2": "Rail direct (single wagon)",
+    "3": "Bimodal Rail-Part",
+    "4": "Bimodal Road-Part",
+    "5": "Road unscheduled",
+    "6": "Block train",
+    "7": "Ship",
+    "8": "Service",
+    "9": "Pallet Return",
+    "10": "Pallet Return (w/transport)",
+    "11": "Ship Pickup",
+    "12": "Blocktrain Pickup"
+}
