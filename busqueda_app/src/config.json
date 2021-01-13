@@ -1,5 +1,5 @@
 {
-    "endpoint": "https://search-logon-order-search-qyhfl5jwmhiaatf23g3wafmjia.eu-west-1.es.amazonaws.com/tlgnc_order",
+    "endpoint": "https://search-logon-order-search-qyhfl5jwmhiaatf23g3wafmjia.eu-west-1.es.amazonaws.com/filters_test",
     "title": "Orders Search Engine",
     "searchbox": {
         "queryFields": ["ORDER_NUMBER","ORDER_NUMBER_FROM_SEQ_USAGE", "LDS_DELIVERY_NOTE_NO"],

@@ -25,11 +25,17 @@ const CreationSystem = () => {
   const RefinementOption = (props) => {
     console.log(props);
     return (
-      <div className="sk-item-list-option sk-item-list__item">
+      <div
+        className={props.bemBlocks
+          .option()
+          .state({ selected: props.selected })
+          .mix(props.bemBlocks.container("item"))}
+        onClick={props.onClick}
+      >
         <div className={props.bemBlocks.option("text")}>
           {orderCreationSystemMigration(parseInt(props.label))}
         </div>
-        <div>
+        <div className={props.bemBlocks.option("count")}>
           <input type="checkbox" />
         </div>
       </div>

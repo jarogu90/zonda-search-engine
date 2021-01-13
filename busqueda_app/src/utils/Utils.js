@@ -1,5 +1,6 @@
 import status from "../tables/status.json";
 import orderCreationSystem from "../tables/orderCreationSystem.json";
+import deliveryType from "../tables/deliveryType.json";
 import moment from "moment";
 
 export const statusMigration = (statusNumber) => {
@@ -67,6 +68,35 @@ export const orderCreationSystemMigration = (creationNumber) => {
       return orderCreationSystem[10];
     case 11:
       return orderCreationSystem[11];
+  }
+};
+
+export const deliveryTypeMigration = (deliveryTypeNumber) => {
+  switch (deliveryTypeNumber) {
+    case 1:
+      return deliveryType[1];
+    case 2:
+      return deliveryType[2];
+    case 3:
+      return deliveryType[3];
+    case 4:
+      return deliveryType[4];
+    case 5:
+      return deliveryType[5];
+    case 6:
+      return deliveryType[6];
+    case 7:
+      return deliveryType[7];
+    case 8:
+      return deliveryType[8];
+    case 9:
+      return deliveryType[9];
+    case 10:
+      return deliveryType[10];
+    case 11:
+      return deliveryType[11];
+    case 12:
+      return deliveryType[12];
   }
 };
 

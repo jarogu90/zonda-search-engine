@@ -12,6 +12,7 @@ import {
   GlobalStateContext,
   GlobalDispatchContext,
 } from "../../../services/GlobalContext";
+import { statusMigration } from "./../../../utils/Utils";
 
 // images
 import Status from "../../../img/status";
@@ -19,6 +20,24 @@ import Status from "../../../img/status";
 const OrderStatus = () => {
   const state = useContext(GlobalStateContext);
   const dispatch = useContext(GlobalDispatchContext);
+
+  const RefinementOption = (props) => {
+    console.log(props);
+    return (
+      <div
+        className={props.bemBlocks
+          .option()
+          .state({ selected: props.selected })
+          .mix(props.bemBlocks.container("item"))}
+        onClick={props.onClick}
+      >
+        <div className={props.bemBlocks.option("text")}>
+          {statusMigration(parseInt(props.label)).txt}
+        </div>
+        <div className={props.bemBlocks.option("count")}>{props.count}</div>
+      </div>
+    );
+  };
 
   return (
     <div className="dropdown-container">
@@ -38,6 +57,7 @@ const OrderStatus = () => {
           showCount={false}
           orderKey="_term"
           orderDirection="asc"
+          itemComponent={RefinementOption}
         />
       </div>
 
