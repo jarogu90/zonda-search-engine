@@ -12,7 +12,9 @@ import { ExportTableButton } from "ant-table-extensions";
 
 // components
 import TableColumns from "./TableColumns";
-import ColumnsMenu from "./ColumnsMenu";
+//import ColumnsMenu from "./ColumnsMenu";
+//import TableRender from "./TableRender";
+import ColumnsCheckbox from "./ColumnsCheckbox";
 
 // styles
 import "antd/dist/antd.css";
@@ -26,7 +28,7 @@ const OnHold = styled.div`
   background-color: ${({ backgroundcolor }) => backgroundcolor};
 `;
 
-const OrderHitsTable = ({ hits, dataDateFilter, orderStatus }) => {
+const OrderHitsTable = ({ hits }) => {
   const [data, setData] = useState([]);
   const [headerPrintable, setheaderPrintable] = useState([]);
   const [dataPrintable, setPrintable] = useState([]);
@@ -161,27 +163,6 @@ const OrderHitsTable = ({ hits, dataDateFilter, orderStatus }) => {
     return arrayData;
   };
 
-  const getColumnTitleByKey = (key) => {
-    const column = columns.filter((col) => col.key === key);
-    return column[0].title;
-  };
-
-  const onChangeCheckbox = (e) => {
-    const column = {
-      title: getColumnTitleByKey(e.target.id),
-      dataIndex: e.target.id,
-      key: e.target.id,
-    };
-
-    if (!e.target.checked) {
-      setCheckedColumns(
-        checkedColumns.filter((col) => col.dataIndex !== column.dataIndex)
-      );
-    } else {
-      setCheckedColumns([...checkedColumns, column]);
-    }
-  };
-
   const changeHeader = (hdr) => {
     let newH = [];
     for (let index = 0; index < hdr.length; index++) {
@@ -223,13 +204,16 @@ const OrderHitsTable = ({ hits, dataDateFilter, orderStatus }) => {
 
   useEffect(() => {
     const getData = async () => {
-      if (dataDateFilter && dataDateFilter.length > 0) {
+      //CÓDIGO COMENTADO PARA QUERY MANUAL DE FECHAS
+      /* if (dataDateFilter && dataDateFilter.length > 0) {
         const datesData = await fillDataTable(dataDateFilter);
         setData(datesData);
       } else {
         const restData = await fillDataTable(hits);
         setData(restData);
-      }
+      } */
+      const restData = await fillDataTable(hits);
+      setData(restData);
     };
     getData();
 
@@ -237,7 +221,7 @@ const OrderHitsTable = ({ hits, dataDateFilter, orderStatus }) => {
     const newData = changeData(hits);
     setheaderPrintable(newHeader);
     setPrintable(newData);
-  }, [hits, dataDateFilter, checkedColumns]);
+  }, [hits, checkedColumns]);
 
   //console.log(dataPrintable);
 
@@ -247,9 +231,14 @@ const OrderHitsTable = ({ hits, dataDateFilter, orderStatus }) => {
     });
   };
   //console.log(checkedColumns);
+
   return (
     <>
-      <ColumnsMenu columns={columns} onChangeCheckbox={onChangeCheckbox} />
+      <ColumnsCheckbox
+        columns={columns}
+        checkedColumns={checkedColumns}
+        setCheckedColumns={setCheckedColumns}
+      />
       <ExportTableButton
         columns={headerPrintable}
         dataSource={dataPrintable}

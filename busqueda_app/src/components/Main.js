@@ -13,7 +13,6 @@ import {
   LayoutResults,
   ActionBar,
   ActionBarRow,
-  RangeFilter,
 } from "searchkit";
 
 //Componentes manuales
@@ -21,27 +20,27 @@ import Samples from "./Samples";
 import InputFilterSection from "./InputFilterSection";
 import TopBarHeader from "./TopBarHeader";
 import Sidebar from "./Sidebar";
-import NoResults from "./NoResults";
-import { formatDate } from "../utils/Utils";
+/* import NoResults from "./NoResults";
+import { formatDate } from "../utils/Utils"; */
 import DownloadButton from "./DownloadButton";
 
 //Configuración del json para filtros y endpoint
 import config from "../config.json";
 
 //Imports para las fechas
-import { DatePicker } from "antd";
+/* import { DatePicker } from "antd";
 import { dateRange } from "../queries/rangeDateQuery";
-import DatesRangeFilter from "./DatesRangeFilter";
+import DatesRangeFilter from "./DatesRangeFilter"; */
 
 const searchkit = new SearchkitManager(config.endpoint);
-const { RangePicker } = DatePicker;
+//const { RangePicker } = DatePicker;
 
 class Main extends SearchkitComponent {
   state = {
     cleanDate: false,
-    startDate: null,
-    endDate: null,
-    arraydata: [],
+    //startDate: null,
+    //endDate: null,
+    //arraydata: [],
     value: null,
     noResults: false,
   };
@@ -62,7 +61,7 @@ class Main extends SearchkitComponent {
   };
 
   changeCleanDateStatus = () => {
-    this.setState({ arraydata: null });
+    //this.setState({ arraydata: null });
     this.setState({ cleanDate: true });
   };
 
@@ -149,6 +148,7 @@ class Main extends SearchkitComponent {
                   <HitsStats component={this.CustomHitStats} />
                 </div>
               </ActionBar>
+              {/* CÓDIGO COMENTADO PARA LA QUERY MANUAL DE FECHAS 
               {this.state.noResults ? (
                 <NoResults
                   startDate={this.state.startDate}
@@ -156,7 +156,8 @@ class Main extends SearchkitComponent {
                 />
               ) : (
                 <Samples dataDateFilter={this.state.arraydata} />
-              )}
+              )} */}
+              <Samples />
             </LayoutResults>
           </LayoutBody>
         </Layout>

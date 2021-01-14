@@ -1,10 +1,7 @@
+import { Sorter } from "./../utils/sorter";
+
 const TableColumns = () => {
   const columns = [
-    /* {
-      title: "On Hold",
-      dataIndex: "onHold",
-      key: "onHold",
-    } */,
     {
       title: "Logon Order Number",
       dataIndex: "orderNumber",
@@ -21,7 +18,13 @@ const TableColumns = () => {
       key: "shippingPoint",
     },
     { title: "LDS Number", dataIndex: "ldsNumber", key: "ldsNumber" },
-    { title: "Order Status", dataIndex: "orderStatus", key: "orderStatus" },
+
+    {
+      title: "Order Status",
+      dataIndex: "orderStatus",
+      key: "orderStatus",
+    },
+
     {
       title: "Order Creation System",
       dataIndex: "orderCreationSystem",
@@ -46,9 +49,10 @@ const TableColumns = () => {
     { title: "Delivery From", dataIndex: "deliveryFrom", key: "deliveryFrom" },
     { title: "Delivery To", dataIndex: "deliveryTo", key: "deliveryTo" },
     { title: "Created By", dataIndex: "createdBy", key: "createdBy" },
+    ,
   ];
 
-  return columns;
+  return Sorter.addColumnsSorterType(columns);
 };
 
 export default TableColumns;

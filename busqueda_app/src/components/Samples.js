@@ -3,13 +3,14 @@ import { Hits, NoHits } from "searchkit";
 import OrderHitsTable from "./OrderHitsTable";
 import config from "../config.json";
 
-const Samples = ({ dataDateFilter }) => {
+// dataDateFilter SE USA PARA LA QUERY MANUAL DE FECHAS
+const Samples = (/* { dataDateFilter } */) => {
   return (
     <div>
       <Hits
-        hitsPerPage={1000}
+        hitsPerPage={10}
         highlightFields={["ORDER_ID"]}
-        listComponent={<OrderHitsTable dataDateFilter={dataDateFilter} />}
+        listComponent={<OrderHitsTable /* dataDateFilter={dataDateFilter} */ />}
         hitComponents={[
           { key: config.samples.table.key, title: config.samples.table.title },
         ]}
