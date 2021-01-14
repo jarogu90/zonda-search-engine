@@ -23,7 +23,7 @@ import TopBarHeader from "./TopBarHeader";
 import Sidebar from "./Sidebar";
 import NoResults from "./NoResults";
 import { formatDate } from "../utils/Utils";
-import DownloadButton from "./DownloadButton";
+// import DownloadButton from "./DownloadButton";
 
 //Configuración del json para filtros y endpoint
 import config from "../config.json";
@@ -56,7 +56,7 @@ class Main extends SearchkitComponent {
             <span className="info_numbers">{timeTaken}ms</span>
           </div>
         </div>
-        <DownloadButton hits={hitsCount} />
+        {/* <DownloadButton hits={hitsCount} /> */}
       </>
     );
   };

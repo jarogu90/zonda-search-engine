@@ -1,77 +1,81 @@
-.ant-table .ant-table-small .ant-table-bordered {
-    overflow: scroll;
-}
-
-.table-container {
-
-    // height: 750px;
-    height: auto;
-
-}
+.box-table {
+    position: relative;
 
 
+    .ant-table .ant-table-small .ant-table-bordered {
+        overflow: scroll;
+    }
 
-.ant-table-content {
-    // max-width: min-content;
-    // width: 400px;
+    .table-container {
 
-    .ant-table-cell {
-        font-size: 12px;
-        text-align: center;
-        color: var(--greyish-brown);
-        height: 70px;
-        padding: 0 !important;
-        // justify-content: center;
-        // align-items: center;
+        // height: 750px;
+        height: auto;
 
-        div {
+    }
+
+
+
+    .ant-table-content {
+        // max-width: min-content;
+        // width: 400px;
+
+        .ant-table-cell {
+            font-size: 12px;
+            text-align: center;
+            color: var(--greyish-brown);
             height: 70px;
-            width: 100vh;
-            display: table-cell;
-            vertical-align: middle;
-            padding: 0 8px 0 8px !important;
-            // box-sizing: content-box;
+            padding: 0 !important;
+            // justify-content: center;
+            // align-items: center;
+
+            div {
+                height: 70px;
+                width: 100vh;
+                display: table-cell;
+                vertical-align: middle;
+                padding: 0 8px 0 8px !important;
+                // box-sizing: content-box;
+            }
+
+
         }
 
 
     }
 
 
-}
+    .ant-table.ant-table-bordered>.ant-table-container {
 
-
-.ant-table.ant-table-bordered>.ant-table-container {
-
-    width: auto;
-}
-
-header {
-    background-color: #0074b4;
-    color: #ffffff;
-    padding: 1em 2em;
-    width: auto;
-}
-
-.table-header {
-    height: 52px;
-
-
-    &:nth-child(even) {
-        background-color: #f5fcff;
+        width: auto;
     }
 
-    .header {
+    header {
         background-color: #0074b4;
-        color: white;
-        padding: 4px 25px;
+        color: #ffffff;
+        padding: 1em 2em;
+        width: auto;
+    }
 
-        &__hide {
-            margin-left: 0px !important;
+    .table-header {
+        height: 52px;
+
+
+        &:nth-child(even) {
+            background-color: #f5fcff;
+        }
+
+        .header {
+            background-color: #0074b4;
+            color: white;
+            padding: 4px 25px;
+
+            &__hide {
+                margin-left: 0px !important;
+            }
         }
     }
+
 }
-
-
 
 //CLASES DELIVERY TYPE CD
 

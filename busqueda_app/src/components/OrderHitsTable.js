@@ -193,21 +193,6 @@ const OrderHitsTable = ({ hits, dataDateFilter, orderStatus }) => {
 
   const changeData = (dta) => {
     const dataPrintable = [];
-    // "sequentialNumber"
-    // "shippingPoint"
-    // "ldsNumber"
-    // "orderStatus"
-    // "orderCreationSystem"
-    // "shipTo"
-    // "soldTo"
-    // "payer"
-    // "commercialCarrier"
-    // "executingCarrier"
-    // "deliveryType"
-    // "processType"
-    // "deliveryFrom"
-    // "deliveryTo"
-    // "createdBy"
 
     dta.forEach((element) => {
       //console.log(element);
@@ -262,7 +247,7 @@ const OrderHitsTable = ({ hits, dataDateFilter, orderStatus }) => {
   console.table(headerPrintable);
   //console.log(checkedColumns);
   return (
-    <>
+    <div className="box-table">
       <ColumnsMenu columns={columns} onChangeCheckbox={onChangeCheckbox} />
       <ExportTableButton
         columns={headerPrintable}
@@ -273,7 +258,7 @@ const OrderHitsTable = ({ hits, dataDateFilter, orderStatus }) => {
         Export to CSV
       </ExportTableButton>
       <Table columns={checkedColumns} dataSource={data} size="small" bordered />
-    </>
+    </div>
   );
 };
 
