@@ -67,6 +67,7 @@
   border-radius: 4px;
   border: solid 1px #c7deeb;
   background-color: #ffffff;
+  margin-bottom: 5px;
 }
 
 .sk-selected-filters .sk-selected-filters-option .sk-selected-filters-option__name {
