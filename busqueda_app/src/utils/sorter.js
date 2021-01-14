@@ -8,13 +8,14 @@ const dateSort = (rowA, rowB) => {
     if (a < b) return -1;
     if (b < a) return 1;
     return 0;
-  }
-  const a = new Date(rowA.deliveryTo).getTime();
-  const b = new Date(rowB.deliveryTo).getTime();
+  } else {
+    const a = new Date(rowA.deliveryTo).getTime();
+    const b = new Date(rowB.deliveryTo).getTime();
 
-  if (a < b) return -1;
-  if (b < a) return 1;
-  return 0;
+    if (a < b) return -1;
+    if (b < a) return 1;
+    return 0;
+  }
 };
 
 const defaultSort = (rowA, rowB) => {

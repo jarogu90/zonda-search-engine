@@ -1,11 +1,14 @@
 import { Sorter } from "./../utils/sorter";
+import OrderHitsTable from "./OrderHitsTable";
 
 const TableColumns = () => {
+  console.log(OrderHitsTable.getColumnSearchProps);
   const columns = [
     {
       title: "Logon Order Number",
       dataIndex: "orderNumber",
       key: "orderNumber",
+      //...OrderHitsTable.getColumnSearchProps("orderNumber"),
     },
     {
       title: "Sequential Number",
