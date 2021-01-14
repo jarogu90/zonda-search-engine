@@ -27,7 +27,6 @@
   padding: 8px;
   border-radius: 4px;
   border: solid 1px var(--ocean-blue);
-  margin-top: 1.6rem;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
@@ -42,9 +41,8 @@
   -ms-flex-item-align: end;
       align-self: flex-end;
   text-shadow: none;
-  margin-bottom: 20px;
   position: absolute;
-  right: 0;
+  right: 126px;
 }
 
 .ant-btn.ant-dropdown-trigger:hover, .ant-btn.ant-dropdown-trigger:active, .ant-btn.ant-dropdown-trigger:focus {
