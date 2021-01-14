@@ -8,7 +8,7 @@ const Samples = (/* { dataDateFilter } */) => {
   return (
     <div>
       <Hits
-        hitsPerPage={10}
+        hitsPerPage={100}
         highlightFields={["ORDER_ID"]}
         listComponent={<OrderHitsTable /* dataDateFilter={dataDateFilter} */ />}
         hitComponents={[

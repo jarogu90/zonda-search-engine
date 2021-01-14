@@ -1,14 +1,25 @@
-import moment from "moment";
+import { Table } from "antd";
 
-const dateSort = (dateA, dateB) => moment(dateA).diff(moment(dateB));
+const dateSort = (rowA, rowB) => {
+  if (isDeliveryFrom) {
+    const a = new Date(rowA.deliveryFrom).getTime();
+    const b = new Date(rowB.deliveryFrom).getTime();
 
-const defaultSort = (a, b) => {
-  /* console.log("aaaaaaaa", a.orderNumber.props.children[1]);
-  console.log("bbbbbbb", b.orderNumber); */
-  if (a.shippingPoint.props.children[1] < b.shippingPoint.props.children[1])
-    return -1;
-  if (b.shippingPoint.props.children[1] < a.shippingPoint.props.children[1])
-    return 1;
+    if (a < b) return -1;
+    if (b < a) return 1;
+    return 0;
+  }
+  const a = new Date(rowA.deliveryTo).getTime();
+  const b = new Date(rowB.deliveryTo).getTime();
+
+  if (a < b) return -1;
+  if (b < a) return 1;
+  return 0;
+};
+
+const defaultSort = (rowA, rowB) => {
+  if (rowA.orderNumber < rowB.orderNumber) return -1;
+  if (rowB.orderNumber < rowA.orderNumber) return 1;
   return 0;
 };
 
@@ -17,17 +28,21 @@ const addColumnsSorterType = (columns) => {
 
   columns.map((column) => {
     if (
-      column.dataIndex !== "deliveryFrom" ||
-      column.dataIndex !== "deliveryTo"
+      column.dataIndex === "deliveryFrom" ||
+      column.dataIndex === "deliveryTo"
     ) {
-      column.sorter = defaultSort;
-    } else {
       column.sorter = dateSort;
+    } else {
+      column.sorter = defaultSort;
     }
     sortableColumns.push(column);
   });
 
   return sortableColumns;
+};
+
+const isDeliveryFrom = (dataIndex) => {
+  return dataIndex === "deliveryFrom";
 };
 
 export const Sorter = {

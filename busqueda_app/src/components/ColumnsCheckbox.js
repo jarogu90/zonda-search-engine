@@ -10,19 +10,19 @@ const ColumnsCheckbox = ({ columns, checkedColumns, setCheckedColumns }) => {
 
   const onChangeCheckbox = (e) => {
     let column = {};
-    if (e.target.id !== "deliveryFrom" || e.target.id !== "deliveryTo") {
+    if (e.target.id === "deliveryFrom" || e.target.id === "deliveryTo") {
       column = {
         title: getColumnTitleByKey(e.target.id),
         dataIndex: e.target.id,
         key: e.target.id,
-        sorter: Sorter.DEFAULT,
+        sorter: Sorter.DATE,
       };
     } else {
       column = {
         title: getColumnTitleByKey(e.target.id),
         dataIndex: e.target.id,
         key: e.target.id,
-        sorter: Sorter.DATE,
+        sorter: Sorter.DEFAULT,
       };
     }
 
