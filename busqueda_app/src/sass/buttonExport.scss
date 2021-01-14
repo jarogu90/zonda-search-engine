@@ -52,7 +52,13 @@
     border-color: var(--turquoise-blue);
 }
 
-.d-flex .flex-column .align-start {
-    display: grid;
-    grid-template-columns: 50% 50%;
+.ant-modal-content {
+    width: 500px;
+
+    .ant-modal-body {
+        .d-flex {
+            display: grid;
+            grid-template-columns: 50% 50%;
+        }
+    }
 }
