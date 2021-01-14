@@ -22,7 +22,6 @@ const OrderStatus = () => {
   const dispatch = useContext(GlobalDispatchContext);
 
   const RefinementOption = (props) => {
-    console.log(props);
     return (
       <div
         className={props.bemBlocks
