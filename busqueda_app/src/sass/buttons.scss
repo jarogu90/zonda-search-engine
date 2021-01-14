@@ -25,33 +25,8 @@
 }
 
 
-// BUTTON EXPORT
 
-div .ant-btn-primary {
-    height: 36px;
-    padding: 8px;
-    border-radius: 4px;
-    border: solid 1px var(--ocean-blue);
-    align-items: center;
-    display: flex;
-    color: var(--ocean-blue);
-    text-decoration: none;
-    background-color: transparent;
-    outline: none;
-    cursor: pointer;
-    transition: color 0.3s;
-    position: absolute;
-    top: 0px;
-    right: 0px;
-    align-self: flex-end;
-    text-shadow: none;
 
-    &:hover,
-    &:active,
-    &:focus {
-        background: var(--ocean-blue);
-    }
-}
 
 // BUTTON SELECT COLUMNS
 .ant-btn.ant-dropdown-trigger {
@@ -59,7 +34,6 @@ div .ant-btn-primary {
     padding: 8px;
     border-radius: 4px;
     border: solid 1px var(--ocean-blue);
-    margin-top: 1.6rem;
     align-items: center;
     display: flex;
     color: var(--ocean-blue);
@@ -67,10 +41,10 @@ div .ant-btn-primary {
     background-color: transparent;
     outline: none;
     cursor: pointer;
-    transition: color 0.3s;
     align-self: flex-end;
     text-shadow: none;
-    margin-bottom: 20px;
+    position: absolute;
+    right: 126px;
 
     &:hover,
     &:active,

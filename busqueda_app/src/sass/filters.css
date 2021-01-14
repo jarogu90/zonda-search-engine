@@ -13,6 +13,10 @@
   text-decoration: underline;
 }
 
+.sk-panel.is-disabled {
+  display: block;
+}
+
 .ant-picker-dropdown .ant-picker-cell-in-view.ant-picker-cell-range-start .ant-picker-cell-inner,
 .ant-picker-dropdown .ant-picker-cell-in-view.ant-picker-cell-range-end .ant-picker-cell-inner {
   background: var(--turquoise-blue);

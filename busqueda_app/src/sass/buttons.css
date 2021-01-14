@@ -22,36 +22,6 @@
   transition: all 200ms ease;
 }
 
-div .ant-btn-primary {
-  height: 36px;
-  padding: 8px;
-  border-radius: 4px;
-  border: solid 1px var(--ocean-blue);
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  color: var(--ocean-blue);
-  text-decoration: none;
-  background-color: transparent;
-  outline: none;
-  cursor: pointer;
-  -webkit-transition: color 0.3s;
-  transition: color 0.3s;
-  position: absolute;
-  top: 0px;
-  right: 0px;
-  -ms-flex-item-align: end;
-      align-self: flex-end;
-  text-shadow: none;
-}
-
-div .ant-btn-primary:hover, div .ant-btn-primary:active, div .ant-btn-primary:focus {
-  background: var(--ocean-blue);
-}
-
 .ant-btn.ant-dropdown-trigger {
   height: 36px;
   padding: 8px;
@@ -69,12 +39,12 @@ div .ant-btn-primary:hover, div .ant-btn-primary:active, div .ant-btn-primary:fo
   background-color: transparent;
   outline: none;
   cursor: pointer;
-  -webkit-transition: color 0.3s;
-  transition: color 0.3s;
   -ms-flex-item-align: end;
       align-self: flex-end;
   text-shadow: none;
   margin-bottom: 20px;
+  position: absolute;
+  right: 0;
 }
 
 .ant-btn.ant-dropdown-trigger:hover, .ant-btn.ant-dropdown-trigger:active, .ant-btn.ant-dropdown-trigger:focus {

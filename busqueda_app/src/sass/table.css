@@ -10,7 +10,12 @@
   height: auto;
 }
 
-.box-table .ant-table-content .ant-table-cell {
+.box-table .ant-table-container {
+  width: auto;
+  margin-top: 50px;
+}
+
+.box-table .ant-table-container .ant-table-content .ant-table-cell {
   font-size: 12px;
   text-align: center;
   color: var(--greyish-brown);
@@ -18,16 +23,12 @@
   padding: 0 !important;
 }
 
-.box-table .ant-table-content .ant-table-cell div {
+.box-table .ant-table-container .ant-table-content .ant-table-cell div {
   height: 70px;
   width: 100vh;
   display: table-cell;
   vertical-align: middle;
   padding: 0 8px 0 8px !important;
-}
-
-.box-table .ant-table.ant-table-bordered > .ant-table-container {
-  width: auto;
 }
 
 .box-table header {

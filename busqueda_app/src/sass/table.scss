@@ -15,38 +15,40 @@
 
 
 
-    .ant-table-content {
-        // max-width: min-content;
-        // width: 400px;
 
-        .ant-table-cell {
-            font-size: 12px;
-            text-align: center;
-            color: var(--greyish-brown);
-            height: 70px;
-            padding: 0 !important;
-            // justify-content: center;
-            // align-items: center;
+    .ant-table-container {
 
-            div {
+        width: auto;
+        margin-top: 50px;
+
+
+        .ant-table-content {
+            // max-width: min-content;
+            // width: 400px;
+
+            .ant-table-cell {
+                font-size: 12px;
+                text-align: center;
+                color: var(--greyish-brown);
                 height: 70px;
-                width: 100vh;
-                display: table-cell;
-                vertical-align: middle;
-                padding: 0 8px 0 8px !important;
-                // box-sizing: content-box;
+                padding: 0 !important;
+                // justify-content: center;
+                // align-items: center;
+
+                div {
+                    height: 70px;
+                    width: 100vh;
+                    display: table-cell;
+                    vertical-align: middle;
+                    padding: 0 8px 0 8px !important;
+                    // box-sizing: content-box;
+                }
+
+
             }
 
 
         }
-
-
-    }
-
-
-    .ant-table.ant-table-bordered>.ant-table-container {
-
-        width: auto;
     }
 
     header {

@@ -249,14 +249,16 @@ const OrderHitsTable = ({ hits, dataDateFilter, orderStatus }) => {
   return (
     <div className="box-table">
       <ColumnsMenu columns={columns} onChangeCheckbox={onChangeCheckbox} />
-      <ExportTableButton
-        columns={headerPrintable}
-        dataSource={dataPrintable}
-        btnProps={{ type: "primary" }}
-        showColumnPicker
-      >
-        Export to CSV
-      </ExportTableButton>
+      <div className="btn-export">
+        <ExportTableButton
+          columns={headerPrintable}
+          dataSource={dataPrintable}
+          btnProps={{ type: "primary" }}
+          showColumnPicker
+        >
+          Download data
+        </ExportTableButton>
+      </div>
       <Table columns={checkedColumns} dataSource={data} size="small" bordered />
     </div>
   );
