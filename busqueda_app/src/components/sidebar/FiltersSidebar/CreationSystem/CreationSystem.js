@@ -1,25 +1,26 @@
 import React, { useContext } from "react";
-import styled from "styled-components";
-import { Select, RefinementListFilter, SearchkitManager } from "searchkit";
+//import styled from "styled-components";
 
-import config from "../../../config.json";
+import config from "../../../../config.json";
 
 // components
 import FilterBase from "../FilterBase/FilterBase";
 
+import { RefinementListFilter } from "searchkit";
+import { orderCreationSystemMigration } from "./../../../../utils/Utils";
+
 // services
 import {
   GlobalStateContext,
-  GlobalDispatchContext,
-} from "../../../services/GlobalContext";
-import { statusMigration } from "./../../../utils/Utils";
+  //GlobalDispatchContext,
+} from "../../../../services/GlobalContext";
 
 // images
-import Status from "../../../img/status";
+import CreationSystemIcon from "../../../../img/creationSystemIcon";
 
-const OrderStatus = () => {
+const CreationSystem = () => {
   const state = useContext(GlobalStateContext);
-  const dispatch = useContext(GlobalDispatchContext);
+  //const dispatch = useContext(GlobalDispatchContext);
 
   const RefinementOption = (props) => {
     return (
@@ -31,9 +32,8 @@ const OrderStatus = () => {
         onClick={props.onClick}
       >
         <div className={props.bemBlocks.option("text")}>
-          {statusMigration(parseInt(props.label)).txt}
+          {orderCreationSystemMigration(parseInt(props.label))}
         </div>
-
         <div className={props.bemBlocks.option("count")}>
           <input type="checkbox" />
         </div>
@@ -43,31 +43,31 @@ const OrderStatus = () => {
 
   return (
     <div className="dropdown-container">
-      <input type="checkbox" id="drop_os" />
-      <label htmlFor="drop_os">
-        <FilterBase value="ORDER STATUS" showing={state.show}>
-          <Status width="25px" height="24px" color="var(--greyish-brown)" />
+      <input type="checkbox" id="drop_cs" />
+      <label htmlFor="drop_cs">
+        <FilterBase value="Order Creation System" showing={state.show}>
+          <CreationSystemIcon
+            width="25px"
+            height="24px"
+            color="var(--greyish-brown)"
+          />
         </FilterBase>
       </label>
-
-      <div className="content">
+      <div className="content" style={{ display: !state.show ? "none" : "" }}>
         <RefinementListFilter
-          id={config.filters.orderStatus.id}
-          field={config.filters.orderStatus.fields}
+          id={config.filters.creationSystem.id}
+          field={config.filters.creationSystem.fields}
           operator="OR"
-          size={18}
+          size={11}
           showCount={false}
           orderKey="_term"
           orderDirection="asc"
           itemComponent={RefinementOption}
         />
       </div>
-
-      {/* <div className={showing ? "line" : "line line__hide"}></div> */}
-
       {state.show ? <div className="line"></div> : null}
     </div>
   );
 };
 
-export default OrderStatus;
+export default CreationSystem;

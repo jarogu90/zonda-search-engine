@@ -19,19 +19,11 @@ import {
 import Samples from "./Samples";
 import InputFilterSection from "./InputFilterSection";
 import TopBarHeader from "./TopBarHeader";
-import Sidebar from "./Sidebar";
+import Sidebar from "./sidebar/Sidebar";
 /* import NoResults from "./NoResults";
 import { formatDate } from "../utils/Utils"; */
-import DownloadButton from "./DownloadButton";
-import {
-  notExist,
-  statusMigration,
-  orderCreationSystemMigration,
-  formatDateTime,
-  deliveryTypeMigration,
-  labelPills,
-  textPills,
-} from "../utils/Utils";
+//import DownloadButton from "./DownloadButton";
+import { labelPills, textPills } from "../utils/Utils";
 
 //Configuración del json para filtros y endpoint
 import config from "../config.json";

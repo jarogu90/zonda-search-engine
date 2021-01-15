@@ -5,11 +5,11 @@ import styled from "styled-components";
 import {
   GlobalDispatchContext,
   GlobalStateContext,
-} from "../../../services/GlobalContext";
+} from "../../../../services/GlobalContext";
 
 // images
-import ArrowUp from "../../../img/arrowUp";
-import ArrowDown from "../../../img/arrowDown";
+import ArrowUp from "../../../../img/arrowUp";
+import ArrowDown from "../../../../img/arrowDown";
 
 // STYLES
 

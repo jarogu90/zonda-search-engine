@@ -1,17 +1,17 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext } from "react";
 import styled from "styled-components";
-import FiltersSidebar from "./FiltersSidebar/FiltersSidebar";
-import ButtonHideFilters from "./ButtonHideFilters";
+import FiltersSidebar from "./FiltersSidebar";
+//import ButtonHideFilters from "../ButtonHideFilters";
 import { SideBar } from "searchkit";
 
 // services
 import {
   GlobalStateContext,
   GlobalDispatchContext,
-} from "../services/GlobalContext";
+} from "../../services/GlobalContext";
 
 // images
-import IconHide from "../img/hide";
+import IconHide from "../../img/hide";
 
 const ButtonRoundedBtn = styled.button`
   width: max-content;

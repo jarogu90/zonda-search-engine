@@ -1,10 +1,10 @@
 import React from "react";
 
-import OrderStatus from "./OrderStatus/OrderStatus";
-import CreationSystem from "./CreationSystem/CreationSystem";
-import ProcessType from "./ProcessType/ProcessType";
-import DeliveryType from "./DeliveryType/DeliveryType";
-import OnHold from "./OnHold/OnHold";
+import OrderStatus from "./FiltersSidebar/OrderStatus/OrderStatus";
+import CreationSystem from "./FiltersSidebar/CreationSystem/CreationSystem";
+import ProcessType from "./FiltersSidebar/ProcessType/ProcessType";
+import DeliveryType from "./FiltersSidebar/DeliveryType/DeliveryType";
+import OnHold from "./FiltersSidebar/OnHold/OnHold";
 
 const FilterSidebar = ({ showing }) => {
   return (

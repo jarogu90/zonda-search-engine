@@ -2,10 +2,10 @@ import React from "react";
 import styled from "styled-components";
 
 // components
-import ButtonRounded from "./GenericComponents/ButtonRounded";
+//import ButtonRounded from "./ButtonRounded";
 
 // images
-import Filters from "../img/status";
+import Filters from "../../img/status";
 
 const ButtonRoundedBtn = styled.button`
   width: max-content;

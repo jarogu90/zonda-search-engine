@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 
-import config from "../../../config.json";
+import config from "../../../../config.json";
 
 // components
 import FilterBase from "../FilterBase/FilterBase";
@@ -8,18 +8,18 @@ import FilterBase from "../FilterBase/FilterBase";
 // services
 import {
   GlobalStateContext,
-  GlobalDispatchContext,
-} from "../../../services/GlobalContext";
-import { deliveryTypeMigration } from "./../../../utils/Utils";
+  //GlobalDispatchContext,
+} from "../../../../services/GlobalContext";
+import { deliveryTypeMigration } from "./../../../../utils/Utils";
 
-import { Select, RefinementListFilter, SearchkitManager } from "searchkit";
+import { RefinementListFilter } from "searchkit";
 
 // images
-import TruckIcon from "../../../img/truck";
+import TruckIcon from "../../../../img/truck";
 
 const DeliveryType = () => {
   const state = useContext(GlobalStateContext);
-  const dispatch = useContext(GlobalDispatchContext);
+  //const dispatch = useContext(GlobalDispatchContext);
 
   const RefinementOption = (props) => {
     return (

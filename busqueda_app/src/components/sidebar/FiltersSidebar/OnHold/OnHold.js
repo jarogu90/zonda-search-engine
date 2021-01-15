@@ -1,27 +1,21 @@
 import React, { useContext } from "react";
 import styled from "styled-components";
 
-import config from "../../../config.json";
+import config from "../../../../config.json";
 
 // components
-import FilterBase from "../FilterBase/FilterBase";
+//import FilterBase from "../FilterBase/FilterBase";
 // services
 import {
   GlobalDispatchContext,
   GlobalStateContext,
-} from "../../../services/GlobalContext";
+} from "../../../../services/GlobalContext";
 
-import {
-  CheckboxFilter,
-  TermQuery,
-  Select,
-  RefinementListFilter,
-  SearchkitManager,
-} from "searchkit";
+import { CheckboxFilter, TermQuery } from "searchkit";
 
 // images
-import ProcessTypeIcon from "../../../img/processTypeIcon";
-import OnHoldIcon from "../../../img/onHoldIcon";
+//import ProcessTypeIcon from "../../../../img/processTypeIcon";
+import OnHoldIcon from "../../../../img/onHoldIcon";
 
 // STYLES
 
@@ -66,7 +60,7 @@ const FilterOptionDiv = styled.div`
   }
 `;
 
-const OnHold = ({ children, classNameFilter, showing }) => {
+const OnHold = ({ classNameFilter, showing }) => {
   const state = useContext(GlobalStateContext);
   const dispatch = useContext(GlobalDispatchContext);
   return (

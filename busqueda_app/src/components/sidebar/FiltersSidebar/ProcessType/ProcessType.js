@@ -1,24 +1,22 @@
 import React, { useContext } from "react";
-import styled from "styled-components";
 
-import config from "../../../config.json";
+import config from "../../../../config.json";
 
 // components
 import FilterBase from "../FilterBase/FilterBase";
-
-import { Select, RefinementListFilter, SearchkitManager } from "searchkit";
-import { orderCreationSystemMigration } from "./../../../utils/Utils";
 
 // services
 import {
   GlobalStateContext,
   GlobalDispatchContext,
-} from "../../../services/GlobalContext";
+} from "../../../../services/GlobalContext";
+
+import { Select, RefinementListFilter, SearchkitManager } from "searchkit";
 
 // images
-import CreationSystemIcon from "../../../img/creationSystemIcon";
+import ProcessTypeIcon from "../../../../img/processTypeIcon";
 
-const CreationSystem = () => {
+const ProcessType = ({ showing }) => {
   const state = useContext(GlobalStateContext);
   const dispatch = useContext(GlobalDispatchContext);
 
@@ -31,34 +29,32 @@ const CreationSystem = () => {
           .mix(props.bemBlocks.container("item"))}
         onClick={props.onClick}
       >
-        <div className={props.bemBlocks.option("text")}>
-          {orderCreationSystemMigration(parseInt(props.label))}
-        </div>
+        <div className={props.bemBlocks.option("text")}>{props.label}</div>
+
         <div className={props.bemBlocks.option("count")}>
           <input type="checkbox" />
         </div>
       </div>
     );
   };
-
   return (
     <div className="dropdown-container">
-      <input type="checkbox" id="drop_cs" />
-      <label htmlFor="drop_cs">
-        <FilterBase value="Order Creation System" showing={state.show}>
-          <CreationSystemIcon
+      <input type="checkbox" id="drop_pt" />
+      <label htmlFor="drop_pt">
+        <FilterBase value="Process Type" showing={state.show}>
+          <ProcessTypeIcon
             width="25px"
             height="24px"
             color="var(--greyish-brown)"
           />
         </FilterBase>
       </label>
-      <div className="content" style={{ display: !state.show ? "none" : "" }}>
+      <div className="content">
         <RefinementListFilter
-          id={config.filters.creationSystem.id}
-          field={config.filters.creationSystem.fields}
+          id={config.filters.processType.id}
+          field={config.filters.processType.fields}
           operator="OR"
-          size={11}
+          size={13}
           showCount={false}
           orderKey="_term"
           orderDirection="asc"
@@ -70,4 +66,4 @@ const CreationSystem = () => {
   );
 };
 
-export default CreationSystem;
+export default ProcessType;

@@ -1,6 +1,6 @@
 import React from "react";
 import ColumnsMenu from "./ColumnsMenu";
-import { Sorter } from "./../utils/sorter";
+import { Sorter } from "./../../utils/sorter";
 
 const ColumnsCheckbox = ({ columns, checkedColumns, setCheckedColumns }) => {
   const getColumnTitleByKey = (key) => {

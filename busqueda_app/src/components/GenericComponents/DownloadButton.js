@@ -1,6 +1,6 @@
 import React from "react";
 
-import Download from "../img/download";
+import Download from "../../img/download";
 
 const DownloadButton = (props) => {
   const result = props.hits;

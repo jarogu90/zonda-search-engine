@@ -6,7 +6,7 @@ import { TopBar } from "searchkit";
 // services
 import {
   GlobalStateContext,
-  GlobalDispatchContext,
+  //GlobalDispatchContext,
 } from "../services/GlobalContext";
 
 const TopBarHeader = () => {

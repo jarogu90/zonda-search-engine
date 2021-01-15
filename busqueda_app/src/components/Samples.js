@@ -1,6 +1,6 @@
 import React from "react";
 import { Hits, NoHits } from "searchkit";
-import OrderHitsTable from "./OrderHitsTable";
+import OrderHitsTable from "./table/OrderHitsTable";
 import config from "../config.json";
 
 // dataDateFilter SE USA PARA LA QUERY MANUAL DE FECHAS
