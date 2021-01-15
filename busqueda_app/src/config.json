@@ -6,11 +6,6 @@
         "placeholder": "Order or Delivery Number"
     },
     "filters": {
-        "cityCheckbox": {
-            "fields": "LNF_SITE_CITY.keyword",
-            "title": "Top Cities",
-            "id": "cities"
-        },
         "orderStatus": {
             "fields": "ORDER_STATUS_CD",
             "title": "Order Status",
@@ -36,23 +31,6 @@
             "title": "On Hold",
             "id": "onhold"
         },        
-        "cityList": {
-            "fields": ["LNF_SITE_CITY.keyword", "SHIPPINGPOINT_ID.keyword"],
-            "title": "Cities",
-            "id": "cities"
-        },
-        "searchboxCity": {
-            "title": "More cities",
-            "placeholder": "Search city",
-            "fields": "LNF_SITE_CITY",
-            "id": "more_cities"
-        },
-        "searchboxPerson": {
-            "title": "Contact Signature",
-            "placeholder": "Contact person",
-            "fields": "CONTACT_PERSON_SIGNATURE_TXT",
-            "id": "person"
-        },
         "dates": {
             "fields": "DELIVERY_FROM_DAT",
             "title": "Delivery Dates",
@@ -62,6 +40,12 @@
             "fields": "DELIVERY_TO_DAT",
             "title": "Delivery Dates",
             "id": "event_date_filterto"
+        },
+        "orderNumber": {
+            "fields": ["ORDER_NUMBER","ORDER_NUMBER_FROM_SEQ_USAGE", "LDS_DELIVERY_NOTE_NO"],
+            "placeholder": "Order or Delivery Number",
+            "title": "Order/Delivery Number",
+            "id": "orderNumber"
         },
         "searchboxTransporter": {
             "title": "Transporter",
