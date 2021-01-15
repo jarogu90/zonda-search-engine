@@ -14,7 +14,6 @@ const DatesRangeFilter = ({ onFinished, cleanDate, turnFalseDateFilter }) => {
   };
 
   const handleOnChange = (val) => {
-    console.log(val);
     setDates(val);
     if (val === null) {
       return;

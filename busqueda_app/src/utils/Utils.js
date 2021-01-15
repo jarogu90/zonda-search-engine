@@ -1,8 +1,16 @@
 import status from "../tables/status.json";
 import orderCreationSystem from "../tables/orderCreationSystem.json";
-import deliveryType from "../tables/deliveryType.json";
+import deliveryTypes from "../tables/deliveryType.json";
 import moment from "moment";
 import config from "./../config.json";
+
+const {
+  orderStatus,
+  creationSystem,
+  processType,
+  deliveryType,
+  onHold,
+} = config.filters;
 
 /**
  *
@@ -87,29 +95,29 @@ export const orderCreationSystemMigration = (creationNumber) => {
 export const deliveryTypeMigration = (deliveryTypeNumber) => {
   switch (deliveryTypeNumber) {
     case 1:
-      return deliveryType[1];
+      return deliveryTypes[1];
     case 2:
-      return deliveryType[2];
+      return deliveryTypes[2];
     case 3:
-      return deliveryType[3];
+      return deliveryTypes[3];
     case 4:
-      return deliveryType[4];
+      return deliveryTypes[4];
     case 5:
-      return deliveryType[5];
+      return deliveryTypes[5];
     case 6:
-      return deliveryType[6];
+      return deliveryTypes[6];
     case 7:
-      return deliveryType[7];
+      return deliveryTypes[7];
     case 8:
-      return deliveryType[8];
+      return deliveryTypes[8];
     case 9:
-      return deliveryType[9];
+      return deliveryTypes[9];
     case 10:
-      return deliveryType[10];
+      return deliveryTypes[10];
     case 11:
-      return deliveryType[11];
+      return deliveryTypes[11];
     case 12:
-      return deliveryType[12];
+      return deliveryTypes[12];
   }
 };
 
@@ -147,14 +155,16 @@ export const formatDateTime = (date) => {
  */
 export const labelPills = (field) => {
   switch (field) {
-    case config.filters.orderStatus.fields:
-      return config.filters.orderStatus.title;
-    case config.filters.creationSystem.fields:
-      return config.filters.creationSystem.title;
-    case config.filters.processType.fields:
-      return config.filters.processType.title;
-    case config.filters.deliveryType.fields:
-      return config.filters.deliveryType.title;
+    case orderStatus.fields:
+      return orderStatus.title;
+    case creationSystem.fields:
+      return creationSystem.title;
+    case processType.fields:
+      return processType.title;
+    case deliveryType.fields:
+      return deliveryType.title;
+    case onHold.id:
+      return onHold.title;
   }
 };
 
@@ -165,12 +175,16 @@ export const labelPills = (field) => {
  */
 export const textPills = (field, data) => {
   switch (field) {
-    case config.filters.orderStatus.fields:
+    case orderStatus.fields:
       return statusMigration(data).txt;
-    case config.filters.creationSystem.fields:
+    case creationSystem.fields:
       return orderCreationSystemMigration(data);
-    case config.filters.deliveryType.fields:
+    case deliveryType.fields:
       return deliveryTypeMigration(data);
+    case processType.fields:
+      return data;
+    case onHold.id:
+      return "ON";
   }
 };
 

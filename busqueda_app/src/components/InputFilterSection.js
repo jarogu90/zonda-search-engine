@@ -55,6 +55,14 @@ const GridInputs = styled.div`
 `;
 
 const InputFilterSection = ({ cleanDate, turnFalseDateFilter }) => {
+  const {
+    orderNumber,
+    searchboxBusiness,
+    searchboxTransporter,
+    dateFrom,
+    dateTo,
+    searchboxCreatedBy,
+  } = config.filters;
   return (
     <>
       <ActionBarRow>
@@ -68,35 +76,35 @@ const InputFilterSection = ({ cleanDate, turnFalseDateFilter }) => {
               blurAction="search"
             /> */}
             <InputFilter
-              id="orderNumber"
-              title="Order Number"
-              placeholder={config.searchbox.placeholder}
+              id={orderNumber.id}
+              title={orderNumber.title}
+              placeholder={orderNumber.placeholder}
               searchOnChange={true}
-              prefixQueryFields={config.searchbox.queryFields}
+              prefixQueryFields={orderNumber.fields}
               blurAction="search"
             />
             <InputFilter
-              id={config.filters.searchboxBusiness.id}
-              title={config.filters.searchboxBusiness.title}
-              placeholder={config.filters.searchboxBusiness.placeholder}
+              id={searchboxBusiness.id}
+              title={searchboxBusiness.title}
+              placeholder={searchboxBusiness.placeholder}
               searchOnChange={true}
-              prefixQueryFields={config.filters.searchboxBusiness.fields}
+              prefixQueryFields={searchboxBusiness.fields}
               blurAction="search"
             />
             <InputFilter
-              id={config.filters.searchboxTransporter.id}
-              title={config.filters.searchboxTransporter.title}
-              placeholder={config.filters.searchboxTransporter.placeholder}
+              id={searchboxTransporter.id}
+              title={searchboxTransporter.title}
+              placeholder={searchboxTransporter.placeholder}
               searchOnChange={true}
-              prefixQueryFields={config.filters.searchboxTransporter.fields}
+              prefixQueryFields={searchboxTransporter.fields}
               blurAction="search"
             />
             <div className="rangfilter__from">
               <p>Delivery From</p>
               <RangeFilter
-                id={config.filters.dateFrom.id}
-                title={config.filters.dateFrom.title}
-                field={config.filters.dateFrom.field}
+                id={dateFrom.id}
+                title={dateFrom.title}
+                field={dateFrom.field}
                 rangeComponent={
                   <DatesRangeFilter
                     cleanDate={cleanDate}
@@ -110,9 +118,9 @@ const InputFilterSection = ({ cleanDate, turnFalseDateFilter }) => {
             <div className="rangfilter__to">
               <p>Delivery To</p>
               <RangeFilter
-                id={config.filters.dateTo.id}
-                title={config.filters.dateTo.title}
-                field={config.filters.dateTo.field}
+                id={dateTo.id}
+                title={dateTo.title}
+                field={dateTo.field}
                 rangeComponent={
                   <DatesRangeFilter
                     cleanDate={cleanDate}
@@ -124,11 +132,11 @@ const InputFilterSection = ({ cleanDate, turnFalseDateFilter }) => {
               />
             </div>
             <InputFilter
-              id={config.filters.searchboxCreatedBy.id}
-              title={config.filters.searchboxCreatedBy.title}
-              placeholder={config.filters.searchboxCreatedBy.placeholder}
+              id={searchboxCreatedBy.id}
+              title={searchboxCreatedBy.title}
+              placeholder={searchboxCreatedBy.placeholder}
               searchOnChange={true}
-              prefixQueryFields={config.filters.searchboxCreatedBy.fields}
+              prefixQueryFields={searchboxCreatedBy.fields}
               blurAction="search"
             />
           </GridInputs>

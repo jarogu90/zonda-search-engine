@@ -20,21 +20,18 @@ import Samples from "./Samples";
 import InputFilterSection from "./InputFilterSection";
 import TopBarHeader from "./TopBarHeader";
 import Sidebar from "./sidebar/Sidebar";
-/* import NoResults from "./NoResults";
-import { formatDate } from "../utils/Utils"; */
-//import DownloadButton from "./DownloadButton";
-import { labelPills, textPills } from "../utils/Utils";
+import Pill from "./Pill";
+//import NoResults from "./NoResults";
 
-//Configuración del json para filtros y endpoint
-import config from "../config.json";
+//Configuración del json para endpoint
+import { endpoint } from "../config.json";
 
 //Imports para las fechas
 /* import { DatePicker } from "antd";
 import { dateRange } from "../queries/rangeDateQuery";
 import DatesRangeFilter from "./DatesRangeFilter"; */
 
-const searchkit = new SearchkitManager(config.endpoint);
-//const { RangePicker } = DatePicker;
+const searchkit = new SearchkitManager(endpoint);
 
 class Main extends SearchkitComponent {
   state = {
@@ -56,7 +53,6 @@ class Main extends SearchkitComponent {
             <span className="info_numbers">{timeTaken}ms</span>
           </div>
         </div>
-        {/* <DownloadButton hits={hitsCount} /> */}
       </>
     );
   };
@@ -68,31 +64,6 @@ class Main extends SearchkitComponent {
 
   turnFalseDateFilter = () => {
     this.setState({ cleanDate: false });
-  };
-
-  /**
-   *
-   * @param {obj} props
-   * @returns html
-   */
-  SelectedFilter = (props) => {
-    return (
-      <div className="sk-selected-filters-option">
-        <div className={props.bemBlocks.option("name")}>
-          {labelPills(props.labelKey)}:{" "}
-          {textPills(props.labelKey, parseInt(props.labelValue))}
-        </div>
-        <div
-          className={props.bemBlocks.option("remove-action")}
-          onClick={() => {
-            props.removeFilter();
-            this.setState({ cleanDate: true });
-          }}
-        >
-          x
-        </div>
-      </div>
-    );
   };
 
   //AQUI EMPIEZAN LAS FUNCIONES RELACIONADAS CON LAS FECHAS
@@ -126,7 +97,6 @@ class Main extends SearchkitComponent {
   }; */
 
   render() {
-    const { state } = this.props;
     return (
       <SearchkitProvider searchkit={searchkit}>
         <Layout>
@@ -135,16 +105,16 @@ class Main extends SearchkitComponent {
             <Sidebar />
             <LayoutResults className="layout">
               <ActionBar>
-                {/* <RangePicker
-                  value={this.state.value}
-                  onChange={this.onChange}
-                /> */}
                 <InputFilterSection
                   cleanDate={this.state.cleanDate}
                   turnFalseDateFilter={this.turnFalseDateFilter}
                 />
                 <ActionBarRow>
-                  <SelectedFilters itemComponent={this.SelectedFilter} />
+                  <SelectedFilters
+                    itemComponent={
+                      <Pill setCleanDate={this.changeCleanDateStatus} />
+                    }
+                  />
 
                   <div
                     className="resetfilters"
