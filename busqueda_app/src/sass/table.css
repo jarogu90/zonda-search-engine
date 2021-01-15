@@ -1,12 +1,21 @@
-.ant-table .ant-table-small .ant-table-bordered {
+.box-table {
+  position: relative;
+}
+
+.box-table .ant-table .ant-table-small .ant-table-bordered {
   overflow: scroll;
 }
 
-.table-container {
+.box-table .table-container {
   height: auto;
 }
 
-.ant-table-content .ant-table-cell {
+.box-table .ant-table-container {
+  width: auto;
+  margin-top: 50px;
+}
+
+.box-table .ant-table-container .ant-table-content .ant-table-cell {
   font-size: 12px;
   text-align: center;
   color: var(--greyish-brown);
@@ -14,7 +23,7 @@
   padding: 0 !important;
 }
 
-.ant-table-content .ant-table-cell div {
+.box-table .ant-table-container .ant-table-content .ant-table-cell div {
   height: 70px;
   width: 100vh;
   display: table-cell;
@@ -22,32 +31,28 @@
   padding: 0 8px 0 8px !important;
 }
 
-.ant-table.ant-table-bordered > .ant-table-container {
-  width: auto;
-}
-
-header {
+.box-table header {
   background-color: #0074b4;
   color: #ffffff;
   padding: 1em 2em;
   width: auto;
 }
 
-.table-header {
+.box-table .table-header {
   height: 52px;
 }
 
-.table-header:nth-child(even) {
+.box-table .table-header:nth-child(even) {
   background-color: #f5fcff;
 }
 
-.table-header .header {
+.box-table .table-header .header {
   background-color: #0074b4;
   color: white;
   padding: 4px 25px;
 }
 
-.table-header .header__hide {
+.box-table .table-header .header__hide {
   margin-left: 0px !important;
 }
 

@@ -1,7 +1,9 @@
+@import "./mixins.scss";
+
 .sk-action-bar {
     display: flex;
     flex-flow: column wrap;
-    margin: 0 0 58px;
+    margin: 0 0 13px;
 }
 
 .sk-action-bar-row
@@ -110,14 +112,7 @@
 }
 
 .download-button-link {
-    width: 141px;
-    height: 36px;
-    padding: 7px 0 8px 8px;
-    border-radius: 4px;
-    border: solid 1px var(--ocean-blue);
-    margin-top: 1.6rem;
-    align-items: center;
-    display: flex;
+    @include button-pr;
 
     p {
         text-decoration: none;

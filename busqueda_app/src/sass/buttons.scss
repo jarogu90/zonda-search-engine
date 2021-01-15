@@ -23,3 +23,33 @@
     -o-transition: all 200ms ease;
     transition: all 200ms ease;
 }
+
+
+
+
+
+// BUTTON SELECT COLUMNS
+.ant-btn.ant-dropdown-trigger {
+    height: 36px;
+    padding: 8px;
+    border-radius: 4px;
+    border: solid 1px var(--ocean-blue);
+    align-items: center;
+    display: flex;
+    color: var(--ocean-blue);
+    text-decoration: none;
+    background-color: transparent;
+    outline: none;
+    cursor: pointer;
+    align-self: flex-end;
+    text-shadow: none;
+    position: absolute;
+    right: 126px;
+
+    &:hover,
+    &:active,
+    &:focus {
+        background: var(--ocean-blue);
+        color: #fff;
+    }
+}

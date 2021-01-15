@@ -48,7 +48,7 @@ const OrderHitsTable = ({ hits }) => {
           break;
       }
 
-      /* let row = {
+      let row = {
         orderNumber: (
           <OnHold backgroundcolor={backgroundcolor}>
             {hit._source.ORDER_NUMBER}
@@ -137,8 +137,8 @@ const OrderHitsTable = ({ hits }) => {
           </OnHold>
         ),
         key: idx,
-      }; */
-      let row = {
+      };
+      /* let row = {
         orderNumber: hit._source.ORDER_NUMBER,
         sequentialNumber: notExist(hit._source.ORDER_NUMBER_FROM_SEQ_USAGE),
         shippingPoint: hit._source.SHIPPINGPOINT_ID,
@@ -159,7 +159,7 @@ const OrderHitsTable = ({ hits }) => {
         deliveryTo: formatDateTime(hit._source.DELIVERY_TO_DAT),
         createdBy: hit._source.CTL_CRE_UID,
         key: idx,
-      };
+      }; */
       arrayData.push(row);
     });
     return arrayData;
@@ -177,28 +177,27 @@ const OrderHitsTable = ({ hits }) => {
 
   const changeData = (dta) => {
     const dataPrintable = [];
-    // "sequentialNumber"
-    // "shippingPoint"
-    // "ldsNumber"
-    // "orderStatus"
-    // "orderCreationSystem"
-    // "shipTo"
-    // "soldTo"
-    // "payer"
-    // "commercialCarrier"
-    // "executingCarrier"
-    // "deliveryType"
-    // "processType"
-    // "deliveryFrom"
-    // "deliveryTo"
-    // "createdBy"
 
     dta.forEach((element) => {
       //console.log(element);
       dataPrintable.push({
         orderNumber: element._source.ORDER_NUMBER,
         billTo: element._source.BILLTO_SAP_BP_ID,
-        // sequentialNumber: element._source.
+        sequentialNumber: element._source.ORDER_NUMBER_FROM_SEQ_USAGE,
+        shippingPoint: element._source.SHIPPINGPOINT_ID,
+        ldsNumber: element._source.LDS_DELIVERY_NOTE_NO,
+        orderStatus: element._source.ORDER_STATUS_CD,
+        orderCreationSystem: element._source.ORDER_CREATION_TYPE_CD,
+        shipTo: element._source.SHIPTO_SAP_BP_ID,
+        soldTo: element._source.SOLDTO_SAP_BP_ID,
+        payer: element._source.PAYER_SAP_BP_ID,
+        commercialCarrier: element._source.COMM_CARRIER_ID,
+        executingCarrier: element._source.EXEC_CARRIER_ID,
+        deliveryType: element._source.DELIVERY_TYPE_CD,
+        processType: element._source.DISTRIBUTION_DEST_CD,
+        deliveryFrom: element._source.DELIVERY_FROM_DAT,
+        deliveryTo: element._source.DELIVERY_TO_DAT,
+        createdBy: element._source.CTL_CRE_UID,
       });
     });
     return dataPrintable;
@@ -232,25 +231,28 @@ const OrderHitsTable = ({ hits }) => {
       return JSON.stringify(row);
     });
   };
+  //console.table(headerPrintable);
   //console.log(checkedColumns);
 
   return (
-    <>
+    <div className="box-table">
       <ColumnsCheckbox
         columns={columns}
         checkedColumns={checkedColumns}
         setCheckedColumns={setCheckedColumns}
       />
-      <ExportTableButton
-        columns={headerPrintable}
-        dataSource={dataPrintable}
-        btnProps={{ type: "primary" }}
-        showColumnPicker
-      >
-        Export to CSV
-      </ExportTableButton>
+      <div className="btn-export">
+        <ExportTableButton
+          columns={headerPrintable}
+          dataSource={dataPrintable}
+          btnProps={{ type: "primary" }}
+          showColumnPicker
+        >
+          Download data
+        </ExportTableButton>
+      </div>
       <Table columns={checkedColumns} dataSource={data} size="small" bordered />
-    </>
+    </div>
   );
 };
 

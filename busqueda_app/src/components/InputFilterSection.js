@@ -14,7 +14,7 @@ const FlexBox = styled.div`
 const GridInputs = styled.div`
   display: grid;
   grid-template-columns: 248px 248px 248px;
-  grid-template-rows: 36px 36px;
+  grid-template-rows: 36px 90px;
   column-gap: 10px;
   row-gap: 10px;
   width: auto;
@@ -43,6 +43,14 @@ const GridInputs = styled.div`
   }
   .sk-input-filter__text::placeholder {
     color: #959595;
+  }
+  p {
+    margin: 0;
+    margin-bottom: 6px;
+    color: #877873;
+  }
+  .filter--createdBy {
+    margin-top: 28px;
   }
 `;
 
@@ -75,6 +83,38 @@ const InputFilterSection = ({ cleanDate, turnFalseDateFilter }) => {
               prefixQueryFields={config.filters.searchboxTransporter.fields}
               blurAction="search"
             />
+            <div className="rangfilter__from">
+              <p>Delivery From</p>
+              <RangeFilter
+                id={config.filters.dateFrom.id}
+                title={config.filters.dateFrom.title}
+                field={config.filters.dateFrom.field}
+                rangeComponent={
+                  <DatesRangeFilter
+                    cleanDate={cleanDate}
+                    turnFalseDateFilter={turnFalseDateFilter}
+                  />
+                }
+                min={946684800000}
+                max={new Date().getTime()}
+              />
+            </div>
+            <div className="rangfilter__to">
+              <p>Delivery To</p>
+              <RangeFilter
+                id={config.filters.dateTo.id}
+                title={config.filters.dateTo.title}
+                field={config.filters.dateTo.field}
+                rangeComponent={
+                  <DatesRangeFilter
+                    cleanDate={cleanDate}
+                    turnFalseDateFilter={turnFalseDateFilter}
+                  />
+                }
+                min={946684800000}
+                max={new Date().getTime()}
+              />
+            </div>
             <InputFilter
               id={config.filters.searchboxCreatedBy.id}
               title={config.filters.searchboxCreatedBy.title}
@@ -82,32 +122,6 @@ const InputFilterSection = ({ cleanDate, turnFalseDateFilter }) => {
               searchOnChange={true}
               prefixQueryFields={config.filters.searchboxCreatedBy.fields}
               blurAction="search"
-            />
-            <RangeFilter
-              id={config.filters.dateFrom.id}
-              title={config.filters.dateFrom.title}
-              field={config.filters.dateFrom.field}
-              rangeComponent={
-                <DatesRangeFilter
-                  cleanDate={cleanDate}
-                  turnFalseDateFilter={turnFalseDateFilter}
-                />
-              }
-              min={946684800000}
-              max={new Date().getTime()}
-            />
-            <RangeFilter
-              id={config.filters.dateTo.id}
-              title={config.filters.dateTo.title}
-              field={config.filters.dateTo.field}
-              rangeComponent={
-                <DatesRangeFilter
-                  cleanDate={cleanDate}
-                  turnFalseDateFilter={turnFalseDateFilter}
-                />
-              }
-              min={946684800000}
-              max={new Date().getTime()}
             />
           </GridInputs>
 

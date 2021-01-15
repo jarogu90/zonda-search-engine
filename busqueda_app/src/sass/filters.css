@@ -1,7 +1,7 @@
 .resetfilters {
   position: absolute;
-  margin-left: 676px;
-  margin-top: -38px;
+  margin-left: 791px;
+  margin-top: -65px;
   font-size: 14px;
   letter-spacing: -0.1px;
 }
@@ -11,6 +11,10 @@
   cursor: default;
   color: var(--ocean-blue) !important;
   text-decoration: underline;
+}
+
+.sk-panel.is-disabled {
+  display: block;
 }
 
 .ant-picker-dropdown .ant-picker-cell-in-view.ant-picker-cell-range-start .ant-picker-cell-inner,
@@ -63,6 +67,7 @@
   border-radius: 4px;
   border: solid 1px #c7deeb;
   background-color: #ffffff;
+  margin-bottom: 5px;
 }
 
 .sk-selected-filters .sk-selected-filters-option .sk-selected-filters-option__name {
@@ -80,5 +85,18 @@
 .sk-selected-filters .ant-select-open {
   border: none;
   background: red;
+}
+
+.ant-picker-range {
+  position: absolute !important;
+  display: -ms-inline-flexbox;
+  display: -webkit-inline-box;
+  display: inline-flex;
+  height: 36px;
+  width: 248px;
+  font-size: 14px !important;
+  border-radius: 4px !important;
+  border: solid 1px #c0dee2 !important;
+  background-color: #e9f2f4 !important;
 }
 /*# sourceMappingURL=filters.css.map */

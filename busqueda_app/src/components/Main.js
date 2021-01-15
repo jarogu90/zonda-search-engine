@@ -55,7 +55,7 @@ class Main extends SearchkitComponent {
             <span className="info_numbers">{timeTaken}ms</span>
           </div>
         </div>
-        <DownloadButton hits={hitsCount} />
+        {/* <DownloadButton hits={hitsCount} /> */}
       </>
     );
   };
