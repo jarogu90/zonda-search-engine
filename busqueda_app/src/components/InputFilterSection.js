@@ -60,10 +60,18 @@ const InputFilterSection = ({ cleanDate, turnFalseDateFilter }) => {
       <ActionBarRow>
         <FlexBox>
           <GridInputs>
-            <SearchBox
+            {/* <SearchBox
               autofocus={true}
               searchOnChange={true}
               placeholder={config.searchbox.placeholder}
+              prefixQueryFields={config.searchbox.queryFields}
+              blurAction="search"
+            /> */}
+            <InputFilter
+              id="orderNumber"
+              title="Order Number"
+              placeholder={config.searchbox.placeholder}
+              searchOnChange={true}
               prefixQueryFields={config.searchbox.queryFields}
               blurAction="search"
             />

@@ -10,6 +10,7 @@ const ColumnsCheckbox = ({ columns, checkedColumns, setCheckedColumns }) => {
 
   const onChangeCheckbox = (e) => {
     let column = {};
+    console.log(e);
     if (e.target.id === "deliveryFrom" || e.target.id === "deliveryTo") {
       column = {
         title: getColumnTitleByKey(e.target.id),
@@ -17,12 +18,18 @@ const ColumnsCheckbox = ({ columns, checkedColumns, setCheckedColumns }) => {
         key: e.target.id,
         sorter: Sorter.DATE,
       };
-    } else {
+    } else if (e.target.id === "orderNumber") {
       column = {
         title: getColumnTitleByKey(e.target.id),
         dataIndex: e.target.id,
         key: e.target.id,
         sorter: Sorter.DEFAULT,
+      };
+    } else {
+      column = {
+        title: getColumnTitleByKey(e.target.id),
+        dataIndex: e.target.id,
+        key: e.target.id,
       };
     }
 
@@ -31,7 +38,7 @@ const ColumnsCheckbox = ({ columns, checkedColumns, setCheckedColumns }) => {
         checkedColumns.filter((col) => col.dataIndex !== column.dataIndex)
       );
     } else {
-      setCheckedColumns([...checkedColumns, column]);
+      setCheckedColumns([column, ...checkedColumns]);
     }
   };
 

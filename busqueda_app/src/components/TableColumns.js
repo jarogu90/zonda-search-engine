@@ -12,6 +12,7 @@ const TableColumns = () => {
       title: "Sequential Number",
       dataIndex: "sequentialNumber",
       key: "sequentialNumber",
+      position: 2,
     },
     {
       title: "Shipping Point",
