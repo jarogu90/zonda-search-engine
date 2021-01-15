@@ -23,6 +23,15 @@ import Sidebar from "./Sidebar";
 /* import NoResults from "./NoResults";
 import { formatDate } from "../utils/Utils"; */
 import DownloadButton from "./DownloadButton";
+import {
+  notExist,
+  statusMigration,
+  orderCreationSystemMigration,
+  formatDateTime,
+  deliveryTypeMigration,
+  labelPills,
+  textPills,
+} from "../utils/Utils";
 
 //Configuración del json para filtros y endpoint
 import config from "../config.json";
@@ -69,22 +78,30 @@ class Main extends SearchkitComponent {
     this.setState({ cleanDate: false });
   };
 
-  SelectedFilter = (props) => (
-    <div className="sk-selected-filters-option">
-      <div className={props.bemBlocks.option("name")}>
-        {props.labelKey}: {props.labelValue}
+  /**
+   *
+   * @param {obj} props
+   * @returns html
+   */
+  SelectedFilter = (props) => {
+    return (
+      <div className="sk-selected-filters-option">
+        <div className={props.bemBlocks.option("name")}>
+          {labelPills(props.labelKey)}:{" "}
+          {textPills(props.labelKey, parseInt(props.labelValue))}
+        </div>
+        <div
+          className={props.bemBlocks.option("remove-action")}
+          onClick={() => {
+            props.removeFilter();
+            this.setState({ cleanDate: true });
+          }}
+        >
+          x
+        </div>
       </div>
-      <div
-        className={props.bemBlocks.option("remove-action")}
-        onClick={() => {
-          props.removeFilter();
-          this.setState({ cleanDate: true });
-        }}
-      >
-        x
-      </div>
-    </div>
-  );
+    );
+  };
 
   //AQUI EMPIEZAN LAS FUNCIONES RELACIONADAS CON LAS FECHAS
   /* getData = (dateFrom, dateTo) => {

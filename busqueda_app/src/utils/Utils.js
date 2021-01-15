@@ -2,7 +2,12 @@ import status from "../tables/status.json";
 import orderCreationSystem from "../tables/orderCreationSystem.json";
 import deliveryType from "../tables/deliveryType.json";
 import moment from "moment";
+import config from "./../config.json";
 
+/**
+ *
+ * @param {number} statusNumber
+ */
 export const statusMigration = (statusNumber) => {
   switch (statusNumber) {
     case 1:
@@ -44,6 +49,10 @@ export const statusMigration = (statusNumber) => {
   }
 };
 
+/**
+ *
+ * @param {number} creationNumber
+ */
 export const orderCreationSystemMigration = (creationNumber) => {
   switch (creationNumber) {
     case 1:
@@ -71,6 +80,10 @@ export const orderCreationSystemMigration = (creationNumber) => {
   }
 };
 
+/**
+ *
+ * @param {number} deliveryTypeNumber
+ */
 export const deliveryTypeMigration = (deliveryTypeNumber) => {
   switch (deliveryTypeNumber) {
     case 1:
@@ -100,6 +113,10 @@ export const deliveryTypeMigration = (deliveryTypeNumber) => {
   }
 };
 
+/**
+ *
+ * @param {string} field
+ */
 export const notExist = (field) => {
   if (!field) {
     return "-";
@@ -108,12 +125,53 @@ export const notExist = (field) => {
   }
 };
 
+/**
+ *
+ * @param {string} date
+ */
 export const formatDate = (date) => {
   return moment(date).format("YYYY-MM-DD");
 };
 
+/**
+ *
+ * @param {string} date
+ */
 export const formatDateTime = (date) => {
   return moment(date).format("YYYY-MM-DD HH:mm:ss");
+};
+
+/**
+ *
+ * @param {string} field
+ */
+export const labelPills = (field) => {
+  switch (field) {
+    case config.filters.orderStatus.fields:
+      return config.filters.orderStatus.title;
+    case config.filters.creationSystem.fields:
+      return config.filters.creationSystem.title;
+    case config.filters.processType.fields:
+      return config.filters.processType.title;
+    case config.filters.deliveryType.fields:
+      return config.filters.deliveryType.title;
+  }
+};
+
+/**
+ *
+ * @param {string} field
+ * @param {number} data
+ */
+export const textPills = (field, data) => {
+  switch (field) {
+    case config.filters.orderStatus.fields:
+      return statusMigration(data).txt;
+    case config.filters.creationSystem.fields:
+      return orderCreationSystemMigration(data);
+    case config.filters.deliveryType.fields:
+      return deliveryTypeMigration(data);
+  }
 };
 
 /*export const shipTo = async (shipToId) => {
