@@ -1,16 +1,17 @@
 import { Table } from "antd";
 
 const dateSort = (rowA, rowB) => {
+  console.log(rowA);
   if (isDeliveryFrom) {
-    const a = new Date(rowA.deliveryFrom).getTime();
-    const b = new Date(rowB.deliveryFrom).getTime();
+    const a = new Date(rowA.deliveryFrom.props.children).getTime();
+    const b = new Date(rowB.deliveryFrom.props.children).getTime();
 
     if (a < b) return -1;
     if (b < a) return 1;
     return 0;
   } else {
-    const a = new Date(rowA.deliveryTo).getTime();
-    const b = new Date(rowB.deliveryTo).getTime();
+    const a = new Date(rowA.deliveryTo.props.children).getTime();
+    const b = new Date(rowB.deliveryTo.props.children).getTime();
 
     if (a < b) return -1;
     if (b < a) return 1;
@@ -19,8 +20,11 @@ const dateSort = (rowA, rowB) => {
 };
 
 const defaultSort = (rowA, rowB) => {
-  if (rowA.orderNumber < rowB.orderNumber) return -1;
-  if (rowB.orderNumber < rowA.orderNumber) return 1;
+  //console.log(rowA.orderNumber.props.children);
+  if (rowA.orderNumber.props.children < rowB.orderNumber.props.children)
+    return -1;
+  if (rowB.orderNumber.props.children < rowA.orderNumber.props.children)
+    return 1;
   return 0;
 };
 
@@ -33,7 +37,7 @@ const addColumnsSorterType = (columns) => {
       column.dataIndex === "deliveryTo"
     ) {
       column.sorter = dateSort;
-    } else {
+    } else if (column.dataIndex === "orderNumber") {
       column.sorter = defaultSort;
     }
     sortableColumns.push(column);
