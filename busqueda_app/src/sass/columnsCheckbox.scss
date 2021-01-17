@@ -6,63 +6,67 @@
   display: none;
 }
 
-.ant-dropdown-menu-item-group {
+.ant-dropdown-menu {
+  padding: 0px !important;
+
+  .ant-dropdown-menu-item-group {
 
 
 
-  .ant-dropdown-menu-item-group-title {
-    margin: 0;
-    color: rgba(0, 0, 0, 0.85);
-    font-weight: 500;
-    font-size: 16px;
-    line-height: 22px;
-    padding: 16px 24px;
-    color: rgba(0, 0, 0, 0.85);
-    background: #fff;
-    border-bottom: 1px solid #f0f0f0;
-    border-radius: 2px 2px 0 0;
-  }
-
-  .ant-dropdown-menu-item-group-list {
-    width: 900px;
-    display: flex;
-    flex-wrap: wrap;
-    padding: 24px;
-
-
-    li {
-      width: 180px;
-      padding: 3px 6px;
-
-      .ant-checkbox-wrapper {
-        color: #6f6f6f;
-
-
-        .ant-checkbox-checked .ant-checkbox-inner {
-          background-color: #fff;
-          border-color: var(--turquoise-blue);
-          padding: 1px;
-          border-radius: 2px;
-
-          &::after {
-            position: absolute;
-            display: table;
-            border: 2px solid var(--turquoise-blue) !important;
-            transform: scale(1) !important;
-            opacity: 1;
-            content: ' ';
-            width: 10px;
-            height: 10px;
-            top: 2px !important;
-            left: 2px !important;
-            border-radius: 2px;
-            background: var(--turquoise-blue);
-          }
-
-        }
-      }
+    .ant-dropdown-menu-item-group-title {
+      margin: 0;
+      color: #fff;
+      font-weight: 500;
+      font-size: 22px;
+      line-height: 22px;
+      padding: 16px 24px;
+      background: #fff;
+      border-bottom: 1px solid #f0f0f0;
+      border-radius: 2px 2px 0 0;
+      background-color: var(--turquoise-blue);
     }
 
+    .ant-dropdown-menu-item-group-list {
+      width: 948px;
+      display: flex;
+      flex-wrap: wrap;
+      padding: 24px;
 
+
+      li {
+        width: 180px;
+        padding: 3px 6px;
+
+        .ant-checkbox-wrapper {
+          color: #6f6f6f;
+
+
+          .ant-checkbox-checked .ant-checkbox-inner {
+            background-color: #fff;
+            border-color: var(--turquoise-blue);
+            padding: 1px;
+            border-radius: 2px;
+
+            &::after {
+              position: absolute;
+              display: table;
+              border: 2px solid var(--turquoise-blue) !important;
+              transform: scale(1) !important;
+              opacity: 1;
+              content: ' ';
+              width: 10px;
+              height: 10px;
+              top: 2px !important;
+              left: 2px !important;
+              border-radius: 2px;
+              background: var(--turquoise-blue);
+            }
+
+          }
+        }
+      }
+
+
+    }
   }
 }

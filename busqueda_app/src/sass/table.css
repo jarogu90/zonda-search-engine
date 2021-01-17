@@ -15,20 +15,38 @@
   margin-top: 50px;
 }
 
-.box-table .ant-table-container .ant-table-content .ant-table-cell {
+.box-table .ant-table-container .ant-table-content .ant-table-thead .ant-table-cell {
   font-size: 12px;
   text-align: center;
   color: var(--greyish-brown);
   height: 70px;
-  padding: 0 !important;
+  font-weight: 600;
+  padding: 0 8px 0 8px !important;
+  background: var(--ice-blue);
+  border-right: 1px solid var(--light-blue-grey);
 }
 
-.box-table .ant-table-container .ant-table-content .ant-table-cell div {
-  height: 70px;
-  width: 100vh;
-  display: table-cell;
-  vertical-align: middle;
-  padding: 0 8px 0 8px !important;
+.box-table .ant-table-container .ant-table-content .ant-table-thead .ant-table-cell .ant-table-column-sorters {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.box-table .ant-table-container .ant-table-content .ant-table-thead .ant-table-cell .ant-table-column-sorters .anticon {
+  color: var(--greyish-brown);
+}
+
+.box-table .ant-table-container .ant-table-content .ant-table-thead .ant-table-cell .ant-table-column-sorters .anticon path {
+  border: solid 1px var(--turquoise-blue);
+}
+
+.box-table .ant-table-container .ant-table-content .ant-table-thead .ant-table-cell .ant-table-column-sorters .active {
+  color: var(--turquoise-blue);
+}
+
+.box-table .ant-table-container .ant-table-content .ant-table-tbody .ant-table-cell {
+  font-size: 12px;
+  color: var(--greyish-brown);
 }
 
 .box-table header {
