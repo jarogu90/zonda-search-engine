@@ -29,13 +29,12 @@ const CreationSystem = () => {
           .option()
           .state({ selected: props.selected })
           .mix(props.bemBlocks.container("item"))}
-        onClick={props.onClick}
       >
         <div className={props.bemBlocks.option("text")}>
           {orderCreationSystemMigration(parseInt(props.label))}
         </div>
         <div className={props.bemBlocks.option("count")}>
-          <input type="checkbox" />
+          <input type="checkbox" onClick={props.onClick} />
         </div>
       </div>
     );

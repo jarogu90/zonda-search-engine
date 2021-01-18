@@ -28,14 +28,13 @@ const OrderStatus = () => {
           .option()
           .state({ selected: props.selected })
           .mix(props.bemBlocks.container("item"))}
-        onClick={props.onClick}
       >
         <div className={props.bemBlocks.option("text")}>
           {statusMigration(parseInt(props.label)).txt}
         </div>
 
         <div className={props.bemBlocks.option("count")}>
-          <input type="checkbox" />
+          <input type="checkbox" onClick={props.onClick} />
         </div>
       </div>
     );
