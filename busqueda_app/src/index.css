@@ -4,7 +4,13 @@
   src: local("SofiaPro"),
     url(./fonts/SofiaPro/SofiaProRegular.woff) format("woff");
 }
+*{
+  text-decoration: none !important;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
 
+}
 *:focus {
   outline: none;
 }
