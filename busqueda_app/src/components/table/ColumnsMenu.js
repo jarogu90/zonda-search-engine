@@ -8,7 +8,7 @@ const ColumnsMenu = ({ columns, onChangeCheckbox }) => {
   const ColumnsDropdown = () => {
     return (
       <Menu>
-        <Menu.ItemGroup title="Columns">
+        <Menu.ItemGroup title="Personalized Table">
           {columns.map((column) => {
             return (
               <Menu.Item key={column.dataIndex}>
