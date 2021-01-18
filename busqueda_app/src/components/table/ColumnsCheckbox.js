@@ -34,11 +34,22 @@ const ColumnsCheckbox = ({ columns, checkedColumns, setCheckedColumns }) => {
     }
 
     if (!e.target.checked) {
-      setCheckedColumns(
-        checkedColumns.filter((col) => col.dataIndex !== column.dataIndex)
+      const index = checkedColumns.findIndex(
+        (element) => element.dataIndex === column.dataIndex
       );
+      console.log(index);
+      checkedColumns.splice(index, 1);
+      setCheckedColumns([...checkedColumns]);
+      /* setCheckedColumns(
+        checkedColumns.filter((col) => col.dataIndex !== column.dataIndex)
+      ); */
     } else {
-      setCheckedColumns([column, ...checkedColumns]);
+      const index = columns.findIndex(
+        (element) => element.dataIndex === column.dataIndex
+      );
+      checkedColumns.splice(index, 0, column);
+      setCheckedColumns([...checkedColumns]);
+      //setCheckedColumns([column, ...checkedColumns]);
     }
   };
 
