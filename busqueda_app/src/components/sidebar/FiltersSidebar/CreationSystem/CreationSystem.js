@@ -1,26 +1,26 @@
 import React, { useContext } from "react";
-import styled from "styled-components";
+//import styled from "styled-components";
 
-import config from "../../../config.json";
+import config from "../../../../config.json";
 
 // components
 import FilterBase from "../FilterBase/FilterBase";
 
-import { Select, RefinementListFilter, SearchkitManager } from "searchkit";
-import { orderCreationSystemMigration } from "./../../../utils/Utils";
+import { RefinementListFilter } from "searchkit";
+import { orderCreationSystemMigration } from "./../../../../utils/Utils";
 
 // services
 import {
   GlobalStateContext,
-  GlobalDispatchContext,
-} from "../../../services/GlobalContext";
+  //GlobalDispatchContext,
+} from "../../../../services/GlobalContext";
 
 // images
-import CreationSystemIcon from "../../../img/creationSystemIcon";
+import CreationSystemIcon from "../../../../img/creationSystemIcon";
 
 const CreationSystem = () => {
   const state = useContext(GlobalStateContext);
-  const dispatch = useContext(GlobalDispatchContext);
+  //const dispatch = useContext(GlobalDispatchContext);
 
   const RefinementOption = (props) => {
     return (
@@ -29,13 +29,12 @@ const CreationSystem = () => {
           .option()
           .state({ selected: props.selected })
           .mix(props.bemBlocks.container("item"))}
-        onClick={props.onClick}
       >
         <div className={props.bemBlocks.option("text")}>
           {orderCreationSystemMigration(parseInt(props.label))}
         </div>
         <div className={props.bemBlocks.option("count")}>
-          <input type="checkbox" />
+          <input type="checkbox" onClick={props.onClick} />
         </div>
       </div>
     );

@@ -107,7 +107,7 @@
             "title": "Table"
         },
         "noResults": {
-            "NoHits.NoResultsFound":"No results were found"
+            "NoHits.NoResultsFound":"No results were found."
         }
     },
     "dateFilter": {

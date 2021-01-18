@@ -5,7 +5,7 @@ import {
   orderCreationSystemMigration,
   formatDateTime,
   deliveryTypeMigration,
-} from "../utils/Utils";
+} from "../../utils/Utils";
 import styled from "styled-components";
 import { Table } from "antd";
 import { ExportTableButton } from "ant-table-extensions";

@@ -1,4 +1,4 @@
-import { Sorter } from "./../utils/sorter";
+import { Sorter } from "./../../utils/sorter";
 import OrderHitsTable from "./OrderHitsTable";
 
 const TableColumns = () => {

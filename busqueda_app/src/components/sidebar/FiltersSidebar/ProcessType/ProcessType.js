@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 
-import config from "../../../config.json";
+import config from "../../../../config.json";
 
 // components
 import FilterBase from "../FilterBase/FilterBase";
@@ -9,12 +9,12 @@ import FilterBase from "../FilterBase/FilterBase";
 import {
   GlobalStateContext,
   GlobalDispatchContext,
-} from "../../../services/GlobalContext";
+} from "../../../../services/GlobalContext";
 
 import { Select, RefinementListFilter, SearchkitManager } from "searchkit";
 
 // images
-import ProcessTypeIcon from "../../../img/processTypeIcon";
+import ProcessTypeIcon from "../../../../img/processTypeIcon";
 
 const ProcessType = ({ showing }) => {
   const state = useContext(GlobalStateContext);
@@ -27,12 +27,11 @@ const ProcessType = ({ showing }) => {
           .option()
           .state({ selected: props.selected })
           .mix(props.bemBlocks.container("item"))}
-        onClick={props.onClick}
       >
         <div className={props.bemBlocks.option("text")}>{props.label}</div>
 
         <div className={props.bemBlocks.option("count")}>
-          <input type="checkbox" />
+          <input type="checkbox" onClick={props.onClick} />
         </div>
       </div>
     );

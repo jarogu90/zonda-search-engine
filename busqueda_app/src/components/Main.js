@@ -19,7 +19,7 @@ import {
 import Samples from "./Samples";
 import InputFilterSection from "./InputFilterSection";
 import TopBarHeader from "./TopBarHeader";
-import Sidebar from "./Sidebar";
+import Sidebar from "./sidebar/Sidebar";
 import Pill from "./Pill";
 //import NoResults from "./NoResults";
 
