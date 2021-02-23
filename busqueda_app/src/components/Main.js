@@ -31,7 +31,10 @@ import { endpoint } from "../config.json";
 import { dateRange } from "../queries/rangeDateQuery";
 import DatesRangeFilter from "./DatesRangeFilter"; */
 
-const searchkit = new SearchkitManager(endpoint);
+const searchkit = new SearchkitManager(endpoint, {
+  basicAuth:"ord43res2",
+  defaultSize: 1000
+});
 
 class Main extends SearchkitComponent {
   state = {

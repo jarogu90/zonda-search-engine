@@ -1,5 +1,5 @@
 {
-    "endpoint": "https://search-logon-order-search-qyhfl5jwmhiaatf23g3wafmjia.eu-west-1.es.amazonaws.com/filters_test",
+    "endpoint": "https://v398e2cse5.execute-api.eu-west-1.amazonaws.com/v1/",
     "title": "Orders Search Engine",
     "searchbox": {
         "queryFields": ["ORDER_NUMBER","ORDER_NUMBER_FROM_SEQ_USAGE", "LDS_DELIVERY_NOTE_NO"],
@@ -56,13 +56,13 @@
         "searchboxBusiness": {
             "title": "Business",
             "placeholder": "Business Partners",
-            "fields": ["SHIPTO_SAP_BP_ID", "SOLDTO_SAP_BP_ID", "BILLTO_SAP_BP_ID", "PAYER_SAP_BP_ID"],
+            "fields": ["SHIPTO_SAP.NAME1", "SOLDTO_SAP.NAME1", "BILLTO_SAP.NAME1", "PAYER_SAP.NAME1"],
             "id": "business"
         },
         "searchboxCreatedBy": {
             "title": "Created by",
             "placeholder": "Created by",
-            "fields": "CTL_CRE_UID",
+            "fields": ["USER.PERSON.NAME","USER.PERSON.FIRST_NAME"],
             "id": "createdBy"
         },
         "dateFrom": {

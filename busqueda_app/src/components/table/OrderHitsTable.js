@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from "react";
+// import { Modal } from "react-responsive-modal";
+
 import {
   notExist,
   statusMigration,
@@ -7,9 +9,10 @@ import {
   deliveryTypeMigration,
 } from "../../utils/Utils";
 import styled from "styled-components";
-import { Table } from "antd";
+import { Table, Modal } from "antd";
 import { ExportTableButton } from "ant-table-extensions";
-
+import Popup from "../GenericComponents/Popup";
+import OrderItemsTable from "./OrderItemsTable";
 // components
 import TableColumns from "./TableColumns";
 //import ColumnsMenu from "./ColumnsMenu";
@@ -34,6 +37,26 @@ const OrderHitsTable = ({ hits }) => {
   const [dataPrintable, setPrintable] = useState([]);
   const [checkedColumns, setCheckedColumns] = useState(TableColumns);
   const [columns, setColumns] = useState(TableColumns);
+  const [isModalVisible, setIsModalVisible] = useState(false);
+  const [clickedOrder, setClickedOrder] = useState()
+  const showModal = (order) => {
+    const modal = Modal.success({
+      title:"Order Items Detail for Order ID" + order,
+      content : <OrderItemsTable order={order} />,
+      width: 1000,
+      onOk: handleOk
+    })
+    console.log(order)
+    setClickedOrder(order)
+    setIsModalVisible(true);
+  };
+  const handleOk = () => {
+    setIsModalVisible(false);
+  };
+
+  const handleCancel = () => {
+    setIsModalVisible(false);
+  };
 
   const fillDataTable = async (data) => {
     const arrayData = [];
@@ -49,9 +72,17 @@ const OrderHitsTable = ({ hits }) => {
       }
 
       let row = {
+        orderDetails: (
+          <OnHold backgroundcolor={backgroundcolor}>
+              <span onClick={()=>showModal(hit._source.ORDER_ID)}>Details</span>
+          </OnHold>
+        ),
         orderNumber: (
           <OnHold backgroundcolor={backgroundcolor}>
-            {hit._source.ORDER_NUMBER}
+            
+            <a href={`http://zonda-ext-eu-dev.publicapps.lfgh.ocpqa.lafargeholcim-go.com/logon/order/bestellung/BestellungSearchEntry.do?order=13273122`} >{hit._source.ORDER_NUMBER}</a>
+            {/* <span onClick={()=>showModal(hit._source.ORDER_ID)}>{hit._source.ORDER_ID}</span> */}
+            {/* <a href={`http://zonda-ext-eu-dev.publicapps.lfgh.ocpqa.lafargeholcim-go.com/logon/order/bestellung/BestellungSearchEntry.do?order=${hit._source.ORDER_ID}`} >{hit._source.ORDER_NUMBER}</a> */}
           </OnHold>
         ),
         sequentialNumber: (
@@ -71,34 +102,34 @@ const OrderHitsTable = ({ hits }) => {
         ),
         orderStatus: (
           <OnHold backgroundcolor={backgroundcolor}>
-            <Status color={statusMigration(hit._source.ORDER_STATUS_CD).color}>
-              {statusMigration(hit._source.ORDER_STATUS_CD).txt}
+            <Status color={statusMigration(parseInt(hit._source.ORDER_STATUS_CD)).color}>
+              {statusMigration(parseInt(hit._source.ORDER_STATUS_CD)).txt}
             </Status>
           </OnHold>
         ),
         orderCreationSystem: (
           <OnHold backgroundcolor={backgroundcolor}>
-            {orderCreationSystemMigration(hit._source.ORDER_CREATION_TYPE_CD)}
+            {orderCreationSystemMigration(parseInt(hit._source.ORDER_CREATION_TYPE_CD))}
           </OnHold>
         ),
         shipTo: (
           <OnHold backgroundcolor={backgroundcolor}>
-            {hit._source.SHIPTO_SAP_BP_ID}
+            {hit._source.SHIPTO_SAP.NAME1}
           </OnHold>
         ),
         soldTo: (
           <OnHold backgroundcolor={backgroundcolor}>
-            {hit._source.SOLDTO_SAP_BP_ID}
+            {hit._source.SOLDTO_SAP.NAME1}
           </OnHold>
         ),
         billTo: (
           <OnHold backgroundcolor={backgroundcolor}>
-            {hit._source.BILLTO_SAP_BP_ID}
+            {hit._source.BILLTO_SAP.NAME1}
           </OnHold>
         ),
         payer: (
           <OnHold backgroundcolor={backgroundcolor}>
-            {hit._source.PAYER_SAP_BP_ID}
+            {hit._source.PAYER_SAP.NAME1}
           </OnHold>
         ),
         commercialCarrier: (
@@ -113,7 +144,7 @@ const OrderHitsTable = ({ hits }) => {
         ),
         deliveryType: (
           <OnHold backgroundcolor={backgroundcolor}>
-            {deliveryTypeMigration(hit._source.DELIVERY_TYPE_CD)}
+            {deliveryTypeMigration(parseInt(hit._source.DELIVERY_TYPE_CD))}
           </OnHold>
         ),
         processType: (
@@ -133,7 +164,7 @@ const OrderHitsTable = ({ hits }) => {
         ),
         createdBy: (
           <OnHold backgroundcolor={backgroundcolor}>
-            {hit._source.CTL_CRE_UID}
+            {hit._source.USER.PERSON.FIRSTNAME} {hit._source.USER.PERSON.NAME}
           </OnHold>
         ),
         key: idx,
@@ -159,23 +190,24 @@ const OrderHitsTable = ({ hits }) => {
     dta.forEach((element) => {
       //console.log(element);
       dataPrintable.push({
+        orderDetails: element._source.ORDER_NUMBER,
         orderNumber: element._source.ORDER_NUMBER,
-        billTo: element._source.BILLTO_SAP_BP_ID,
+        billTo: element._source.BILLTO_SAP.NAME1,
         sequentialNumber: element._source.ORDER_NUMBER_FROM_SEQ_USAGE,
         shippingPoint: element._source.SHIPPINGPOINT_ID,
         ldsNumber: element._source.LDS_DELIVERY_NOTE_NO,
         orderStatus: element._source.ORDER_STATUS_CD,
         orderCreationSystem: element._source.ORDER_CREATION_TYPE_CD,
-        shipTo: element._source.SHIPTO_SAP_BP_ID,
-        soldTo: element._source.SOLDTO_SAP_BP_ID,
-        payer: element._source.PAYER_SAP_BP_ID,
+        shipTo: element._source.SHIPTO_SAP.NAME1,
+        soldTo: element._source.SOLDTO_SAP.NAME1,
+        payer: element._source.PAYER_SAP.NAME1,
         commercialCarrier: element._source.COMM_CARRIER_ID,
         executingCarrier: element._source.EXEC_CARRIER_ID,
         deliveryType: element._source.DELIVERY_TYPE_CD,
         processType: element._source.DISTRIBUTION_DEST_CD,
         deliveryFrom: element._source.DELIVERY_FROM_DAT,
         deliveryTo: element._source.DELIVERY_TO_DAT,
-        createdBy: element._source.CTL_CRE_UID,
+        createdBy: element._source.USER.PERSON.FIRSTNAME + ' ' + element._source.USER.PERSON.NAME,
       });
     });
     return dataPrintable;
@@ -229,7 +261,18 @@ const OrderHitsTable = ({ hits }) => {
           Download data
         </ExportTableButton>
       </div>
+
       <Table columns={checkedColumns} dataSource={data} size="small" bordered />
+      {/* <Modal
+        title="Modal 1000px width"
+        centered
+        visible={isModalVisible}
+        onOk={handleOk}
+        onCancel={handleOk}
+        width={1000}
+      > */}
+        {/* <OrderItemsTable order={clickedOrder} /> */}
+      {/* </Modal> */}
     </div>
   );
 };

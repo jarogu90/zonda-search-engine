@@ -52,9 +52,9 @@
   border-color: var(--turquoise-blue);
 }
 
-.ant-modal-content {
+/* .ant-modal-content {
   width: 500px;
-}
+} */
 
 .ant-modal-content .ant-modal-close-x {
   border-radius: 50%;

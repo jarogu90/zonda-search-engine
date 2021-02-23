@@ -54,6 +54,9 @@ export const statusMigration = (statusNumber) => {
       return status[17];
     case 18:
       return status[18];
+    default:
+      console.log("status",statusNumber);
+      return status[1];
   }
 };
 

@@ -1,8 +1,15 @@
 import { Sorter } from "./../../utils/sorter";
 import OrderHitsTable from "./OrderHitsTable";
+import React, { useState, useEffect } from "react";
 
 const TableColumns = () => {
   const columns = [
+    {
+      title: "",
+      dataIndex: "orderDetails",
+      key: "orderDetails",
+      render: text => <a>{text}</a>,
+    },
     {
       title: "Logon Order Number",
       dataIndex: "orderNumber",

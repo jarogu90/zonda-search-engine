@@ -1,0 +1,808 @@
+ mockapi = {
+         "mappings" : {
+               "properties" : {
+                 "ACTUAL_DELIVERY_DAT" : {
+                   "type" : "date",
+                   "format": "yyyy-MM-dd HH:mm:ss||yyyy-MM-dd||epoch_millis||yyyy-MM-dd HH:mm:ss.SSSSSS"
+                 },
+                 "ACTUAL_DEP_RAILWAY_STATION_ID" : {
+                   "type" : "long"
+                 },
+                 "ARCHIVING_MOD_TS" : {
+                   "type" : "date",
+                   "format": "yyyy-MM-dd HH:mm:ss||yyyy-MM-dd||epoch_millis||yyyy-MM-dd HH:mm:ss.SSSSSS"
+                 },
+                 "ARCHIVING_STATUS_CD" : {
+                   "type" : "long"
+                 },
+                 "AUTO_RELEASE_FLAG" : {
+                   "type" : "long"
+                 },
+                 "BILLTO_SAP_BP_ID" : {
+                   "type" : "text",
+                   "fields" : {
+                     "keyword" : {
+                       "type" : "keyword",
+                       "ignore_above" : 256
+                     }
+                   }
+                 },
+                 "BP_CORRECTED_FLAG" : {
+                   "type" : "long"
+                 },
+                 "CANC_CONF_EMAIL_FLAG" : {
+                   "type" : "long"
+                 },
+                 "CANC_CONF_SMS_FLAG" : {
+                   "type" : "long"
+                 },
+                 "CARRIER_DECLINE_NOTE" : {
+                   "type" : "text",
+                   "fields" : {
+                     "keyword" : {
+                       "type" : "keyword",
+                       "ignore_above" : 256
+                     }
+                   }
+                 },
+                 "CARRIER_DELIVERY_NOTE" : {
+                   "type" : "text",
+                   "fields" : {
+                     "keyword" : {
+                       "type" : "keyword",
+                       "ignore_above" : 256
+                     }
+                   }
+                 },
+                 "CARRIER_DISPATCHING_NOTE" : {
+                   "type" : "text",
+                   "fields" : {
+                     "keyword" : {
+                       "type" : "keyword",
+                       "ignore_above" : 256
+                     }
+                   }
+                 },
+                 "CARRIER_NOTIF_EMAIL_CHK_FLAG" : {
+                   "type" : "long"
+                 },
+                 "CARRIER_NOTIF_EMAIL_SENT_TS" : {
+                   "type" : "date",
+                   "format": "yyyy-MM-dd HH:mm:ss||yyyy-MM-dd||epoch_millis||yyyy-MM-dd HH:mm:ss.SSSSSS"
+                 },
+                 "CARRIER_TRUCK_DRIVER_NOTE" : {
+                   "type" : "text",
+                   "fields" : {
+                     "keyword" : {
+                       "type" : "keyword",
+                       "ignore_above" : 256
+                     }
+                   }
+                 },
+                 "COMMERCIAL_DISTANCE_M" : {
+                   "type" : "long"
+                 },
+                 "COMM_CARRIER_ID" : {
+                   "type" : "text",
+                   "fields" : {
+                     "keyword" : {
+                       "type" : "keyword",
+                       "ignore_above" : 256
+                     }
+                   }
+                 },
+                 "CONTACT_PERSON_SIGNATURE_TXT" : {
+                   "type" : "text",
+                   "fields" : {
+                     "keyword" : {
+                       "type" : "keyword",
+                       "ignore_above" : 256
+                     }
+                   }
+                 },
+                 "CONTACT_PERSON_TXT" : {
+                   "type" : "text",
+                   "fields" : {
+                     "keyword" : {
+                       "type" : "keyword",
+                       "ignore_above" : 256
+                     }
+                   }
+                 },
+                 "CREATION_TIME" : {
+                   "type" : "date",
+                   "format": "yyyy-MM-dd HH:mm:ss||yyyy-MM-dd||epoch_millis||yyyy-MM-dd HH:mm:ss.SSSSSS"
+                 },
+                 "CTL_CRE_TS" : {
+                   "type" : "date",
+                   "format": "yyyy-MM-dd HH:mm:ss||yyyy-MM-dd||epoch_millis||yyyy-MM-dd HH:mm:ss.SSSSSS"
+                 },
+                 "CTL_CRE_UID" : {
+                   "type" : "text",
+                   "fields" : {
+                     "keyword" : {
+                       "type" : "keyword",
+                       "ignore_above" : 256
+                     }
+                   }
+                 },
+                 "CTL_MOD_TS" : {
+                   "type" : "date",
+                   "format": "yyyy-MM-dd HH:mm:ss||yyyy-MM-dd||epoch_millis||yyyy-MM-dd HH:mm:ss.SSSSSS"
+                 },
+                 "CTL_MOD_UID" : {
+                   "type" : "long"
+                 },
+                 "CTL_TCN" : {
+                   "type" : "long"
+                 },
+                 "CUSTORDER_ID" : {
+                   "type" : "long"
+                 },
+                 "CUST_CONF_NEEDED_FLAG" : {
+                   "type" : "long"
+                 },
+                 "CUST_DELIVERY_NOTE_COMMENT" : {
+                   "type" : "text",
+                   "fields" : {
+                     "keyword" : {
+                       "type" : "keyword",
+                       "ignore_above" : 256
+                     }
+                   }
+                 },
+                 "CUST_WEBORDER_NOTE" : {
+                   "type" : "text",
+                   "fields" : {
+                     "keyword" : {
+                       "type" : "keyword",
+                       "ignore_above" : 256
+                     }
+                   }
+                 },
+                 "DELIVERED_DRIVER_ID" : {
+                   "type" : "long"
+                 },
+                 "DELIVERED_SIMPLE_VEHICLE_ID" : {
+                   "type" : "long"
+                 },
+                 "DELIVERED_TRAILER_ID" : {
+                   "type" : "long"
+                 },
+                 "DELIVERED_TRUCK_ID" : {
+                   "type" : "long"
+                 },
+                 "DELIVERED_WAGON_ID" : {
+                   "type" : "long"
+                 },
+                 "DELIVERYNOTE_SIGNATURE_ID" : {
+                   "type" : "long"
+                 },
+                 "DELIVERY_FROM_DAT" : {
+                   "type" : "date",
+                   "format": "yyyy-MM-dd HH:mm:ss||yyyy-MM-dd||epoch_millis||yyyy-MM-dd HH:mm:ss.SSSSSS"
+                 },
+                 "DELIVERY_TO_DAT" : {
+                   "type" : "date",
+                   "format": "yyyy-MM-dd HH:mm:ss||yyyy-MM-dd||epoch_millis||yyyy-MM-dd HH:mm:ss.SSSSSS"
+                 },
+                 "DELIVERY_TRSP_ZONE_CD" : {
+                   "type" : "text",
+                   "fields" : {
+                     "keyword" : {
+                       "type" : "keyword",
+                       "ignore_above" : 256
+                     }
+                   }
+                 },
+                 "DELIVERY_TYPE_CD" : {
+                   "type" : "long"
+                 },
+                 "DELIVNOTE_EMAIL_FLAG" : {
+                   "type" : "long"
+                 },
+                 "DELIVNOTE_FAX_FLAG" : {
+                   "type" : "long"
+                 },
+                 "DELIVNOTE_SINGLE_PAPER_FLAG" : {
+                   "type" : "long"
+                 },
+                 "DELIV_TYPE_PLAN_ACTUAL" : {
+                   "type" : "long"
+                 },
+                 "DIRECTION" : {
+                   "type" : "text",
+                   "fields" : {
+                     "keyword" : {
+                       "type" : "keyword",
+                       "ignore_above" : 256
+                     }
+                   }
+                 },
+                 "DISTRIBUTION_DEST_CD" : {
+                   "type" : "text",
+                   "fields" : {
+                     "keyword" : {
+                       "type" : "keyword",
+                       "ignore_above" : 256
+                     }
+                   }
+                 },
+                 "ETRAN_OUTBOUND" : {
+                   "type" : "text",
+                   "fields" : {
+                     "keyword" : {
+                       "type" : "keyword",
+                       "ignore_above" : 256
+                     }
+                   }
+                 },
+                 "ETRAN_RETURN" : {
+                   "type" : "text",
+                   "fields" : {
+                     "keyword" : {
+                       "type" : "keyword",
+                       "ignore_above" : 256
+                     }
+                   }
+                 },
+                 "EXEC_CARRIER_ID" : {
+                   "type" : "text",
+                   "fields" : {
+                     "keyword" : {
+                       "type" : "keyword",
+                       "ignore_above" : 256
+                     }
+                   }
+                 },
+                 "EXTRA_COST_1_CD" : {
+                   "type" : "text",
+                   "fields" : {
+                     "keyword" : {
+                       "type" : "keyword",
+                       "ignore_above" : 256
+                     }
+                   }
+                 },
+                 "EXTRA_COST_2_CD" : {
+                   "type" : "text",
+                   "fields" : {
+                     "keyword" : {
+                       "type" : "keyword",
+                       "ignore_above" : 256
+                     }
+                   }
+                 },
+                 "EXTRA_COST_3_CD" : {
+                   "type" : "text",
+                   "fields" : {
+                     "keyword" : {
+                       "type" : "keyword",
+                       "ignore_above" : 256
+                     }
+                   }
+                 },
+                 "EXTRA_COST_4_CD" : {
+                   "type" : "text",
+                   "fields" : {
+                     "keyword" : {
+                       "type" : "keyword",
+                       "ignore_above" : 256
+                     }
+                   }
+                 },
+                 "EXTRA_COST_WAITING_TIME_MIN" : {
+                   "type" : "long"
+                 },
+                 "EXW_DRIVER" : {
+                   "type" : "text",
+                   "fields" : {
+                     "keyword" : {
+                       "type" : "keyword",
+                       "ignore_above" : 256
+                     }
+                   }
+                 },
+                 "EXW_TRUCK" : {
+                   "type" : "text",
+                   "fields" : {
+                     "keyword" : {
+                       "type" : "keyword",
+                       "ignore_above" : 256
+                     }
+                   }
+                 },
+                 "FORCE_TO_SAP_FLAG" : {
+                   "type" : "long"
+                 },
+                 "FREE_DELIVERY_FLAG" : {
+                   "type" : "long"
+                 },
+                 "FREIGHT_COST" : {
+                   "type" : "long"
+                 },
+                 "GENERATE_RELEASE_CODE_FLAG" : {
+                   "type" : "long"
+                 },
+                 "IS_ARCHIVED_FLAG" : {
+                   "type" : "long"
+                 },
+                 "LDS_DELIVERY_NOTE_NO" : {
+                   "type" : "text",
+                   "fields" : {
+                     "keyword" : {
+                       "type" : "keyword",
+                       "ignore_above" : 256
+                     }
+                   }
+                 },
+                 "LNF_COORD_LAT" : {
+                   "type" : "long"
+                 },
+                 "LNF_COORD_LON" : {
+                   "type" : "long"
+                 },
+                 "LNF_SITE_CITY" : {
+                   "type" : "text",
+                   "fields" : {
+                     "keyword" : {
+                       "type" : "keyword",
+                       "ignore_above" : 256
+                     }
+                   }
+                 },
+                 "LNF_SITE_COUNTRY" : {
+                   "type" : "text",
+                   "fields" : {
+                     "keyword" : {
+                       "type" : "keyword",
+                       "ignore_above" : 256
+                     }
+                   }
+                 },
+                 "LNF_SITE_DISTANCE" : {
+                   "type" : "long"
+                 },
+                 "LNF_SITE_NAME" : {
+                   "type" : "text",
+                   "fields" : {
+                     "keyword" : {
+                       "type" : "keyword",
+                       "ignore_above" : 256
+                     }
+                   }
+                 },
+                 "LNF_SITE_POSTAL_CODE" : {
+                   "type" : "text",
+                   "fields" : {
+                     "keyword" : {
+                       "type" : "keyword",
+                       "ignore_above" : 256
+                     }
+                   }
+                 },
+                 "LNF_SITE_RADIALS" : {
+                   "type" : "text",
+                   "fields" : {
+                     "keyword" : {
+                       "type" : "keyword",
+                       "ignore_above" : 256
+                     }
+                   }
+                 },
+                 "LNF_SITE_STREET_HOUSE_NO" : {
+                   "type" : "text",
+                   "fields" : {
+                     "keyword" : {
+                       "type" : "keyword",
+                       "ignore_above" : 256
+                     }
+                   }
+                 },
+                 "LNF_SITE_VAT_NO" : {
+                   "type" : "text",
+                   "fields" : {
+                     "keyword" : {
+                       "type" : "keyword",
+                       "ignore_above" : 256
+                     }
+                   }
+                 },
+                 "LNF_TIMEZONE_CD" : {
+                   "type" : "text",
+                   "fields" : {
+                     "keyword" : {
+                       "type" : "keyword",
+                       "ignore_above" : 256
+                     }
+                   }
+                 },
+                 "LOAD_CONF_EMAIL_FLAG" : {
+                   "type" : "long"
+                 },
+                 "LOAD_CONF_FAX_FLAG" : {
+                   "type" : "long"
+                 },
+                 "LOAD_CONF_SMS_FLAG" : {
+                   "type" : "long"
+                 },
+                 "LOAD_NOTIFICATION_SENT_TS" : {
+                   "type" : "date",
+                   "format": "yyyy-MM-dd HH:mm:ss||yyyy-MM-dd||epoch_millis||yyyy-MM-dd HH:mm:ss.SSSSSS"
+                 },
+                 "MOD_DEL_ORDER_REASON_CD" : {
+                   "type" : "text",
+                   "fields" : {
+                     "keyword" : {
+                       "type" : "keyword",
+                       "ignore_above" : 256
+                     }
+                   }
+                 },
+                 "MULTIMODAL_REFERENCE_ITEM" : {
+                   "type" : "long"
+                 },
+                 "MULTISEGMENT_REFERENCE" : {
+                   "type" : "long"
+                 },
+                 "NOTE_DELIVERY" : {
+                   "type" : "text",
+                   "fields" : {
+                     "keyword" : {
+                       "type" : "keyword",
+                       "ignore_above" : 256
+                     }
+                   }
+                 },
+                 "NOTE_DISPATCHING" : {
+                   "type" : "text",
+                   "fields" : {
+                     "keyword" : {
+                       "type" : "keyword",
+                       "ignore_above" : 256
+                     }
+                   }
+                 },
+                 "NOTE_ORDER_MGMT" : {
+                   "type" : "text",
+                   "fields" : {
+                     "keyword" : {
+                       "type" : "keyword",
+                       "ignore_above" : 256
+                     }
+                   }
+                 },
+                 "NOTE_RAILWAY_DISP" : {
+                   "type" : "text",
+                   "fields" : {
+                     "keyword" : {
+                       "type" : "keyword",
+                       "ignore_above" : 256
+                     }
+                   }
+                 },
+                 "NOTE_TRUCK_DRIVER" : {
+                   "type" : "text",
+                   "fields" : {
+                     "keyword" : {
+                       "type" : "keyword",
+                       "ignore_above" : 256
+                     }
+                   }
+                 },
+                 "NO_PDA_OR_RAIL_EVENTS_FLAG" : {
+                   "type" : "long"
+                 },
+                 "ONE_TIME_SOLDTO_CITY" : {
+                   "type" : "text",
+                   "fields" : {
+                     "keyword" : {
+                       "type" : "keyword",
+                       "ignore_above" : 256
+                     }
+                   }
+                 },
+                 "ONE_TIME_SOLDTO_COUNTRY" : {
+                   "type" : "text",
+                   "fields" : {
+                     "keyword" : {
+                       "type" : "keyword",
+                       "ignore_above" : 256
+                     }
+                   }
+                 },
+                 "ONE_TIME_SOLDTO_NAME" : {
+                   "type" : "text",
+                   "fields" : {
+                     "keyword" : {
+                       "type" : "keyword",
+                       "ignore_above" : 256
+                     }
+                   }
+                 },
+                 "ONE_TIME_SOLDTO_POSTAL_CODE" : {
+                   "type" : "text",
+                   "fields" : {
+                     "keyword" : {
+                       "type" : "keyword",
+                       "ignore_above" : 256
+                     }
+                   }
+                 },
+                 "ONE_TIME_SOLDTO_STREET_HOUSENO" : {
+                   "type" : "text",
+                   "fields" : {
+                     "keyword" : {
+                       "type" : "keyword",
+                       "ignore_above" : 256
+                     }
+                   }
+                 },
+                 "ONE_TIME_SOLDTO_VAT_NO" : {
+                   "type" : "text",
+                   "fields" : {
+                     "keyword" : {
+                       "type" : "keyword",
+                       "ignore_above" : 256
+                     }
+                   }
+                 },
+                 "ON_HOLD_ORDER_AND_LOCKED_FLAG" : {
+                   "type" : "long"
+                 },
+                 "ORDER_CONF_EMAIL_ADRESSES" : {
+                   "type" : "text",
+                   "fields" : {
+                     "keyword" : {
+                       "type" : "keyword",
+                       "ignore_above" : 256
+                     }
+                   }
+                 },
+                 "ORDER_CONF_EMAIL_FLAG" : {
+                   "type" : "long"
+                 },
+                 "ORDER_CONF_FAX_FLAG" : {
+                   "type" : "long"
+                 },
+                 "ORDER_CONF_FAX_NUMBER" : {
+                   "type" : "text",
+                   "fields" : {
+                     "keyword" : {
+                       "type" : "keyword",
+                       "ignore_above" : 256
+                     }
+                   }
+                 },
+                 "ORDER_CONF_SMS_FLAG" : {
+                   "type" : "long"
+                 },
+                 "ORDER_CONF_SMS_NUMBER" : {
+                   "type" : "text",
+                   "fields" : {
+                     "keyword" : {
+                       "type" : "keyword",
+                       "ignore_above" : 256
+                     }
+                   }
+                 },
+                 "ORDER_CREATION_TYPE_CD" : {
+                   "type" : "long"
+                 },
+                 "ORDER_ID" : {
+                   "type" : "text",
+                   "fields" : {
+                     "keyword" : {
+                       "type" : "keyword",
+                       "ignore_above" : 256
+                     }
+                   }
+                 },
+                 "ORDER_NOTIFICATION_SENT_TS" : {
+                   "type" : "date",
+                   "format": "yyyy-MM-dd HH:mm:ss||yyyy-MM-dd||epoch_millis||yyyy-MM-dd HH:mm:ss.SSSSSS"
+                 },
+                 "ORDER_NUMBER" : {
+                   "type" : "text",
+                   "fields" : {
+                     "keyword" : {
+                       "type" : "keyword",
+                       "ignore_above" : 256
+                     }
+                   }
+                 },
+                 "ORDER_NUMBER_FROM_SEQ_USAGE" : {
+                   "type" : "text",
+                   "fields" : {
+                     "keyword" : {
+                       "type" : "keyword",
+                       "ignore_above" : 256
+                     }
+                   }
+                 },
+                 "ORDER_NUMBER_SEQ_USAGE_CD" : {
+                   "type" : "long"
+                 },
+                 "ORDER_STATUS_CD" : {
+                   "type" : "long"
+                 },
+                 "ORDER_VALIDATION_CODE" : {
+                   "type" : "text",
+                   "fields" : {
+                     "keyword" : {
+                       "type" : "keyword",
+                       "ignore_above" : 256
+                     }
+                   }
+                 },
+                 "PAYER_SAP_BP_ID" : {
+                   "type" : "text",
+                   "fields" : {
+                     "keyword" : {
+                       "type" : "keyword",
+                       "ignore_above" : 256
+                     }
+                   }
+                 },
+                 "PAYMENT_REFERENCE_DATE1" : {
+                   "type" : "date",
+                   "format": "yyyy-MM-dd HH:mm:ss||yyyy-MM-dd||epoch_millis||yyyy-MM-dd HH:mm:ss.SSSSSS"
+                 },
+                 "PAYMENT_REFERENCE_DATE2" : {
+                   "type" : "date",
+                   "format": "yyyy-MM-dd HH:mm:ss||yyyy-MM-dd||epoch_millis||yyyy-MM-dd HH:mm:ss.SSSSSS"
+                 },
+                 "PAYMENT_REFERENCE_DATE3" : {
+                   "type" : "date",
+                   "format": "yyyy-MM-dd HH:mm:ss||yyyy-MM-dd||epoch_millis||yyyy-MM-dd HH:mm:ss.SSSSSS"
+                 },
+                 "PAYMENT_REFERENCE_NUMBER1" : {
+                   "type" : "text",
+                   "fields" : {
+                     "keyword" : {
+                       "type" : "keyword",
+                       "ignore_above" : 256
+                     }
+                   }
+                 },
+                 "PAYMENT_REFERENCE_NUMBER2" : {
+                   "type" : "text",
+                   "fields" : {
+                     "keyword" : {
+                       "type" : "keyword",
+                       "ignore_above" : 256
+                     }
+                   }
+                 },
+                 "PAYMENT_REFERENCE_NUMBER3" : {
+                   "type" : "text",
+                   "fields" : {
+                     "keyword" : {
+                       "type" : "keyword",
+                       "ignore_above" : 256
+                     }
+                   }
+                 },
+                 "PLANNED_UNLOADING_TIME_MIN" : {
+                   "type" : "long"
+                 },
+                 "POD_CODE" : {
+                   "type" : "text",
+                   "fields" : {
+                     "keyword" : {
+                       "type" : "keyword",
+                       "ignore_above" : 256
+                     }
+                   }
+                 },
+                 "POOL_ID" : {
+                   "type" : "long"
+                 },
+                 "PRELOADING_FLAG" : {
+                   "type" : "long"
+                 },
+                 "PRINT_EXPORT_INVOICE" : {
+                   "type" : "long"
+                 },
+                 "PURCHASINGORG_CD" : {
+                   "type" : "text",
+                   "fields" : {
+                     "keyword" : {
+                       "type" : "keyword",
+                       "ignore_above" : 256
+                     }
+                   }
+                 },
+                 "RAIL_HOLD_BACK_RE_ORDER_FLAG" : {
+                   "type" : "long"
+                 },
+                 "REFERENCE_DATE" : {
+                   "type" : "date",
+                   "format": "yyyy-MM-dd HH:mm:ss||yyyy-MM-dd||epoch_millis||yyyy-MM-dd HH:mm:ss.SSSSSS"
+                 },
+                 "REFERENCE_NUMBER" : {
+                   "type" : "text",
+                   "fields" : {
+                     "keyword" : {
+                       "type" : "keyword",
+                       "ignore_above" : 256
+                     }
+                   }
+                 },
+                 "RELEASE_SAP_FLAG" : {
+                   "type" : "long"
+                 },
+                 "RESCHEDULING_FLAG" : {
+                   "type" : "long"
+                 },
+                 "SAP_CONTRACT_ID" : {
+                   "type" : "long"
+                 },
+                 "SAP_SUPPRESS_MIN_CHARGE_FLAG" : {
+                   "type" : "long"
+                 },
+                 "SAP_VENDOR_SUBRANGE_ID" : {
+                   "type" : "long"
+                 },
+                 "SAREA_ID" : {
+                   "type" : "long"
+                 },
+                 "SENT_SALESDOC_TO_SAP_TS" : {
+                   "type" : "date",
+                   "format": "yyyy-MM-dd HH:mm:ss||yyyy-MM-dd||epoch_millis||yyyy-MM-dd HH:mm:ss.SSSSSS"
+                 },
+                 "SENT_SHIPMENTDOC_TO_SAP_TS" : {
+                   "type" : "date",
+                   "format": "yyyy-MM-dd HH:mm:ss||yyyy-MM-dd||epoch_millis||yyyy-MM-dd HH:mm:ss.SSSSSS"
+                 },
+                 "SENT_TO_ATLAS_FLAG" : {
+                   "type" : "long"
+                 },
+                 "SHIPPINGPOINT_ID" : {
+                   "type" : "text",
+                   "fields" : {
+                     "keyword" : {
+                       "type" : "keyword",
+                       "ignore_above" : 256
+                     }
+                   }
+                 },
+                 "SHIPTO_SAP_BP_ID" : {
+                   "type" : "text",
+                   "fields" : {
+                     "keyword" : {
+                       "type" : "keyword",
+                       "ignore_above" : 256
+                     }
+                   }
+                 },
+                 "SOLDTO_SAP_BP_ID" : {
+                   "type" : "text",
+                   "fields" : {
+                     "keyword" : {
+                       "type" : "keyword",
+                       "ignore_above" : 256
+                     }
+                   }
+                 },
+                 "SPI_CD" : {
+                   "type" : "text",
+                   "fields" : {
+                     "keyword" : {
+                       "type" : "keyword",
+                       "ignore_above" : 256
+                     }
+                   }
+                 },
+                 "TRANSPORT_DISTANCE_M" : {
+                   "type" : "long"
+                 },
+                 "TRANSPORT_DURATION_MIN" : {
+                   "type" : "long"
+                 },
+                 "TRANSPORT_DUR_PLAN_GOOGLE_MIN" : {
+                   "type" : "long"
+                 }
+               }
+             }
+           }
