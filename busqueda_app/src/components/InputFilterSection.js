@@ -69,19 +69,13 @@ const InputFilterSection = ({ cleanDate, turnFalseDateFilter }) => {
     dateFrom,
     dateTo,
     searchboxCreatedBy,
+    shippingPoint,
   } = config.filters;
   return (
     <>
       <ActionBarRow>
         <FlexBox>
           <GridInputs>
-            {/* <SearchBox
-              autofocus={true}
-              searchOnChange={true}
-              placeholder={config.searchbox.placeholder}
-              prefixQueryFields={config.searchbox.queryFields}
-              blurAction="search"
-            /> */}
             <InputFilter
               id={orderNumber.id}
               title={orderNumber.title}
@@ -146,6 +140,14 @@ const InputFilterSection = ({ cleanDate, turnFalseDateFilter }) => {
               prefixQueryFields={searchboxCreatedBy.fields}
               blurAction="search"
             />
+            <InputFilter
+              id={shippingPoint.id}
+              title={shippingPoint.title}
+              placeholder={shippingPoint.placeholder}
+              searchOnChange={true}
+              prefixQueryFields={shippingPoint.fields}
+              blurAction="search"
+            />
             <SortingSelector
               options={[
                 {
@@ -162,12 +164,6 @@ const InputFilterSection = ({ cleanDate, turnFalseDateFilter }) => {
               ]}
             />
           </GridInputs>
-
-          {/* <ButtonPrimary
-            classProps="button-input-filters"
-            text="Search"
-            onClick={OnSearch}
-          /> */}
         </FlexBox>
       </ActionBarRow>
     </>

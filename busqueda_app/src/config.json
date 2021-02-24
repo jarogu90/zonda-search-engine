@@ -65,6 +65,12 @@
             "fields": ["USER.PERSON.NAME","USER.PERSON.FIRST_NAME"],
             "id": "createdBy"
         },
+        "shippingPoint": {
+            "title": "Shipping point",
+            "placeholder": "Shipping point",
+            "fields": ["SHIPPINGPOINT_ID"],
+            "id": "shippingPoint"
+        },
         "dateFrom": {
             "field": "DELIVERY_FROM_DAT",
             "title": "Delivery Dates:",
