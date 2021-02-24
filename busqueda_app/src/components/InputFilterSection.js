@@ -59,7 +59,11 @@ const GridInputs = styled.div`
   .filter--createdBy {
     margin-top: 28px;
   }
+  .sk-select {
+    display: none;
+  }
 `;
+
 
 const InputFilterSection = ({ cleanDate, turnFalseDateFilter }) => {
   const {
@@ -155,14 +159,10 @@ const InputFilterSection = ({ cleanDate, turnFalseDateFilter }) => {
                   field: filters.dateFrom.field,
                   order: "desc",
                   defaultOption: true,
-                },
-                {
-                  label: "Earliest",
-                  field: filters.dateFrom.field,
-                  order: "asc",
-                },
+                }
               ]}
             />
+           {/*  </div> */}
           </GridInputs>
         </FlexBox>
       </ActionBarRow>

@@ -37,7 +37,7 @@
       grid-template-columns: 109px 68px 68px;
   -ms-grid-rows: 36px 187px 72px;
       grid-template-rows: 36px 187px 72px;
-      grid-template-areas: "header header header" "sidebar main main" "footer footer footer";
+      grid-template-areas: "header header header" "sidebar main main" "footer footer footer";
 }
 
 .card .card-title {

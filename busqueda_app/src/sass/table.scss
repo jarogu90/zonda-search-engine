@@ -1,25 +1,46 @@
 .box-table {
-    position: relative;
-
-
-    .ant-table .ant-table-small .ant-table-bordered {
+    position: relative;  
+    
+    /* .ant-table .ant-table-small .ant-table-bordered {
         overflow: scroll;
-    }
+    } */
 
     .table-container {
 
         // height: 750px;
         height: auto;
-
     }
 
-
-
+    .ant-table-container::-webkit-scrollbar {
+        -webkit-appearance: none;
+    }
+    .ant-table-container::-webkit-scrollbar:vertical {
+        display: none;
+    }
+    
+    .ant-table-container::-webkit-scrollbar-button:increment,.ant-table-container::-webkit-scrollbar-button {
+        display: none;
+    } 
+    
+    .ant-table-container::-webkit-scrollbar:horizontal {
+        height: 10px;
+    }
+    
+    .ant-table-container::-webkit-scrollbar-thumb {
+        background-color: #797979;
+        border-radius: 20px;
+        border: 2px solid #f1f2f3;
+    }
+    
+    .ant-table-container::-webkit-scrollbar-track {
+        border-radius: 10px;  
+    }
 
     .ant-table-container {
 
         width: auto;
         margin-top: 50px;
+        overflow: scroll;
 
 
         .ant-table-content {
@@ -108,6 +129,41 @@
         }
     }
 
+}
+
+.hits {
+    &__true {
+        width: calc(100vw - 369px);
+    }
+
+    &__false {
+        width: calc(100vw - 180px)
+    }
+}
+
+
+
+.ant-table-thead {
+    .ant-table-cell {
+        font-size: 12px;
+        text-align: center;
+        color: var(--greyish-brown);
+        height: 70px;
+        font-weight: 600;
+        padding: 0 8px 0 8px !important;
+        background: var(--ice-blue);
+        border-right: 1px solid var(--light-blue-grey);
+    }
+}
+
+.ant-table-tbody {
+    .ant-table-cell {
+        font-size: 14px;
+        color: var(--greyish-brown);
+        padding: 10px;
+        text-align: center;
+
+    }
 }
 
 //CLASES DELIVERY TYPE CD

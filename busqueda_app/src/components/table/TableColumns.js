@@ -5,7 +5,7 @@ import React, { useState, useEffect } from "react";
 const TableColumns = () => {
   const columns = [
     {
-      title: "",
+      title: "See Details",
       dataIndex: "orderDetails",
       key: "orderDetails",
       render: text => <a>{text}</a>,

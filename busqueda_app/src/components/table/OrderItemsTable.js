@@ -112,34 +112,31 @@ const columns = [
 const OrderItemsTable = ({ order }) => {
   const [data, setData] = useState([]);
 
-  const options = {
-    headers: { Authorization: "Basic b3JkNDNyZXMyOg==" },
-  };
-  const body = {
-    query: {
-      match: {
-        ORDER_ID: {
-          query: order,
-        },
-      },
-    },
-  };
-  useEffect(() => {
-    axios
-      .post(
-        `https://v398e2cse5.execute-api.eu-west-1.amazonaws.com/v1/_search?indice=tlgnc_order_item`,
-        body,
-        options
-      )
-      .then((res) => {
-        const order_items_col = res.data.hits.hits;
-        console.log(order_items_col);
-        const col = order_items_col.map((order_item) => order_item._source);
-        //this.setState({ persons });
-        setData(col);
-      });
-  }, [order]);
-  return <Table columns={columns} dataSource={data} />;
-};
+    const options = {
+        headers: {'Authorization': 'Basic b3JkNDNyZXMyOg=='}
+    };
+    const body = {
+        "query": {
+          "match": {
+            "ORDER_ID": {
+              "query": order
+            }
+          }
+        }
+    }
+    useEffect(() => {
+        axios.post(`https://v398e2cse5.execute-api.eu-west-1.amazonaws.com/v1/_search?indice=tlgnc_order_item`, body, options)
+        .then(res => {
+            const order_items_col = res.data.hits.hits;
+            console.log(order_items_col)
+            const col = order_items_col.map(order_item => (order_item._source))
+            //this.setState({ persons });
+            setData(col)
+        })
+    }, [order]);
+    return(
+        <Table columns={columns} dataSource={data} pagination={false}/>
+    );
+}
 
 export default OrderItemsTable;

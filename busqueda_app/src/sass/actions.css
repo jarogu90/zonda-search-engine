@@ -134,16 +134,13 @@
 
 .download-button-link {
   height: 36px;
-  padding: 8px;
+  padding: 0 8px 0 8px;
   border-radius: 4px;
   border: solid 1px var(--ocean-blue);
   margin-top: 1.6rem;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
 }
 
 .download-button-link p {
