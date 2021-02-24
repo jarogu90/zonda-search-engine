@@ -38,16 +38,16 @@ const OrderHitsTable = ({ hits }) => {
   const [checkedColumns, setCheckedColumns] = useState(TableColumns);
   const [columns, setColumns] = useState(TableColumns);
   const [isModalVisible, setIsModalVisible] = useState(false);
-  const [clickedOrder, setClickedOrder] = useState()
+  const [clickedOrder, setClickedOrder] = useState();
   const showModal = (order) => {
     const modal = Modal.success({
-      title:"Order Items Detail for Order ID" + order,
-      content : <OrderItemsTable order={order} />,
+      title: "Order Items Detail for Order ID" + order,
+      content: <OrderItemsTable order={order} />,
       width: 1000,
-      onOk: handleOk
-    })
-    console.log(order)
-    setClickedOrder(order)
+      onOk: handleOk,
+    });
+    console.log(order);
+    setClickedOrder(order);
     setIsModalVisible(true);
   };
   const handleOk = () => {
@@ -74,13 +74,16 @@ const OrderHitsTable = ({ hits }) => {
       let row = {
         orderDetails: (
           <OnHold backgroundcolor={backgroundcolor}>
-              <span onClick={()=>showModal(hit._source.ORDER_ID)}>Details</span>
+            <span onClick={() => showModal(hit._source.ORDER_ID)}>Details</span>
           </OnHold>
         ),
         orderNumber: (
           <OnHold backgroundcolor={backgroundcolor}>
-            
-            <a href={`http://zonda-ext-eu-dev.publicapps.lfgh.ocpqa.lafargeholcim-go.com/logon/order/bestellung/BestellungSearchEntry.do?order=13273122`} >{hit._source.ORDER_NUMBER}</a>
+            <a
+              href={`http://zonda-ext-eu-dev.publicapps.lfgh.ocpqa.lafargeholcim-go.com/logon/order/bestellung/BestellungSearchEntry.do?order=13273122`}
+            >
+              {hit._source.ORDER_NUMBER}
+            </a>
             {/* <span onClick={()=>showModal(hit._source.ORDER_ID)}>{hit._source.ORDER_ID}</span> */}
             {/* <a href={`http://zonda-ext-eu-dev.publicapps.lfgh.ocpqa.lafargeholcim-go.com/logon/order/bestellung/BestellungSearchEntry.do?order=${hit._source.ORDER_ID}`} >{hit._source.ORDER_NUMBER}</a> */}
           </OnHold>
@@ -102,14 +105,20 @@ const OrderHitsTable = ({ hits }) => {
         ),
         orderStatus: (
           <OnHold backgroundcolor={backgroundcolor}>
-            <Status color={statusMigration(parseInt(hit._source.ORDER_STATUS_CD)).color}>
+            <Status
+              color={
+                statusMigration(parseInt(hit._source.ORDER_STATUS_CD)).color
+              }
+            >
               {statusMigration(parseInt(hit._source.ORDER_STATUS_CD)).txt}
             </Status>
           </OnHold>
         ),
         orderCreationSystem: (
           <OnHold backgroundcolor={backgroundcolor}>
-            {orderCreationSystemMigration(parseInt(hit._source.ORDER_CREATION_TYPE_CD))}
+            {orderCreationSystemMigration(
+              parseInt(hit._source.ORDER_CREATION_TYPE_CD)
+            )}
           </OnHold>
         ),
         shipTo: (
@@ -207,7 +216,10 @@ const OrderHitsTable = ({ hits }) => {
         processType: element._source.DISTRIBUTION_DEST_CD,
         deliveryFrom: element._source.DELIVERY_FROM_DAT,
         deliveryTo: element._source.DELIVERY_TO_DAT,
-        createdBy: element._source.USER.PERSON.FIRSTNAME + ' ' + element._source.USER.PERSON.NAME,
+        createdBy:
+          element._source.USER.PERSON.FIRSTNAME +
+          " " +
+          element._source.USER.PERSON.NAME,
       });
     });
     return dataPrintable;
@@ -271,7 +283,7 @@ const OrderHitsTable = ({ hits }) => {
         onCancel={handleOk}
         width={1000}
       > */}
-        {/* <OrderItemsTable order={clickedOrder} /> */}
+      {/* <OrderItemsTable order={clickedOrder} /> */}
       {/* </Modal> */}
     </div>
   );

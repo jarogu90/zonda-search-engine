@@ -55,7 +55,7 @@ export const statusMigration = (statusNumber) => {
     case 18:
       return status[18];
     default:
-      console.log("status",statusNumber);
+      console.log("status", statusNumber);
       return status[1];
   }
 };
@@ -190,75 +190,3 @@ export const textPills = (field, data) => {
       return "ON";
   }
 };
-
-/*export const shipTo = async (shipToId) => {
-    try{
-        let request = await fetch(`https://search-logon-order-search-qyhfl5jwmhiaatf23g3wafmjia.eu-west-1.es.amazonaws.com/tlgns_sap_bp/_search?q=SAP_BP_ID:${shipToId}`)
-        let resJson = await request.json()
-        console.log(resJson.hits.hits[0]._source);
-        let data = resJson.hits.hits[0]._source;
-        if(data.BP_IS_SHIPTO === 1){
-            console.log('aaaaaaa')
-            return data.NAME1
-        } else {
-            return '-'
-        }
-    }
-    catch(error){
-        console.log(error)
-    }
-}
-
-export const soldTo = async (sapContractId) => {
-    try{
-        let request = await fetch(`https://search-logon-order-search-qyhfl5jwmhiaatf23g3wafmjia.eu-west-1.es.amazonaws.com/tlgns_sap_bp/_search?q=SAP_BP_ID:${sapContractId}`)
-        let resJson = await request.json()
-        //console.log(resJson.hits.hits[0]._source);
-        let data = resJson.hits.hits[0]._source;
-
-        if(data.BP_IS_SOLDTO === 1){
-            return data.NAME1
-        } else {
-            return '-'
-        }
-    }
-    catch(error){
-        console.log(error)
-    }
-}
-
-export const billTo = async (billToId) => {
-    try{
-        let request = await fetch(`https://search-logon-order-search-qyhfl5jwmhiaatf23g3wafmjia.eu-west-1.es.amazonaws.com/tlgns_sap_bp/_search?q=SAP_BP_ID:${billToId}`)
-        let resJson = await request.json()
-        console.log(resJson.hits.hits[0]._source);
-        let data = resJson.hits.hits[0]._source;
-
-        if(data.BP_IS_BILLTO === 1){
-            return data.NAME1
-        } else {
-            return '-'
-        }
-    }
-    catch(error){
-        console.log(error)
-    }
-}
-
-export const payerTo = async (sapContractId) => {
-    try{
-        let request = await fetch(`https://search-logon-order-search-qyhfl5jwmhiaatf23g3wafmjia.eu-west-1.es.amazonaws.com/tlgns_sap_bp/_search?q=SAP_BP_ID:${sapContractId}`)
-        let resJson = await request.json()
-        console.log(resJson.hits.hits[0]._source);
-        let data = resJson.hits.hits[0]._source;
-
-        if(data.BP_IS_PAYERTO === 1){
-            return data.NAME1
-        } else {
-            return '-'
-        }
-    }
-    catch(error){
-        console.log(error)
-    }
-}*/
