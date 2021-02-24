@@ -18,9 +18,15 @@ const dateSort = (rowA, rowB) => {
 };
 
 const defaultSort = (rowA, rowB) => {
-  if (rowA.orderNumber.props.children < rowB.orderNumber.props.children)
+  if (
+    rowA.orderNumber.props.children.props.children <
+    rowB.orderNumber.props.children.props.children
+  )
     return -1;
-  if (rowB.orderNumber.props.children < rowA.orderNumber.props.children)
+  if (
+    rowB.orderNumber.props.children.props.children <
+    rowA.orderNumber.props.children.props.children
+  )
     return 1;
   return 0;
 };
