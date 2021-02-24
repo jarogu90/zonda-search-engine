@@ -1,9 +1,16 @@
 import React from "react";
 import styled from "styled-components";
 
-import { SearchBox, ActionBarRow, InputFilter, RangeFilter } from "searchkit";
+import {
+  SearchBox,
+  ActionBarRow,
+  InputFilter,
+  RangeFilter,
+  SortingSelector,
+} from "searchkit";
 import config from "../config.json";
 import DatesRangeFilter from "./DatesRangeFilter";
+import { filters } from "../config.json";
 
 // components
 //import ButtonPrimary from "./GenericComponents/ButtonPrimary";
@@ -138,6 +145,21 @@ const InputFilterSection = ({ cleanDate, turnFalseDateFilter }) => {
               searchOnChange={true}
               prefixQueryFields={searchboxCreatedBy.fields}
               blurAction="search"
+            />
+            <SortingSelector
+              options={[
+                {
+                  label: "Latest",
+                  field: filters.dateFrom.field,
+                  order: "desc",
+                  defaultOption: true,
+                },
+                {
+                  label: "Earliest",
+                  field: filters.dateFrom.field,
+                  order: "asc",
+                },
+              ]}
             />
           </GridInputs>
 
